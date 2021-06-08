@@ -7,6 +7,10 @@ on early-init
     setprop ro.boot.product.hardware.sku ${ro.boot.hardware.sku}
 
 on property:ro.boot.hardware.sku=JPN
+    # Audio
+    setprop audio.camerasound.force true
+
+    # NFC
     setprop persist.nfc_cfg.config_file_name libnfc-nci-felica.conf
     setprop persist.vendor.nfc.config_file_name libnfc-hal-st-st54j.conf
 
