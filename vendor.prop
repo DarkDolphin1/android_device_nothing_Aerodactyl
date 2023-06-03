@@ -179,6 +179,9 @@ ro.lmk.kill_timeout_ms=50
 ro.lmk.log_stats=false
 ro.lmk.stall_limit_critical=40
 
+# Logd
+ro.logd.kernel=false
+
 # Media
 debug.stagefright.c2inputsurface=-1
 media.c2.dmabuf.padding=3072
