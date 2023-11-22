@@ -216,7 +216,11 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.se.omapi.ese.xml:$(TARGET_COPY_OUT_ODM)/etc/permissions/sku_JPN/android.hardware.se.omapi.ese.xml
 
 # NTF
-$(call inherit-product, hardware/nothing/nt-fwk/nt-fwk.mk)
+PRODUCT_PACKAGES += \
+    nt-fwk.Aerodactyl
+
+PRODUCT_BOOT_JARS += \
+    nt-fwk.Aerodactyl
 
 # Overlays
 PRODUCT_PACKAGES += \
