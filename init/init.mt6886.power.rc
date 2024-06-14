@@ -10,6 +10,13 @@ on early-init
     write /proc/sys/kernel/sched_pelt_multiplier 1
 
 on init
+    # Make foreground and background I/O priority different. none-to-rt was
+    # introduced in kernel 5.14. promote-to-rt was introduced in kernel 6.5.
+    # Write none-to-rt first and promote-to-rt next to support both older and
+    # newer kernel versions.
+    write /dev/blkio/blkio.prio.class none-to-rt
+    write /dev/blkio/blkio.prio.class promote-to-rt
+
     # UFS
     write /sys/devices/platform/soc/112b0000.ufshci/clkgate_enable 0
 
