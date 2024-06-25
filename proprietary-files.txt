@@ -62,6 +62,14 @@ vendor/etc/aurisys_config_rv.xml
 # Audio (Device)
 vendor/etc/audio_device.xml
 
+# Audio (Dirac)
+system/etc/sysconfig/preinstalled-packages-audioeffect.xml
+system/priv-app/NothingAudioEffectService/NothingAudioEffectService.apk
+vendor/etc/dirac/dirac_resource.dar
+vendor/etc/dirac/interface.json
+vendor/lib64/soundfx/libdiraceffect_NT.so
+vendor/lib64/libdirac.so
+
 # Audio (LVACFS)
 vendor/etc/lvacfs_params/1mic/LVACFS_Calibration_1mic.dat
 vendor/etc/lvacfs_params/1mic/LVACFS_Configuration.txt

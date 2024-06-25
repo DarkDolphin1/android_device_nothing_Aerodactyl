@@ -28,6 +28,17 @@ vendor.rild.libpath=mtk-ril.so
 # Media
 media.stagefright.thumbnail.prefer_hw_codecs=true
 
+# NTF
+ro.build.nothing.feature.base=0x800001004458438124a040106b4247b97ffL
+ro.build.nothing.feature.diff.device.Pacman=0x240304400040128d3493f4d00250c42080L
+ro.build.nothing.feature.diff.device.PacmanPro=0x40304400040128db493f4d00250c42080L
+ro.build.nothing.feature.diff.product.PacmanEEA=0x8000000000000000000000L
+ro.build.nothing.feature.diff.product.PacmanIND=0x10000000000000000000000L
+ro.build.nothing.feature.diff.product.PacmanJPN=0x20000000000000000000000L
+ro.build.nothing.feature.diff.product.PacmanProEEA=0x8000000000000000000000L
+ro.build.nothing.feature.diff.product.PacmanProIND=0x10000000000000000000000L
+ro.build.nothing.feature.diff.product.PacmanProJPN=0x20000000000000000000000L
+
 # Wifi
 wifi.direct.interface=p2p0
 wifi.interface=wlan0
