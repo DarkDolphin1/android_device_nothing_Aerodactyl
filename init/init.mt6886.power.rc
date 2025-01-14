@@ -8,6 +8,9 @@ on early-init
     write /sys/class/devfreq/mtk-dvfsrc-devfreq/userspace/set_freq 4266000000
 
 on init
+    # UFS
+    write /sys/devices/platform/soc/112b0000.ufshci/clkgate_enable 0
+
     # Set teo as cpu idle governor
     write /sys/devices/system/cpu/cpuidle/current_governor teo
 
@@ -27,6 +30,9 @@ on init
     write /proc/sys/kernel/sched_wakeup_granularity_ns 2000000
 
 on charger
+    # UFS
+    write /sys/devices/platform/soc/112b0000.ufshci/clkgate_enable 1
+
     write /sys/devices/system/cpu/cpufreq/policy0/scaling_min_freq 0
     write /sys/devices/system/cpu/cpufreq/policy6/scaling_min_freq 0
     write /sys/class/devfreq/mtk-dvfsrc-devfreq/userspace/set_freq 0
@@ -86,6 +92,9 @@ on property:sys.boot_completed=1
     write /sys/block/sda/queue/nr_requests 64
     write /sys/block/sdb/queue/nr_requests 64
     write /sys/block/sdc/queue/nr_requests 64
+
+    # UFS
+    write /sys/devices/platform/soc/112b0000.ufshci/clkgate_enable 1
 
     # zram
     swapon_all /vendor/etc/fstab.enableswap
