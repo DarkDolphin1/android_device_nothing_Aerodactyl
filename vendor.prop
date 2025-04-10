@@ -298,6 +298,7 @@ vendor.connsys.driver.ready=no
 
 # Sensors
 ro.vendor.mtk.sensor.support=yes
+persist.vendor.sensors.debug.hal=0
 
 # TEE
 ro.vendor.mtk_tee_gp_support=1
