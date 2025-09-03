@@ -133,9 +133,9 @@ ndk::ScopedAStatus Vibrator::perform(Effect effect, EffectStrength es,
 
     if (callback != nullptr) {
         std::thread([=] {
-            usleep((ret + 30) * 1000);
+            usleep((ret + 15) * 1000);
             if (effect == Effect::DOUBLE_CLICK) {
-                usleep((ret + 20) * 1000);
+                usleep((ret + 10) * 1000);
                 aac_vibra_looper_prebaked_effect(effectId, strength);
             }
             callback->onComplete();
