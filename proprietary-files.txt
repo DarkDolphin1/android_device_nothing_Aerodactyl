@@ -779,7 +779,7 @@ vendor/etc/gralloc/vpu.xml
 vendor/etc/init/android.hardware.graphics.allocator@4.0-service-mediatek.rc
 vendor/etc/init/android.hardware.graphics.composer@3.1-service.rc
 vendor/etc/vintf/manifest/manifest_hwcomposer.xml
-vendor/lib64/hw/hwcomposer.mtk_common.so;DISABLE_DEPS
+vendor/lib64/hw/hwcomposer.mtk_common.so
 vendor/lib64/hw/mt6886/android.hardware.graphics.allocator@4.0-impl-mediatek.so;SYMLINK=vendor/lib64/hw/android.hardware.graphics.allocator@4.0-impl-mediatek.so
 vendor/lib64/hw/mt6886/android.hardware.graphics.mapper@4.0-impl-mediatek.so;SYMLINK=vendor/lib64/hw/android.hardware.graphics.mapper@4.0-impl-mediatek.so
 vendor/lib64/hw/mt6886/gralloc.common.so;SYMLINK=vendor/lib64/hw/gralloc.common.so
@@ -912,7 +912,7 @@ vendor/etc/mali_platform.config
 vendor/lib64/egl/mt6886/libGLES_mali.so;SYMLINK=vendor/lib64/egl/libGLES_mali.so
 vendor/lib64/hw/mt6886/vulkan.mali.so;SYMLINK=vendor/lib64/hw/vulkan.mali.so
 vendor/lib64/libged.so
-vendor/lib64/libgpu_aux.so;DISABLE_DEPS
+vendor/lib64/libgpu_aux.so
 vendor/lib64/libgpud.so
 vendor/lib64/libgralloc_extra.so
 vendor/lib64/libgralloc_metadata.so
@@ -1016,8 +1016,8 @@ vendor/etc/seccomp_policy/android.hardware.media.c2@1.2-extended-seccomp-policy
 vendor/etc/seccomp_policy/android.hardware.media.c2@1.2-mediatek-seccomp-policy
 vendor/etc/vintf/manifest/manifest_media_c2_V1_1_default.xml
 vendor/lib64/libcodec2_mtk_c2store.so
-vendor/lib64/libcodec2_mtk_vdec.so;DISABLE_DEPS
-vendor/lib64/libcodec2_mtk_venc.so;DISABLE_DEPS
+vendor/lib64/libcodec2_mtk_vdec.so
+vendor/lib64/libcodec2_mtk_venc.so
 vendor/lib64/libcodec2_vpp_AIMEMC_plugin.so
 vendor/lib64/libcodec2_vpp_AISR_plugin.so
 vendor/lib64/libcodec2_vpp_mi_plugin.so
