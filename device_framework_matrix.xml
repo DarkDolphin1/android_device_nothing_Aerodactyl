@@ -16,14 +16,6 @@
         </interface>
     </hal>
     <hal format="aidl" optional="true">
-        <name>vendor.noth.hardware.charge</name>
-        <version>1</version>
-        <interface>
-            <name>ICharge</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="aidl" optional="true">
         <name>vendor.noth.hardware.sensor.sensor_extension</name>
         <version>1</version>
         <interface>
