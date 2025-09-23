@@ -19,8 +19,6 @@ on early-init
 on init
     write /proc/bootprof "INIT:init"
 
-    mkdir /mnt/cd-rom 0000 system system
-
 # change lk_env permission
     chown root system /proc/lk_env
     chmod 0660 /proc/lk_env
@@ -92,9 +90,6 @@ on fs
     mount_all --early
     write /sys/kernel/tracing/trace_marker "E"
     write /proc/bootprof "INIT:Mount_END"
-
-on fs
-   mount iso9660 loop@/vendor/etc/iAmCdRom.iso /mnt/cd-rom ro
 
 on late-fs
     write /proc/bootprof "INIT:late-fs"
