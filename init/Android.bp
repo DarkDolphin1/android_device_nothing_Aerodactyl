@@ -80,6 +80,13 @@ prebuilt_etc {
 }
 
 prebuilt_etc {
+    name: "init.nothing.rc",
+    src: "init.nothing.rc",
+    relative_install_path: "init",
+    device_specific: true,
+}
+
+prebuilt_etc {
     name: "init.project.rc",
     src: "init.project.rc",
     relative_install_path: "init/hw",

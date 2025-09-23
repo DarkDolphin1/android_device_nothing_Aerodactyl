@@ -28,15 +28,6 @@ on post-fs-data
 
 #dual calibration
     mkdir /data/vendor/camera 0775 camera camera
-#zoudifang add golden.bin and persist.bin for dualbokeh 2023/10/13. #AERO-422
-    copy /mnt/vendor/persist/camera/bokeh_caldata_uw_persist.bin /data/vendor/camera/bokeh_caldata_uw_persist.bin
-    chmod 0444 /data/vendor/camera/bokeh_caldata_uw_persist.bin
-    chown cameraserver audio /data/vendor/camera/bokeh_caldata_uw_persist.bin
-    chmod 0777 /vendor/etc/camera
-    copy /vendor/etc/camera/bokeh_caldata_uw_golden.bin /data/vendor/camera/bokeh_caldata_uw_golden.bin
-    chmod 0444 /data/vendor/camera/bokeh_caldata_uw_golden.bin
-    chown cameraserver audio /data/vendor/camera/bokeh_caldata_uw_golden.bin
-#zoudifang Add permissions for exifinfo 2023/09/08. #AERO-889
     chmod 0777 /data/vendor/camera
 
 #SMB

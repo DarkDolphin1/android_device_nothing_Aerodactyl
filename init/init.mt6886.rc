@@ -27,12 +27,6 @@ on init
     write /proc/sys/net/core/wmem_max 8388608
     write /proc/sys/net/core/rmem_max 8388608
 
-# ifdef NT_EDIT
-# modify lcd panel id to fix AERO-179
-    chmod 0666 /sys/devices/platform/display_id/brightnessid
-    chown root system /sys/devices/platform/display_id/brightnessid
-# endif /* NT_EDIT */
-
 on late-init
     write /proc/bootprof "INIT:late-init"
 
@@ -202,70 +196,10 @@ on post-fs-data
     chmod 0660 /dev/spm
     chown system system /dev/spm
 
-# #ifdef NT_EDIT
-# add to new_feature AERO-18
-# led lights
-    chown system system /sys/class/leds/aw20036_led/hwid
-    chmod 664 /sys/class/leds/aw20036_led/hwid
-    chown system system /sys/class/leds/aw20036_led/effect
-    chmod 664 /sys/class/leds/aw20036_led/effect
-    chown system system /sys/class/leds/aw20036_led/all_brightness
-    chmod 220 /sys/class/leds/aw20036_led/all_brightness
-    chown system system /sys/class/leds/aw20036_led/imax
-    chmod 664 /sys/class/leds/aw20036_led/imax
-    chown system system /sys/class/leds/aw20036_led/frame_brightness
-    chmod 220 /sys/class/leds/aw20036_led/frame_brightness
-    chown system system /sys/class/leds/aw20036_led/operating_mode
-    chmod 664 /sys/class/leds/aw20036_led/operating_mode
-    chown system system /sys/class/leds/aw20036_led/all_white_brightness
-    chmod 220 /sys/class/leds/aw20036_led/all_white_brightness
-    chown system system /sys/class/leds/aw20036_led/factory_test
-    chmod 664 /sys/class/leds/aw20036_led/factory_test
-    chown system system /sys/class/leds/aw20036_led/single_brightness
-    chown system system /sys/class/leds/aw20036_led/vip_notification
-    chown system system /sys/class/leds/aw20036_led/dev_color
-    chown system system /mnt/vendor/persist/color
-    chmod 444 /mnt/vendor/persist/color
-    chown system system /dev/led_strips
-    chmod 664 /dev/led_strips
-# #endif /* NT_EDIT */
-
 # GPS
     chmod 0775 /vendor/xbin/MPED
     chmod 0666 /dev/gps_emi
 
-# #ifdef NT_EDIT
-# add to new_feature AERO-110
-# TP feature node
-    chown system system /sys/devices/platform/soc/11013000.spi3/spi_master/spi3/spi3.0/fts_fod_mode
-    chmod 0666 /sys/devices/platform/soc/11013000.spi3/spi_master/spi3/spi3.0/fts_fod_mode
-    chown system system /sys/devices/platform/soc/11013000.spi3/spi_master/spi3/spi3.0/fts_gesture_mode
-    chmod 0666 /sys/devices/platform/soc/11013000.spi3/spi_master/spi3/spi3.0/fts_gesture_mode
-    chown system system /sys/devices/platform/soc/11013000.spi3/spi_master/spi3/spi3.0/fts_game_mode
-    chmod 0666 /sys/devices/platform/soc/11013000.spi3/spi_master/spi3/spi3.0/fts_game_mode
-    chown system system /sys/devices/platform/soc/11013000.spi3/spi_master/spi3/spi3.0/fts_edge_mode
-    chmod 0666 /sys/devices/platform/soc/11013000.spi3/spi_master/spi3/spi3.0/fts_edge_mode
-# #endif /* NT_EDIT */
-# #ifdef NT_EDIT
-# add to new_feature AERO-123
-# TP feature node
-    chown system system /sys/devices/platform/soc/11013000.spi3/spi_master/spi3/spi3.0/fts_gesture_point
-    chmod 0444 /sys/devices/platform/soc/11013000.spi3/spi_master/spi3/spi3.0/fts_gesture_point
-# #endif /* NT_EDIT */
-# #ifdef NT_EDIT
-# add to new_feature AERO-342
-# TP feature node
-    chown system system /sys/devices/platform/soc/11013000.spi3/spi_master/spi3/spi3.0/fts_fast_diff_mode
-    chmod 0666 /sys/devices/platform/soc/11013000.spi3/spi_master/spi3/spi3.0/fts_fast_diff_mode
-    chown system system /sys/devices/platform/soc/11013000.spi3/spi_master/spi3/spi3.0/fts_diff_data
-    chmod 0666 /sys/devices/platform/soc/11013000.spi3/spi_master/spi3/spi3.0/fts_diff_data
-# #endif /* NT_EDIT */
-# #ifdef NT_EDIT
-# add to new_feature AERO-614
-# TP feature node
-    chown system system /sys/devices/platform/soc/11013000.spi3/spi_master/spi3/spi3.0/fts_pocket_mode
-    chmod 0666 /sys/devices/platform/soc/11013000.spi3/spi_master/spi3/spi3.0/fts_pocket_mode
-# #endif /* NT_EDIT */
 # -----------------------
 # Add by MTK
     # SCP log
@@ -365,48 +299,12 @@ on post-fs-data
     chown media media /dev/audio_scp
     chown audioserver audio /sys/bus/platform/devices/rt5509_param.0/prop_param
     chown audioserver audio /sys/bus/platform/devices/rt5509_param.1/prop_param
-    # #ifdef NT_EDIT
-    # Add for audio smart pa calibration
-    mkdir /data/vendor/audio 0777 audioserver audio
-    chown system system /proc/asound/cards
-    chmod 0444 /proc/asound/cards
-    chown system system /sys/devices/platform/soc/11e82000.i2c/i2c-8/8-0034/version
-    chown system system /sys/devices/platform/soc/11e82000.i2c/i2c-8/8-0034/cali_re
-    chown system system /sys/devices/platform/soc/11e82000.i2c/i2c-8/8-0034/cali_f0
-    chown system system /sys/devices/platform/soc/11e82000.i2c/i2c-8/8-0034/bypass
-    chown system system /sys/devices/platform/soc/11e82000.i2c/i2c-8/8-0035/version
-    chown system system /sys/devices/platform/soc/11e82000.i2c/i2c-8/8-0035/cali_re
-    chown system system /sys/devices/platform/soc/11e82000.i2c/i2c-8/8-0035/cali_f0
-    chown system system /sys/devices/platform/soc/11e82000.i2c/i2c-8/8-0035/bypass
-    chmod 0666 /sys/devices/platform/soc/11e82000.i2c/i2c-8/8-0034/version
-    chmod 0666 /sys/devices/platform/soc/11e82000.i2c/i2c-8/8-0034/cali_re
-    chmod 0666 /sys/devices/platform/soc/11e82000.i2c/i2c-8/8-0034/cali_f0
-    chmod 0666 /sys/devices/platform/soc/11e82000.i2c/i2c-8/8-0034/bypass
-    chmod 0666 /sys/devices/platform/soc/11e82000.i2c/i2c-8/8-0035/version
-    chmod 0666 /sys/devices/platform/soc/11e82000.i2c/i2c-8/8-0035/cali_re
-    chmod 0666 /sys/devices/platform/soc/11e82000.i2c/i2c-8/8-0035/cali_f0
-    chmod 0666 /sys/devices/platform/soc/11e82000.i2c/i2c-8/8-0035/bypass
-    # #endif /* NT_EDIT */
 
     #Accdet
     chown root radio /sys/devices/platform/Accdet_Driver/driver/accdet_call_state
 
     #Fingerprint
     chmod 0666 /dev/goodix_fp
-    # #ifdef NT_EDIT
-    # add to new_feature AERO-265
-    chmod 0666 /sys/panel_feature/hbm_mode
-    mkdir /data/vendor/goodix/
-    chmod 0777 /data/vendor/goodix/
-    # #endif /* NT_EDIT */
-
-    chmod 0660 /sys/panel_feature/brightness_sync
-    chown system system /sys/panel_feature/brightness_sync
-
-    chmod 0666 /sys/panel_feature/ui_status
-    chown system system /sys/panel_feature/ui_status
-
-    chmod 0666 /sys/devices/platform/soc/14017000.dsi/hbm
 
     #vdec-fmt
     chmod 0660 /dev/vdec-fmt
@@ -802,59 +700,7 @@ on boot
     chown system system /sys/class/leds/red/trigger
     chown system system /sys/class/leds/green/trigger
     chown system system /sys/class/leds/blue/trigger
-    # #ifdef NT_EDIT
-    # add for aac richtap vibration AERO-119
-    chmod 0666 /sys/class/leds/vibrator/enalbe
-    chown system system /sys/class/leds/vibrator/enalbe
-    chmod 0666 /sys/class/leds/vibrator/activate
-    chown system system /sys/class/leds/vibrator/activate
-    chmod 0666 /sys/class/leds/vibrator/brightness
-    chown system system /sys/class/leds/vibrator/brightness
-    chmod 0666 /sys/class/leds/vibrator/duration
-    chown system system /sys/class/leds/vibrator/duration
-    chmod 0666 /sys/class/leds/vibrator/f0
-    chown system system /sys/class/leds/vibrator/f0
-    chmod 0666 /sys/class/leds/vibrator/f0_save
-    chown system system /sys/class/leds/vibrator/f0_save
-    chmod 0666 /sys/class/leds/vibrator/ram_cali
-    chown system system /sys/class/leds/vibrator/ram_cali
-    chmod 0666 /sys/class/leds/vibrator/ram_save
-    chown system system /sys/class/leds/vibrator/ram_save
-    chmod 0666 /sys/class/leds/vibrator/cali
-    chown system system /sys/class/leds/vibrator/calicali
-    chmod 0666 /sys/class/leds/vibrator/index
-    chown system system /sys/class/leds/vibrator/index
-    chmod 0666 /sys/class/leds/vibrator/reset
-    chown system system /sys/class/leds/vibrator/reset
-    chmod 0666 /sys/class/leds/vibrator/reg
-    chown system system /sys/class/leds/vibrator/reg
-    chmod 0666 /sys/class/leds/vibrator/vmax
-    chown system system /sys/class/leds/vibrator/vmax
-    chmod 0666 /sys/class/leds/vibrator/gain
-    chown system system /sys/class/leds/vibrator/gain
-    chmod 0666 /sys/class/leds/vibrator/rtp
-    chown system system /sys/class/leds/vibrator/rtp
-    chmod 0666 /sys/class/leds/vibrator/playlist
-    chown system system /sys/class/leds/vibrator/playlist
-    chmod 0666 /sys/class/leds/vibrator/waveform
-    chown system system /sys/class/leds/vibrator/waveform
-    chmod 0666 /sys/class/leds/vibrator/play
-    chown system system /sys/class/leds/vibrator/play
-    chmod 0666 /sys/class/leds/vibrator/stream_start
-    chown system system /sys/class/leds/vibrator/stream_start
-    chmod 0666 /sys/class/leds/vibrator/stream_data
-    chown system system /sys/class/leds/vibrator/stream_data
-    chmod 0666 /sys/class/leds/vibrator/vbat
-    chown system system /sys/class/leds/vibrator/vbat
-    chmod 0666 /sys/class/leds/vibrator/lra_resistance
-    chown system system /sys/class/leds/vibrator/lra_resistance
-    chmod 0666 /sys/class/leds/vibrator/state
-    chown system system /sys/class/leds/vibrator/state
-    chmod 0666 /sys/class/leds/vibrator/seq
-    chown system system /sys/class/leds/vibrator/seq
-    chmod 0666 /sys/class/leds/vibrator/loop
-    chown system system /sys/class/leds/vibrator/loop
-    # #endif /* NT_EDIT */
+
     # gauge symbolic
     symlink /sys/devices/platform/soc/11280000.i2c/i2c-5/5-0034/11280000.i2c:mt6375@34:mtk_gauge /dev/gauge
 
@@ -863,17 +709,6 @@ on boot
     chown radio system /sys/power/tuxonice/do_hibernate
     chmod 0770 /sys/power/tuxonice
     chmod 0220 /sys/power/tuxonice/do_hibernate
-
-# #ifdef NT_EDIT
-# Add wifi country code 00 to default
-    setprop ro.boot.wificountrycode 00
-# #endif /* NT_EDIT */
-
-# #ifdef NT_EDIT
-# add sar cali AERO-339
-	chmod 0666 /sys/bus/i2c/drivers/gh621x/3-0017/manual_calibration
-	chmod 0666 /sys/bus/i2c/drivers/awinic_sar/3-0012/aot
-# #ifdef NT_EDIT
 
 # Smartbook Handler Framework
     chown system system /sys/power/sb_state
@@ -1003,62 +838,6 @@ on boot
     chown root radio /proc/net/netfilter/nfnetlink_log
     chown root radio /proc/net/netfilter/nfnetlink_queue
 
-# #ifdef NT_EDIT
-# add to fix AERO-282 AERO-398 AERO-782 AERO-5713 AERO-6374 AEROP-889 ARCA-2530
-#charger
-    chown system system /proc/charger/charge_pump_enable
-    chown system system /proc/charger/is_aging_test
-    chown system system /proc/charger/nt_abnormal_status
-    chown system system /proc/charger/nt_data
-    chown system system /proc/charger/usb_charger_en
-    chown system system /proc/charger/usb_real_type
-    chown system system /proc/charger/voltage_adc
-    chown system system /proc/charger/usb/temp
-    chown system system	/proc/charger/typec_cc_orientation
-    chown system system	/proc/charger/scenario_fcc
-    chown system system	/proc/charger/ship_mode
-    chown system system	/proc/charger/real_soc
-    chown system system /proc/charger/nt_otg_enable
-    chown system system /proc/charger/chg_data_id
-    chown system system /proc/charger/usb_temp
-    chown system system /sys/class/power_supply/mtk-master-charger/voltage_max
-    chown system system /proc/charger/camera_on
-    chown system system /proc/charger/nt_cp_ctrl
-    chown system system /proc/charger/nt_qmax
-    chown system system /proc/charger/nt_quse
-    chown system system /proc/charger/nt_resistance
-    chown system system /proc/charger/maxchargingcurrent
-    chown system system /proc/charger/maxchargingvoltage
-    chown system system /proc/charger/ibus_now
-    chown system system /proc/charger/nt_adp_power
-    chown system system /proc/charger/area_id
-
-    chmod 0666 /proc/charger/charge_pump_enable
-    chmod 0666 /proc/charger/is_aging_test
-    chmod 0666 /proc/charger/nt_abnormal_status
-    chmod 0666 /proc/charger/nt_data
-    chmod 0666 /proc/charger/usb_charger_en
-    chmod 0666 /proc/charger/usb_real_type
-    chmod 0666 /proc/charger/voltage_adc
-    chmod 0666 /proc/charger/usb/temp
-    chmod 0444 /proc/charger/typec_cc_orientation
-    chmod 0666 /proc/charger/scenario_fcc
-    chmod 0666 /proc/charger/ship_mode
-    chmod 0444 /proc/charger/real_soc
-    chmod 0666 /proc/charger/nt_otg_enable
-    chmod 0444 /proc/charger/chg_data_id
-    chmod 0444 /proc/charger/usb_temp
-    chmod 0664  /sys/class/power_supply/mtk-master-charger/voltage_max
-    chmod 0666 /proc/charger/camera_on
-    chmod 0666 /proc/charger/nt_cp_ctrl
-    chmod 0444 /proc/charger/nt_qmax
-    chmod 0444 /proc/charger/nt_quse
-    chmod 0444 /proc/charger/nt_resistance
-    chmod 0444 /proc/charger/ibus_now
-    chmod 0444 /proc/charger/nt_adp_power
-    chmod 0666 /proc/charger/area_id
-# #endif /* NT_EDIT */
-
 # WMT proc
     chown shell system /proc/driver/wmt_dbg
     chown shell system /proc/driver/wmt_aee
@@ -1101,7 +880,6 @@ on property:vold.decrypt=trigger_shutdown_framework
 on property:sys.boot_completed=1
     # stop bootprof
     write /proc/bootprof 0
-    # #ifdef NT_EDIT
 
 #service dpfd /vendor/bin/dpfd
 #	user root
@@ -1182,24 +960,6 @@ on property:sys.boot_completed=1 && property:ro.boot.atm=enable
     start meta_tst
     start loghidlvendorservice
     start loghidlsysservice
-
-#ifdef NT_EDIT
-# chmod /mnt/vendor/persist to 775 in ATM / AERO-587
-on property:sys.boot_completed=1 && property:ro.boot.atm=enable
-    chmod 0775 /mnt/vendor/persist
-#endif /* NT_EDIT */
-
-#Add for attesation provision / AERO-587 /AERO-3931
-# chown /mnt/vendor/persist/attest_keybox.so to SYSTEM SYSTEM in ATM
-on property:sys.boot_completed=1 && property:ro.boot.atm=enable && property:vendor.attest.keybox.chown=ready
-    chown system system /mnt/vendor/persist/attest_keybox.so
-    setprop vendor.attest.keybox.chown done
-
-# chown /mnt/vendor/persist/attestation_ids.so to SYSTEM SYSTEM in ATM
-on property:sys.boot_completed=1 && property:ro.boot.atm=enable && property:vendor.attest.ids.chown=ready
-    chown system system /mnt/vendor/persist/attestation_ids.so
-    setprop vendor.attest.ids.chown done
-#endif /* NT_EDIT */
 
 # reset mdmode when modem crash happens in ATM
 on property:vendor.mtk.md1.status=reset
