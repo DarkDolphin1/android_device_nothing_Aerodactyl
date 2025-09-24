@@ -1,11 +1,5 @@
 # MTK conninfra .rc configure
 
-on post-fs-data
-    mkdir /data/vendor/connsyslog 0755 system system
-    mkdir /data/vendor/connsyslog/bt 0775 system system
-    mkdir /data/vendor/connsyslog/wifi 0775 system system
-    mkdir /data/vendor/connsyslog/gps 0775 system system
-
 on boot
 
 # conninfra
