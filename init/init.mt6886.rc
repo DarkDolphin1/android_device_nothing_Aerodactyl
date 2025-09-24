@@ -69,7 +69,6 @@ on early-fs
     write /proc/bootprof "INIT:early-fs"
 on fs
     write /proc/bootprof "INIT:fs"
-    start vendor.boot-hal-1-2
 
     # mount fstab
     write /proc/bootprof "INIT:Mount_START"
