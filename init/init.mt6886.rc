@@ -934,11 +934,3 @@ on property:persist.vendor.mediatek.charger.log.enable=1
     write /sys/devices/platform/charger/charger_log_level 3
     write /sys/module/pd_dbg_info/parameters/dbg_log_en 1
     write /sys/module/mt6375_charger/parameters/dbg_log_en 1
-
-# VSIM service (vendor OSI)
-service osi /system/bin/osi
-    class main
-    user root
-    disabled
-    oneshot
-    #seclabel u:r:osi:s0
