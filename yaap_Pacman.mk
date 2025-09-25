@@ -22,8 +22,8 @@ PRODUCT_NAME := yaap_Pacman
 PRODUCT_GMS_CLIENTID_BASE := android-nothing
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
-    BuildDesc="sys_mssi_64_ww_armv82-user 15 AP3A.240905.015.A2 2508151642 release-keys" \
-    BuildFingerprint=Nothing/Pacman/Pacman:15/AP3A.240905.015.A2/2508151642:user/release-keys \
+    BuildDesc="sys_mssi_64_ww_armv82-user 15 AP3A.240905.015.A2 2509041648 release-keys" \
+    BuildFingerprint=Nothing/Pacman/Pacman:15/AP3A.240905.015.A2/2509041648:user/release-keys \
     DeviceName=Pacman \
     DeviceProduct=Pacman \
     SystemDevice=Pacman \
