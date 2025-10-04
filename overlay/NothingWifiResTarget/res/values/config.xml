@@ -125,4 +125,7 @@
 
     <!-- boolean indicating whether the Easy Connect (DPP) AKM is supported -->
     <bool translatable="false" name="config_wifiDppAkmSupported">true</bool>
+
+    <!-- Indicates that bridged AP mode is supported on this device -->
+    <bool translatable="false" name="config_wifiBridgedSoftApSupported">true</bool>
 </resources>
