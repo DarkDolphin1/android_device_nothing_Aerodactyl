@@ -1,5 +1,5 @@
 # All proprietary files from this list, unless pinned and noted otherwise,
-# are from Nothing Phone (2a) Plus (PacmanPro_V3.0-250410-1524).
+# are from Nothing Phone (2a) Plus (PacmanPro-B4.0-250917-2235).
 
 # Camera (Nothing algo tuning)
 vendor/bin/hw/vendor.noth.hardware.camera-service
