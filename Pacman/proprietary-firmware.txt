@@ -8,7 +8,6 @@ connsys_bt.img;AB
 connsys_gnss.img;AB
 connsys_wifi.img;AB
 dpm.img;AB
-dtbo.img;AB
 gpueb.img;AB
 gz.img;AB
 logo.img;AB
