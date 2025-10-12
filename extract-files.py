@@ -57,9 +57,8 @@ blob_fixups: blob_fixups_user_type = {
         .add_needed('android.hardware.security.rkp-V2-ndk.so'),
     'vendor/bin/hw/mt6886/camerahalserver': blob_fixup()
         .add_needed('libcamera_metadata_shim.so'),
-    'vendor/etc/init/android.hardware.media.c2@1.2-mediatek-64b.rc': blob_fixup()
-        .add_line_if_missing('    interface android.hardware.media.c2@1.0::IComponentStore default')
-        .add_line_if_missing('    interface android.hardware.media.c2@1.1::IComponentStore default'),
+    'vendor/etc/vintf/manifest/manifest_media_c2_V1_2_default.xml': blob_fixup()
+        .regex_replace('1.1', '1.2'),
     (
         'vendor/etc/libnfc-hal-st.conf',
         'vendor/etc/libnfc-hal-st-st54j.conf'
