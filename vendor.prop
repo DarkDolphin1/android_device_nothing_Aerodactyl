@@ -1,7 +1,7 @@
 # Audio
 aaudio.mmap_exclusive_policy=2
 aaudio.mmap_policy=2
-audio.deep_buffer.media
+audio.deep_buffer.media=true
 audio.offload.min.duration.secs=30
 audio.offload.video=true
 persist.vendor.audiohal.aurisys.pcm_dump_on=0
