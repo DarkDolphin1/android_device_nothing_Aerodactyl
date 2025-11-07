@@ -286,8 +286,6 @@ ro.vendor.radio.max.multisim=dsds
 ro.vendor.sim_me_lock_mode=3
 telephony.active_modems.max_count=2
 vendor.connsys.driver.ready=no
-vendor.rild.libpath=mtk-ril.so
-vendor.rild.libargs=-d /dev/ttyC0
 
 # Sensors
 ro.vendor.mtk.sensor.support=yes
