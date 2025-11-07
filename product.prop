@@ -22,6 +22,9 @@ bluetooth.profile.sap.server.enabled=true
 # FUSE
 persist.sys.fuse.passthrough.enable=true
 
+# Postinstall
+ro.postinstall.fstab.prefix=/product
+
 # RKP
 remote_provisioning.hostname=remoteprovisioning.googleapis.com
 #remote_provisioning.tee.rkp_only=1

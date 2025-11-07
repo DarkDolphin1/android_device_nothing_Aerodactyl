@@ -17,6 +17,13 @@ prebuilt_etc {
 }
 
 prebuilt_etc {
+    name: "fstab.postinstall_avb",
+    filename: "fstab.postinstall",
+    src: "fstab.postinstall_avb",
+    product_specific: true,
+}
+
+prebuilt_etc {
     name: "init_conninfra.rc",
     src: "init_conninfra.rc",
     relative_install_path: "init/hw",
