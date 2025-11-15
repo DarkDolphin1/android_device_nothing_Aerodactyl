@@ -5,8 +5,6 @@
 
 #include <aidl/android/hardware/vibrator/BnVibrator.h>
 
-#define CHECK_OK(x) if (!x.isOk()) return x
-
 namespace aidl {
 namespace android {
 namespace hardware {
@@ -46,10 +44,6 @@ class Vibrator : public BnVibrator {
     ndk::ScopedAStatus getSupportedBraking(std::vector<Braking>* supported) override;
     ndk::ScopedAStatus composePwle(const std::vector<PrimitivePwle>& composite,
                                    const std::shared_ptr<IVibratorCallback>& callback) override;
-
-  private:
-    ndk::ScopedAStatus setStrength(EffectStrength strength);
-    ndk::ScopedAStatus playEffect(Effect effect);
 };
 
 }  // namespace vibrator
