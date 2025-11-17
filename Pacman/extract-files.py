@@ -18,16 +18,10 @@ namespace_imports = [
 ]
 
 
-blob_fixups: blob_fixups_user_type = {
-    'vendor/bin/hw/vendor.noth.hardware.camera-service': blob_fixup()
-        .add_needed('libui_shim.so'),
-}  # fmt: skip
-
 module = ExtractUtilsModule(
     'Pacman',
     'nothing',
     device_rel_path='device/nothing/Aerodactyl/Pacman',
-    blob_fixups=blob_fixups,
     namespace_imports=namespace_imports,
     add_firmware_proprietary_file=True,
 )
