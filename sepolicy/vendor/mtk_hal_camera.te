@@ -1,3 +1,1 @@
-binder_call(mtk_hal_camera, hal_nothing_camera_aidl)
-
 allow mtk_hal_camera vendor_data_file:file r_file_perms;

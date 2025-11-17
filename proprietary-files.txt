@@ -779,8 +779,6 @@ vendor/etc/camera/morpho_raw_deep_denoise_tuning_params.xml
 vendor/etc/camera/nothing_node.bin
 vendor/etc/camera/nothing_noise_stat.bin
 vendor/etc/camera/ntcamoverridesettings.txt
-vendor/etc/init/vendor.noth.hardware.camera-service.rc
-vendor/etc/vintf/manifest/vendor.noth.hardware.camera-service.xml
 vendor/lib64/camera/node/com.nothing.node.b2y.so
 vendor/lib64/camera/node/com.nothing.node.beauty.so
 vendor/lib64/camera/node/com.nothing.node.bokehcapture.so
@@ -837,7 +835,6 @@ vendor/lib64/libntcamyuv.so
 vendor/lib64/libntofflinepostproc.so
 vendor/lib64/libportrait_repair_apu.so
 vendor/lib64/libstmobile_rater.so
-vendor/lib64/vendor.noth.hardware.camera-V1-ndk.so
 
 # Camera firmware
 vendor/firmware/lib3a.ccu

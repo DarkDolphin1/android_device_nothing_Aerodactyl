@@ -22,13 +22,3 @@ service gto_secure_element_hal_service_1_2 /vendor/bin/hw/android.hardware.secur
     user secure_element
     group secure_element nfc
     disabled
-
-service vendor.noth.camera-default /vendor/bin/hw/vendor.noth.hardware.camera-service
-    override
-    interface aidl vendor.noth.hardware.camera.INtCamService/default
-    class late_start
-    user cameraserver
-    group audio camera input drmrpc
-    ioprio rt 4
-    priority -10
-    task_profiles ServiceCapacityRestricted

@@ -1,6 +1,3 @@
-# Camera
-vendor.noth.hardware.camera.INtCamService/default    u:object_r:hal_nothing_camera_aidl_service:s0
-
 # Fingerprint
 vendor.goodix.hardware.biometrics.fingerprint.IGoodixFingerprintDaemon/default    u:object_r:hal_fingerprint_service:s0
 
