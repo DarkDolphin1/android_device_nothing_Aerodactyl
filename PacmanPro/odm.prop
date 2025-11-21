@@ -1,0 +1,2 @@
+# SKU
+import /odm/etc/build_${ro.boot.hardware.sku}.prop
