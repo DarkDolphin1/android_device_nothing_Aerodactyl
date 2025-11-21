@@ -237,3 +237,6 @@ on property:sys.boot_completed=1 && property:ro.boot.atm=enable && property:vend
 # Display
 on property:sys.touch.pocket_mode=*
     write /sys/devices/platform/soc/11013000.spi3/spi_master/spi3/spi3.0/fts_pocket_mode ${sys.touch.pocket_mode}
+
+on property:vendor.touch.double_tap_to_wake=*
+    write /sys/devices/platform/soc/11013000.spi3/spi_master/spi3/spi3.0/fts_gesture_mode ${vendor.touch.double_tap_to_wake}
