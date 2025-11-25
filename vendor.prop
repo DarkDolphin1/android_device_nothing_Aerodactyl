@@ -209,7 +209,6 @@ ro.vendor.pq.mtk_dre30_support=0
 ro.vendor.pq.mtk_ds_support=0
 ro.vendor.pq.mtk_hdr10_plus_recording_support=1
 ro.vendor.pq.mtk_hfg_support=0
-ro.vendor.pq.mtk_libaibld_name=libaibld.nn6.so
 ro.vendor.pq.mtk_mdp_ccorr_support=0
 ro.vendor.pq.mtk_mdp_lite_pq_support=0
 ro.vendor.pq.mtk_mmlpq_support=1
