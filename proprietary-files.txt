@@ -1,5 +1,5 @@
 # All proprietary files from this list, unless pinned and noted otherwise,
-# are from Nothing Phone (2a) (Pacman-B4.0-250917-2235).
+# are from Nothing Phone (2a) (Pacman-B4.0-251120-1747).
 
 # AEE
 vendor/lib64/libaedv.so
