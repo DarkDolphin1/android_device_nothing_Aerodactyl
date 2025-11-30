@@ -94,16 +94,8 @@ blob_fixups: blob_fixups_user_type = {
     ): blob_fixup()
         .replace_needed('android.hardware.graphics.allocator-V1-ndk.so', 'android.hardware.graphics.allocator-V2-ndk.so')
         .replace_needed('android.hardware.graphics.common-V3-ndk.so', 'android.hardware.graphics.common-V7-ndk.so'),
-    'vendor/lib64/libmorpho_RapidEffect.so': blob_fixup()
-        .clear_symbol_version('AHardwareBuffer_allocate')
-        .clear_symbol_version('AHardwareBuffer_describe')
-        .clear_symbol_version('AHardwareBuffer_lockPlanes')
-        .clear_symbol_version('AHardwareBuffer_release')
-        .clear_symbol_version('AHardwareBuffer_unlock'),
     'vendor/lib64/libneuron_adapter_mc.so': blob_fixup()
         .clear_symbol_version('AHardwareBuffer_describe'),
-    'vendor/lib64/libntcamskia.so': blob_fixup()
-        .add_needed('libnativewindow.so'),
     'vendor/bin/hw/mtkfusionrild': blob_fixup()
         .add_needed('libutils-v33.so'),
     'vendor/lib64/libnvram.so': blob_fixup()

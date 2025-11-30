@@ -1,18 +1,6 @@
 # All proprietary files from this list, unless pinned and noted otherwise,
 # are from Nothing Phone (2a) (Pacman-B4.0-250917-2235).
 
-# Camera (Nothing algo tuning)
-vendor/etc/camera/nothing_pipeline.bin
-vendor/lib64/camera/node/com.nothing.node.rawhdr.front.so
-vendor/lib64/camera/node/com.nothing.node.rawhdr.so
-vendor/lib64/libntcamcore.so
-vendor/lib64/libst_ns_models.so
-vendor/lib64/libttm_nightsight.so
-vendor/lib64/libttm_nightsight_ae.so
-
-# Native public libraries
-vendor/etc/public.libraries.txt
-
 # Trusted Execution Environment (TEE)
 vendor/app/mcRegistry/020f0000000000000000000000000000.drbin
 vendor/app/mcRegistry/020f0000000000000000000000000000.tlbin
