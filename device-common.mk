@@ -156,7 +156,6 @@ PRODUCT_PACKAGES += \
     fstab.enableswap \
     fstab.mt6886 \
     fstab.mt6886.vendor_ramdisk \
-    fstab.postinstall_avb \
     init_conninfra.rc \
     init.connectivity.common.rc \
     init.mt6886.rc \
