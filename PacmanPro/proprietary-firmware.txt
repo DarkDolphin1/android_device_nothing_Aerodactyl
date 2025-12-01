@@ -1,5 +1,5 @@
 # All proprietary files from this list, unless pinned and noted otherwise,
-# are from Nothing Phone (2a) Plus (PacmanPro-B4.0-251120-1812).
+# are from Nothing Phone (2a) Plus (PacmanPro-B4.0-251128-2246).
 
 apusys.img;AB
 audio_dsp.img;AB
