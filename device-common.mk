@@ -320,8 +320,7 @@ PRODUCT_SOONG_NAMESPACES += \
     hardware/google/interfaces \
     hardware/mediatek \
     hardware/mediatek/libmtkperf_client \
-    hardware/mediatek/wlan/wifi_hal \
-    hardware/nothing
+    hardware/mediatek/wlan/wifi_hal
 
 # Thermal
 PRODUCT_PACKAGES += \
