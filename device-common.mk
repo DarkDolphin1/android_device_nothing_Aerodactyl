@@ -237,6 +237,7 @@ PRODUCT_BOOT_JARS += \
 
 # Overlays
 PRODUCT_PACKAGES += \
+    NothingCarrierConfigResTarget \
     NothingFrameworksResTarget \
     NothingNetworkStackResTarget \
     NothingNfcResTarget \
