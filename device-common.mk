@@ -250,7 +250,8 @@ PRODUCT_PACKAGES += \
     NothingWifiResTarget
 
 PRODUCT_PACKAGES += \
-    NcmTetheringOverlay
+    NcmTetheringOverlay \
+    ApertureResTarget
 
 DEVICE_PACKAGE_OVERLAYS += $(DEVICE_PATH)/overlay-yaap
 
