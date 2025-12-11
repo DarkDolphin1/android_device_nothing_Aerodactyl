@@ -72,7 +72,7 @@ blob_fixups: blob_fixups_user_type = {
         .regex_replace('STNFC_FW_DEBUG_ENABLED=1', 'STNFC_FW_DEBUG_ENABLED=0'),
     'vendor/lib64/hw/audio.primary.mediatek.so': blob_fixup()
         .replace_needed('libalsautils.so', 'libalsautils-v33.so')
-        .replace_needed('libtinyxml2.so', 'libtinyxml2-bp2a.so')
+        .replace_needed('libtinyxml2.so', 'libtinyxml2-v34.so')
         .binary_regex_replace(b'A2dpsuspendonly', b'A2dpSuspended\x00\x00')
         .binary_regex_replace(b'BTAudiosuspend', b'A2dpSuspended\x00'),
     'vendor/lib64/hw/hwcomposer.mtk_common.so': blob_fixup()
@@ -84,7 +84,7 @@ blob_fixups: blob_fixups_user_type = {
         'vendor/lib64/mt6886/libmmlpqImpl.so',
         'vendor/lib64/libpqxmlparser.so'
     ): blob_fixup()
-        .replace_needed('libtinyxml2.so', 'libtinyxml2-bp2a.so'),
+        .replace_needed('libtinyxml2.so', 'libtinyxml2-v34.so'),
     (
         'vendor/lib64/mt6886/libcam.hal3a.so',
         'vendor/lib64/mt6886/libcam.hal3a.ctrl.so',

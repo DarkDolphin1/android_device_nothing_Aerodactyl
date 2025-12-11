@@ -1312,6 +1312,3 @@ vendor/etc/wifi/p2p_supplicant_overlay.conf
 vendor/etc/wifi/wpa_supplicant.conf
 vendor/etc/wifi/wpa_supplicant_overlay.conf
 vendor/firmware/wifi.cfg
-
-# XML DOM parser
-system/lib64/libtinyxml2.so:vendor/lib64/libtinyxml2-bp2a.so;FIX_SONAME
