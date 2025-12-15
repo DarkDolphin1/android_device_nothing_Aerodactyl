@@ -1,0 +1,116 @@
+From 0632c34e4cdcebafc5ee7e617911496315676a32 Mon Sep 17 00:00:00 2001
+From: Mashopy <eliasgheeraert@gmail.com>
+Date: Tue, 9 Dec 2025 21:03:49 +0100
+Subject: [PATCH] mediatek-telephony-common: Remove references to
+ TelephonyMetrics
+
+Google deprecated TelephonyMetrics class in Android 16 QPR2 as it was considered legacy code [1].
+
+[1] https://android.googlesource.com/platform/frameworks/opt/telephony/+/a1e87f8d20c88efa8887091059d6abb5b5b2f0d0
+---
+ .../MtkSmsBroadcastUndelivered.smali          | 21 -------------------
+ .../imsphone/MtkImsPhoneCallTracker.smali     |  5 -----
+ 2 files changed, 26 deletions(-)
+
+diff --git a/smali/com/mediatek/internal/telephony/MtkSmsBroadcastUndelivered.smali b/smali/com/mediatek/internal/telephony/MtkSmsBroadcastUndelivered.smali
+index 187d138..be0211e 100644
+--- a/smali/com/mediatek/internal/telephony/MtkSmsBroadcastUndelivered.smali
++++ b/smali/com/mediatek/internal/telephony/MtkSmsBroadcastUndelivered.smali
+@@ -887,21 +887,11 @@
+     if-lez v5, :cond_b
+ 
+     .line 224
+-    invoke-static {}, Lcom/android/internal/telephony/metrics/TelephonyMetrics;->getInstance()Lcom/android/internal/telephony/metrics/TelephonyMetrics;
+-
+-    move-result-object v6
+-
+-    .line 225
+-    .local v6, "metrics":Lcom/android/internal/telephony/metrics/TelephonyMetrics;
+-    iget-object v12, v11, Lcom/mediatek/internal/telephony/MtkSmsBroadcastUndelivered$SmsReferenceKey;->mFormat:Ljava/lang/String;
+ 
+     move-object/from16 v23, v0
+ 
+     .end local v0    # "where":Ljava/lang/String;
+     .local v23, "where":Ljava/lang/String;
+-    iget v0, v11, Lcom/mediatek/internal/telephony/MtkSmsBroadcastUndelivered$SmsReferenceKey;->mMessageCount:I
+-
+-    invoke-virtual {v6, v1, v12, v5, v0}, Lcom/android/internal/telephony/metrics/TelephonyMetrics;->writeDroppedIncomingMultipartSms(ILjava/lang/String;II)V
+ 
+     .line 227
+     if-eqz v20, :cond_a
+@@ -920,10 +910,7 @@
+     iget v1, v11, Lcom/mediatek/internal/telephony/MtkSmsBroadcastUndelivered$SmsReferenceKey;->mMessageCount:I
+ 
+     .line 229
+-    move-object/from16 v25, v6
+ 
+-    .end local v6    # "metrics":Lcom/android/internal/telephony/metrics/TelephonyMetrics;
+-    .local v25, "metrics":Lcom/android/internal/telephony/metrics/TelephonyMetrics;
+     invoke-static {v8}, Landroid/telephony/TelephonyManager;->from(Landroid/content/Context;)Landroid/telephony/TelephonyManager;
+ 
+     move-result-object v6
+@@ -958,7 +945,6 @@
+     .end local v20    # "phone":Lcom/android/internal/telephony/Phone;
+     .end local v23    # "where":Ljava/lang/String;
+     .end local v24    # "phoneId":I
+-    .end local v25    # "metrics":Lcom/android/internal/telephony/metrics/TelephonyMetrics;
+     :catch_5
+     move-exception v0
+ 
+@@ -968,7 +954,6 @@
+     .end local v26    # "contentResolver":Landroid/content/ContentResolver;
+     .restart local v1    # "phoneId":I
+     .restart local v5    # "rows":I
+-    .restart local v6    # "metrics":Lcom/android/internal/telephony/metrics/TelephonyMetrics;
+     .restart local v7    # "contentResolver":Landroid/content/ContentResolver;
+     .restart local v10    # "nonDeleteWhere":Ljava/lang/String;
+     .restart local v11    # "message":Lcom/mediatek/internal/telephony/MtkSmsBroadcastUndelivered$SmsReferenceKey;
+@@ -977,22 +962,16 @@
+     :cond_a
+     move/from16 v24, v1
+ 
+-    move-object/from16 v25, v6
+-
+     move-object/from16 v26, v7
+ 
+     .end local v1    # "phoneId":I
+-    .end local v6    # "metrics":Lcom/android/internal/telephony/metrics/TelephonyMetrics;
+     .end local v7    # "contentResolver":Landroid/content/ContentResolver;
+     .restart local v24    # "phoneId":I
+-    .restart local v25    # "metrics":Lcom/android/internal/telephony/metrics/TelephonyMetrics;
+     .restart local v26    # "contentResolver":Landroid/content/ContentResolver;
+     goto :goto_7
+ 
+     .line 223
+     .end local v23    # "where":Ljava/lang/String;
+-    .end local v24    # "phoneId":I
+-    .end local v25    # "metrics":Lcom/android/internal/telephony/metrics/TelephonyMetrics;
+     .end local v26    # "contentResolver":Landroid/content/ContentResolver;
+     .restart local v0    # "where":Ljava/lang/String;
+     .restart local v1    # "phoneId":I
+diff --git a/smali/com/mediatek/internal/telephony/imsphone/MtkImsPhoneCallTracker.smali b/smali/com/mediatek/internal/telephony/imsphone/MtkImsPhoneCallTracker.smali
+index beef316..78308c9 100644
+--- a/smali/com/mediatek/internal/telephony/imsphone/MtkImsPhoneCallTracker.smali
++++ b/smali/com/mediatek/internal/telephony/imsphone/MtkImsPhoneCallTracker.smali
+@@ -3119,8 +3119,6 @@
+     invoke-virtual {v2, v0}, Lcom/android/internal/telephony/imsphone/ImsPhoneConnection;->setImsCall(Lcom/android/ims/ImsCall;)V
+ 
+     .line 484
+-    iget-object v5, v1, Lcom/mediatek/internal/telephony/imsphone/MtkImsPhoneCallTracker;->mMetrics:Lcom/android/internal/telephony/metrics/TelephonyMetrics;
+-
+     iget-object v6, v1, Lcom/mediatek/internal/telephony/imsphone/MtkImsPhoneCallTracker;->mPhone:Lcom/android/internal/telephony/imsphone/ImsPhone;
+ 
+     invoke-virtual {v6}, Lcom/android/internal/telephony/imsphone/ImsPhone;->getPhoneId()I
+@@ -3132,9 +3130,6 @@
+ 
+     move-result-object v8
+ 
+-    .line 484
+-    invoke-virtual {v5, v6, v8}, Lcom/android/internal/telephony/metrics/TelephonyMetrics;->writeOnImsCallStart(ILandroid/telephony/ims/ImsCallSession;)V
+-
+     .line 487
+     invoke-virtual {v1, v2, v0}, Lcom/mediatek/internal/telephony/imsphone/MtkImsPhoneCallTracker;->setVideoCallProvider(Lcom/android/internal/telephony/imsphone/ImsPhoneConnection;Lcom/android/ims/ImsCall;)V
+ 
+-- 
+2.50.1 (Apple Git-155)
+

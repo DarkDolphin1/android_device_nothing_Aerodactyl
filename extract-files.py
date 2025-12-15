@@ -46,10 +46,14 @@ blob_fixups: blob_fixups_user_type = {
         'vendor/etc/init/android.hardware.neuralnetworks-shim-service-mtk.rc'
     ): blob_fixup()
         .regex_replace('start', 'enable'),
+    'system_ext/framework/mediatek-telephony-common.jar': blob_fixup()
+        .apktool_patch('blob-patches/mediatek-telephony-common'),
     'system_ext/lib64/libimsma.so': blob_fixup()
         .replace_needed('libsink.so', 'libsink-mtk.so'),
     'system_ext/priv-app/ImsService/ImsService.apk': blob_fixup()
         .apktool_patch('blob-patches/ImsService'),
+    'system_ext/priv-app/MtkGbaService/MtkGbaService.apk': blob_fixup()
+        .apktool_patch('blob-patches/MtkGbaService'),
     'vendor/bin/hw/android.hardware.graphics.composer@3.1-service': blob_fixup()
         .replace_needed('android.hardware.graphics.composer@2.1-resources.so', 'android.hardware.graphics.composer@2.1-resources-v34.so'),
     'vendor/bin/hw/android.hardware.media.c2@1.2-mediatek-64b': blob_fixup()
