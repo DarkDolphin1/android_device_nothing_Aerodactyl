@@ -7,7 +7,7 @@ package org.lineageos.felica
 
 import android.content.Context
 import android.content.pm.PackageManager
-import android.os.SystemProperties
+import android.os.Build.SKU
 import android.util.Log
 
 object FelicaDisabler {
@@ -22,8 +22,7 @@ object FelicaDisabler {
 
     fun enableOrDisableFelica(context: Context) {
         val pm = context.packageManager
-        val sku = SystemProperties.get("ro.boot.hardware.sku", "")
-        val isJapaneseVariant = sku == "JPN"
+        val isJapaneseVariant = SKU == "JPN"
         val flag = if (isJapaneseVariant)
             PackageManager.COMPONENT_ENABLED_STATE_ENABLED
         else
