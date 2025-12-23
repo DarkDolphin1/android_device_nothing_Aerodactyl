@@ -104,6 +104,8 @@ PRODUCT_COPY_FILES += \
 PRODUCT_CHARACTERISTICS := nosdcard
 
 # Display
+$(call soong_config_set,surfaceflinger,has_mtk_udfps,true)
+
 PRODUCT_PACKAGES += \
     android.hardware.memtrack-service.mediatek-mali
 

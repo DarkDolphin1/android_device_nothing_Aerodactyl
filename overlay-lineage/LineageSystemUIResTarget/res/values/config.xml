@@ -44,6 +44,53 @@
         <item>4095,0</item>
     </string-array>
 
+    <!--<string-array name="config_udfpsDimmingBrightnessAlphaArray" translatable="false">
+        <item>0,214</item>
+        <item>16,213</item>
+        <item>32,211</item>
+        <item>48,210</item>
+        <item>64,208</item>
+        <item>80,205</item>
+        <item>96,203</item>
+        <item>112,202</item>
+        <item>128,200</item>
+        <item>160,197</item>
+        <item>192,195</item>
+        <item>224,194</item>
+        <item>256,192</item>
+        <item>288,189</item>
+        <item>320,187</item>
+        <item>352,185</item>
+        <item>384,183</item>
+        <item>416,182</item>
+        <item>448,180</item>
+        <item>480,179</item>
+        <item>512,178</item>
+        <item>544,177</item>
+        <item>576,176</item>
+        <item>640,173</item>
+        <item>720,170</item>
+        <item>800,167</item>
+        <item>880,165</item>
+        <item>960,162</item>
+        <item>1120,158</item>
+        <item>1280,154</item>
+        <item>1440,150</item>
+        <item>1600,146</item>
+        <item>1760,142</item>
+        <item>1920,138</item>
+        <item>2080,135</item>
+        <item>2240,132</item>
+        <item>2400,128</item>
+        <item>2560,123</item>
+        <item>2800,100</item> 
+        <item>3000,75</item>
+        <item>3200,50</item>
+        <item>3500,30</item>
+        <item>3800,20</item>
+        <item>4095,20</item>
+    </string-array>-->
+
     <!-- Doze: does the single tap sensor need a proximity check? -->
     <bool name="doze_single_tap_proximity_check">true</bool>
 

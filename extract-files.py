@@ -70,7 +70,7 @@ blob_fixups: blob_fixups_user_type = {
         .binary_regex_replace(b'BTAudiosuspend', b'A2dpSuspended\x00'),
     'vendor/lib64/hw/hwcomposer.mtk_common.so': blob_fixup()
         .add_needed('libprocessgroup_shim.so')
-        .binary_regex_replace(b'NTFingerprintDimLayer', b'SurfaceView[UdfpsCont'),
+        .binary_regex_replace(b'NTFingerprintDimLayer', b'Dim Layer for UDFPS\x00\x00'),
     (
         'vendor/lib64/hw/mt6886/vendor.mediatek.hardware.pq_aidl-impl.so',
         'vendor/lib64/mt6886/libmmlpqImpl.so',
