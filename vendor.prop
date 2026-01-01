@@ -77,6 +77,7 @@ debug.sf.predict_hwc_composition_strategy=0
 debug.sf.frame_rate_multiple_threshold=120
 debug.sf.treat_170m_as_sRGB=1
 debug.sf.use_phase_offsets_as_durations=1
+ro.sf.blurs_are_expensive=1
 persist.sys.sf.native_mode=260
 persist.vendor.factory.GB2312=yes
 ro.hardware.gralloc=common
