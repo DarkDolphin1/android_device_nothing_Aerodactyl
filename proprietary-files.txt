@@ -714,7 +714,6 @@ vendor/lib64/hw/mt6886/android.hardware.graphics.allocator@4.0-impl-mediatek.so;
 vendor/lib64/hw/mt6886/android.hardware.graphics.mapper@4.0-impl-mediatek.so;SYMLINK=vendor/lib64/hw/android.hardware.graphics.mapper@4.0-impl-mediatek.so
 vendor/lib64/hw/mt6886/gralloc.common.so;SYMLINK=vendor/lib64/hw/gralloc.common.so
 vendor/lib64/hw/hwcomposer.mtk_common.so
-vendor/lib64/mt6886/arm.mali.platform-V1-ndk.so;SYMLINK=vendor/lib64/arm.mali.platform-V1-ndk.so
 vendor/lib64/mt6886/libdpframework.so;SYMLINK=vendor/lib64/libdpframework.so
 vendor/lib64/mt6886/libmtk_drvb.so;SYMLINK=vendor/lib64/libmtk_drvb.so
 vendor/lib64/libcomposer_ext.so
