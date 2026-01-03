@@ -4,46 +4,6 @@
      SPDX-License-Identifier: Apache-2.0
 -->
 <resources>
-    <!-- Whether to enable framework dimming for UDFPS -->
-    <bool name="config_udfpsFrameworkDimming">true</bool>
-
-    <!-- Brightness-to-alpha lookup table (LUT) for UDFPS framework dimming.
-         Each entry is in the format <brightness>,<alpha> where:
-           - brightness = panel backlight level
-           - alpha = dim layer transparency applied at that brightness
-         Rules:
-           • The entries should be strictly ascending by brightness.
-           • First entry = <minBrightness,maxAlpha>.
-           • Last entry  = <maxBrightness,minAlpha>.
-    -->
-    <string-array name="config_udfpsDimmingBrightnessAlphaArray" translatable="false">
-        <!-- Low curve -->
-        <item>0,206</item>
-        <item>100,205</item>
-        <item>200,204</item>
-        <item>300,203</item>
-        <item>400,202</item>
-        <item>500,200</item>
-        <!-- Mid curve -->
-        <item>600,194</item>
-        <item>800,183</item>
-        <item>1000,172</item>
-        <item>1200,161</item>
-        <item>1400,150</item>
-        <item>1600,139</item>
-        <item>1800,128</item>
-        <item>2000,117</item>
-        <item>2200,106</item>
-        <item>2458,92</item>
-        <!-- High curve -->
-        <item>2700,78</item>
-        <item>3000,61</item>
-        <item>3300,44</item>
-        <item>3600,27</item>
-        <item>3900,10</item>
-        <item>4095,0</item>
-    </string-array>
-
     <!-- Doze: does the long press sensor need a proximity check? -->
     <bool name="doze_long_press_proximity_check">true</bool>
 </resources>
