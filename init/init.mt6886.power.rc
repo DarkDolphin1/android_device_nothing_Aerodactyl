@@ -126,13 +126,13 @@ on property:sys.boot_completed=1
 
     # system-background
     write /dev/cpuctl/system-background/cpu.uclamp.latency_sensitive 0
-    write /dev/cpuctl/system-background/cpu.uclamp.max 60
+    write /dev/cpuctl/system-background/cpu.uclamp.max 50
     write /dev/cpuctl/system-background/cpu.uclamp.min 0
     write /dev/cpuctl/system-background/cpu.shares 1024
 
     # background
     write /dev/cpuctl/background/cpu.uclamp.latency_sensitive 0
-    write /dev/cpuctl/background/cpu.uclamp.max 40
+    write /dev/cpuctl/background/cpu.uclamp.max 50
     write /dev/cpuctl/background/cpu.uclamp.min 0
     write /dev/cpuctl/background/cpu.shares 1024
 
@@ -146,7 +146,7 @@ on property:sys.boot_completed=1
     write /dev/cpuctl/foreground_window/cpu.uclamp.latency_sensitive 1
     write /dev/cpuctl/foreground_window/cpu.uclamp.max 80
     write /dev/cpuctl/foreground_window/cpu.uclamp.min 0
-    write /dev/cpuctl/foreground_window/cpu.shares 20480
+    write /dev/cpuctl/foreground_window/cpu.shares 10240
 
     # top-app
     write /dev/cpuctl/top-app/cpu.uclamp.latency_sensitive 1
@@ -157,13 +157,13 @@ on property:sys.boot_completed=1
     # nnapi-hal
     write /dev/cpuctl/nnapi-hal/cpu.uclamp.latency_sensitive 1
     write /dev/cpuctl/nnapi-hal/cpu.uclamp.max max
-    write /dev/cpuctl/nnapi-hal/cpu.uclamp.min 75
+    write /dev/cpuctl/nnapi-hal/cpu.uclamp.min 90
     write /dev/cpuctl/nnapi-hal/cpu.shares 20480
 
     # camera-daemon
     write /dev/cpuctl/camera-daemon/cpu.uclamp.latency_sensitive 1
     write /dev/cpuctl/camera-daemon/cpu.uclamp.max max
-    write /dev/cpuctl/camera-daemon/cpu.uclamp.min 60
+    write /dev/cpuctl/camera-daemon/cpu.uclamp.min 70
     write /dev/cpuctl/camera-daemon/cpu.shares 20480
 
     # dex2oat
