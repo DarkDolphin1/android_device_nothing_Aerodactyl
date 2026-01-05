@@ -17,6 +17,14 @@ on init
     write /dev/blkio/blkio.prio.class none-to-rt
     write /dev/blkio/blkio.prio.class promote-to-rt
 
+    # F2FS
+    write /dev/sys/fs/by-name/userdata/data_io_flag 56
+    write /dev/sys/fs/by-name/userdata/node_io_flag 56
+
+    # Block
+    write /dev/sys/block/by-name/rootdisk/queue/iostats 0
+    write /dev/sys/block/by-name/rootdisk/queue/nr_requests 256
+
     # UFS
     write /sys/devices/platform/soc/112b0000.ufshci/clkgate_enable 0
 
@@ -53,6 +61,17 @@ on charger
     write /sys/devices/system/cpu/cpu4/online 0
     write /sys/devices/system/cpu/cpu5/online 0
     write /sys/devices/system/cpu/cpu7/online 0
+
+    # F2FS
+    write /dev/sys/fs/by-name/userdata/data_io_flag 8
+    write /dev/sys/fs/by-name/userdata/node_io_flag 8
+    write /dev/sys/fs/by-name/userdata/max_io_bytes 524288
+    write /dev/sys/fs/by-name/userdata/min_hot_blocks 0
+
+    # Block
+    write /dev/sys/block/by-name/rootdisk/queue/iostats 1
+    write /dev/sys/block/by-name/rootdisk/queue/nr_requests 128
+    write /dev/sys/block/by-name/rootdisk/queue/rq_affinity 2
 
 on post-fs-data
     # multi-gen LRU
@@ -104,6 +123,17 @@ on property:sys.boot_completed=1
 
     # UFS
     write /sys/devices/platform/soc/112b0000.ufshci/clkgate_enable 1
+
+    # F2FS
+    write /dev/sys/fs/by-name/userdata/data_io_flag 8
+    write /dev/sys/fs/by-name/userdata/node_io_flag 8
+    write /dev/sys/fs/by-name/userdata/max_io_bytes 524288
+    write /dev/sys/fs/by-name/userdata/min_hot_blocks 0
+
+    # Block
+    write /dev/sys/block/by-name/rootdisk/queue/iostats 1
+    write /dev/sys/block/by-name/rootdisk/queue/nr_requests 128
+    write /dev/sys/block/by-name/rootdisk/queue/rq_affinity 2
 
     # zram
     swapon_all /vendor/etc/fstab.enableswap
