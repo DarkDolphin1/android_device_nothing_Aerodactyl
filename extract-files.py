@@ -52,6 +52,11 @@ blob_fixups: blob_fixups_user_type = {
         .apktool_patch('blob-patches/ImsService'),
     'vendor/bin/hw/android.hardware.graphics.composer@3.1-service': blob_fixup()
         .replace_needed('android.hardware.graphics.composer@2.1-resources.so', 'android.hardware.graphics.composer@2.1-resources-v34.so'),
+    'vendor/bin/hw/android.hardware.media.c2@1.2-mediatek-64b': blob_fixup()
+        .replace_needed('libcodec2_hidl@1.0.so', 'libcodec2_hidl@1.0-v33.so')
+        .replace_needed('libcodec2_hidl@1.1.so', 'libcodec2_hidl@1.1-v33.so')
+        .replace_needed('libcodec2_hidl@1.2.so', 'libcodec2_hidl@1.2-v33.so')
+        .replace_needed('libcodec2_vndk.so', 'libcodec2_vndk-v33.so'),
     'vendor/bin/hw/android.hardware.security.keymint@2.0-service.trustonic': blob_fixup()
         .add_needed('android.hardware.security.rkp-V2-ndk.so'),
     'vendor/bin/hw/mt6886/camerahalserver': blob_fixup()
@@ -72,18 +77,8 @@ blob_fixups: blob_fixups_user_type = {
         .binary_regex_replace(b'BTAudiosuspend', b'A2dpSuspended\x00'),
     'vendor/lib64/hw/hwcomposer.mtk_common.so': blob_fixup()
         .add_needed('libprocessgroup_shim.so'),
-    (
-        'vendor/lib64/hw/sensors.mediatek.V2.0.so',
-        'vendor/lib64/libcodec2_mtk_c2store.so',
-        'vendor/lib64/libcodec2_mtk_vdec.so',
-        'vendor/lib64/libcodec2_mtk_venc.so',
-        'vendor/lib64/libcodec2_vpp_AIMEMC_plugin.so',
-        'vendor/lib64/libcodec2_vpp_AISR_plugin.so',
-        'vendor/lib64/libcodec2_vpp_mi_plugin.so',
-        'vendor/lib64/libcodec2_vpp_qt_plugin.so',
-        'vendor/lib64/libcodec2_vpp_rs_plugin.so'
-    ): blob_fixup()
-        .replace_needed('libstagefright_foundation.so', 'libstagefright_foundation-v33.so'),
+    'vendor/lib64/hw/sensors.mediatek.V2.0.so': blob_fixup()
+       .replace_needed('libstagefright_foundation.so', 'libstagefright_foundation-v33.so'),
     (
         'vendor/lib64/hw/mt6886/vendor.mediatek.hardware.pq_aidl-impl.so',
         'vendor/lib64/mt6886/libmmlpqImpl.so',
@@ -108,14 +103,68 @@ blob_fixups: blob_fixups_user_type = {
         .clear_symbol_version('AHardwareBuffer_release')
         .clear_symbol_version('AHardwareBuffer_unlock')
         .add_needed('libbase_shim.so'),
+    'vendor/lib64/libcodec2_hidl@1.0-v33.so': blob_fixup()
+        .replace_needed('libstagefright_bufferqueue_helper.so', 'libstagefright_bufferqueue_helper-bp2a.so')
+        .replace_needed('libcodec2_hidl_plugin.so', 'libcodec2_hidl_plugin-v33.so')
+        .replace_needed('libcodec2_vndk.so', 'libcodec2_vndk-v33.so')
+        .replace_needed('libui.so', 'libui-v34.so'),
+    'vendor/lib64/libcodec2_hidl@1.1-v33.so': blob_fixup()
+        .replace_needed('libstagefright_bufferqueue_helper.so', 'libstagefright_bufferqueue_helper-bp2a.so')
+        .replace_needed('libcodec2_hidl@1.0.so', 'libcodec2_hidl@1.0-v33.so')
+        .replace_needed('libcodec2_hidl_plugin.so', 'libcodec2_hidl_plugin-v33.so')
+        .replace_needed('libcodec2_vndk.so', 'libcodec2_vndk-v33.so')
+        .replace_needed('libui.so', 'libui-v34.so'),
+    'vendor/lib64/libcodec2_hidl@1.2-v33.so': blob_fixup()
+        .replace_needed('libstagefright_bufferqueue_helper.so', 'libstagefright_bufferqueue_helper-bp2a.so')
+        .replace_needed('libcodec2_hidl@1.0.so', 'libcodec2_hidl@1.0-v33.so')
+        .replace_needed('libcodec2_hidl@1.1.so', 'libcodec2_hidl@1.1-v33.so')
+        .replace_needed('libcodec2_hidl_plugin.so', 'libcodec2_hidl_plugin-v33.so')
+        .replace_needed('libcodec2_vndk.so', 'libcodec2_vndk-v33.so')
+        .replace_needed('libui.so', 'libui-v34.so'),
+    'vendor/lib64/libcodec2_hidl_plugin-v33.so': blob_fixup()
+        .replace_needed('libcodec2_vndk.so', 'libcodec2_vndk-v33.so'),
+    (
+        'vendor/lib64/libcodec2_mtk_c2store.so',
+        'vendor/lib64/libcodec2_vpp_mi_plugin.so',
+        'vendor/lib64/libcodec2_vpp_qt_plugin.so',
+        'vendor/lib64/libcodec2_vpp_rs_plugin.so'
+    ): blob_fixup()
+        .replace_needed('libcodec2_soft_common.so', 'libcodec2_soft_common-v33.so')
+        .replace_needed('libcodec2_vndk.so', 'libcodec2_vndk-v33.so')
+        .replace_needed('libstagefright_foundation.so', 'libstagefright_foundation-v33.so')
+        .replace_needed('libsfplugin_ccodec_utils.so', 'libsfplugin_ccodec_utils-v33.so'),
+    (
+        'vendor/lib64/libcodec2_mtk_vdec.so',
+        'vendor/lib64/libcodec2_mtk_venc.so',
+    ): blob_fixup()
+        .replace_needed('libcodec2_soft_common.so', 'libcodec2_soft_common-v33.so')
+        .replace_needed('libcodec2_vndk.so', 'libcodec2_vndk-v33.so')
+        .replace_needed('libstagefright_foundation.so', 'libstagefright_foundation-v33.so')
+        .replace_needed('libsfplugin_ccodec_utils.so', 'libsfplugin_ccodec_utils-v33.so')
+        .replace_needed('libui.so', 'libui-v34.so'),
+    'vendor/lib64/libcodec2_soft_common-v33.so': blob_fixup()
+        .replace_needed('libcodec2_vndk.so', 'libcodec2_vndk-v33.so')
+        .replace_needed('libstagefright_foundation.so', 'libstagefright_foundation-v33.so')
+        .replace_needed('libsfplugin_ccodec_utils.so', 'libsfplugin_ccodec_utils-v33.so'),
+    'vendor/lib64/libcodec2_vndk-v33.so': blob_fixup()
+        .replace_needed('libui.so', 'libui-v34.so')
+        .replace_needed('libstagefright_foundation.so', 'libstagefright_foundation-v33.so'),
     (
         'vendor/lib64/libcodec2_vpp_AIMEMC_plugin.so',
         'vendor/lib64/libcodec2_vpp_AISR_plugin.so'
     ): blob_fixup()
         .replace_needed('android.hardware.graphics.allocator-V1-ndk.so', 'android.hardware.graphics.allocator-V2-ndk.so')
-        .replace_needed('android.hardware.graphics.common-V3-ndk.so', 'android.hardware.graphics.common-V7-ndk.so'),
+        .replace_needed('android.hardware.graphics.common-V3-ndk.so', 'android.hardware.graphics.common-V7-ndk.so')
+        .replace_needed('libcodec2_soft_common.so', 'libcodec2_soft_common-v33.so')
+        .replace_needed('libcodec2_vndk.so', 'libcodec2_vndk-v33.so')
+        .replace_needed('libstagefright_foundation.so', 'libstagefright_foundation-v33.so')
+        .replace_needed('libsfplugin_ccodec_utils.so', 'libsfplugin_ccodec_utils-v33.so')
+        .replace_needed('libui.so', 'libui-v34.so'),
     'vendor/lib64/libneuron_adapter_mc.so': blob_fixup()
         .clear_symbol_version('AHardwareBuffer_describe'),
+    'vendor/lib64/libsfplugin_ccodec_utils-v33.so': blob_fixup()
+        .replace_needed('libcodec2_vndk.so', 'libcodec2_vndk-v33.so')
+        .replace_needed('libstagefright_foundation.so', 'libstagefright_foundation-v33.so'),
     'vendor/bin/hw/mtkfusionrild': blob_fixup()
         .add_needed('libutils-v33.so'),
     'vendor/lib64/libnvram.so': blob_fixup()
