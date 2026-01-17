@@ -4,7 +4,7 @@
 #
 
 # Inherit from the custom device configuration.
-$(call inherit-product, device/nothing/Aerodactyl/device-PacmanPro.mk)
+$(call inherit-product, device/nothing/Aerodactyl/PacmanPro/device-PacmanPro.mk)
 
 # Inherit from the YAAP configuration.
 $(call inherit-product, vendor/yaap/config/common_full_phone.mk)
