@@ -4,6 +4,7 @@
      SPDX-License-Identifier: Apache-2.0
 -->
 <resources>
+    <bool name="polling_disable_allowed">true</bool>
     <!-- Set true if Secure NFC functionality supported for all SKUs -->
     <bool name="enable_secure_nfc_support">true</bool>
 </resources>
