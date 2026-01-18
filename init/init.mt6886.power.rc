@@ -214,6 +214,22 @@ on property:sys.boot_completed=1
     # Enable PowerHAL hint processing
     setprop vendor.powerhal.init 1
 
+on property:ro.boot.ddr_size=8192
+    setprop dalvik.vm.heapstartsize 24m
+    setprop dalvik.vm.heapgrowthlimit 256m
+    setprop dalvik.vm.heapsize 512m
+    setprop dalvik.vm.heaptargetutilization 0.46
+    setprop dalvik.vm.heapminfree 8m
+    setprop dalvik.vm.heapmaxfree 48m
+
+on property:ro.boot.ddr_size=12288
+    setprop dalvik.vm.heapstartsize 24m
+    setprop dalvik.vm.heapgrowthlimit 384m
+    setprop dalvik.vm.heapsize 512m
+    setprop dalvik.vm.heaptargetutilization 0.42
+    setprop dalvik.vm.heapminfree 8m
+    setprop dalvik.vm.heapmaxfree 56m
+
 service vendor.gralloc-4-0 /vendor/bin/hw/android.hardware.graphics.allocator@4.0-service-mediatek
     class hal animation
     interface android.hardware.graphics.allocator@4.0::IAllocator default
