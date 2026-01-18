@@ -100,7 +100,6 @@ ro.vendor.mtk_cuva_hdr_support=1
 ro.vendor.mtk_hdr_video_support=1
 ro.vendor.mtk_ovl_bringup=0
 ro.vendor.pref_scale_enable_cfg=1
-vendor.mtk.hwc.HWC_PLAT_SWITCH_EXTEND_SF_TARGET_TS_FOR_VIDEO=1
 
 # DRM
 drm.service.enabled=true
