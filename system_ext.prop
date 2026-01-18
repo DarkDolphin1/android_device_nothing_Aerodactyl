@@ -23,6 +23,9 @@ vendor.rild.libpath=mtk-ril.so
 # Media
 media.stagefright.thumbnail.prefer_hw_codecs=true
 
+# NFC
+persist.nfc_vendor_extn.lib_file_name=libnfc_vendor_extn_st.so
+
 # NTF
 ro.build.nothing.feature.base=0x800001004458438124a040106b4247b97ffL
 ro.build.nothing.feature.diff.device.Pacman=0x240304400040128d3493f4d00250c42080L

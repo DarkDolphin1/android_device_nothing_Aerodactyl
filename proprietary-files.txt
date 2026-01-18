@@ -1094,6 +1094,7 @@ vendor/lib64/vendor.mediatek.hardware.neuropilot.agent@1.1.so
 vendor/lib64/vendor.mediatek.hardware.neuropilot.agent@1.2.so
 
 # NFC
+system/lib64/libnfc_vendor_extn_st.so
 vendor/etc/libnfc-hal-st-st54j.conf
 vendor/etc/libnfc-hal-st.conf
 vendor/etc/libnfc-nci-felica.conf
