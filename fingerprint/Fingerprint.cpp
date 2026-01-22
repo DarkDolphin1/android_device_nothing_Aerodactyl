@@ -24,7 +24,7 @@
 #include <android-base/logging.h>
 #include <android-base/stringprintf.h>
 
-using namespace ::android::fingerprint::virt;
+using namespace ::android::fingerprint::nothing;
 
 namespace aidl::android::hardware::biometrics::fingerprint {
 namespace {
@@ -44,26 +44,16 @@ constexpr char SW_VERSION[] = "vendor/version/revision";
 
 Fingerprint::Fingerprint() : mWorker(MAX_WORKER_QUEUE_SIZE) {
     std::string sensorTypeProp = Fingerprint::cfg().get<std::string>("type");
-    if (sensorTypeProp == "" || sensorTypeProp == "default" || sensorTypeProp == "rear") {
-        mSensorType = FingerprintSensorType::REAR;
-        mEngine = std::make_unique<FakeFingerprintEngineRear>();
-    } else if (sensorTypeProp == "udfps") {
+    if (sensorTypeProp == "udfps") {
         mSensorType = FingerprintSensorType::UNDER_DISPLAY_OPTICAL;
-        mEngine = std::make_unique<FakeFingerprintEngineUdfps>();
-    } else if (sensorTypeProp == "udfps-us") {
-        mSensorType = FingerprintSensorType::UNDER_DISPLAY_ULTRASONIC;
-        mEngine = std::make_unique<FakeFingerprintEngineUdfpsUltraSonic>();
-    } else if (sensorTypeProp == "side") {
-        mSensorType = FingerprintSensorType::POWER_BUTTON;
-        mEngine = std::make_unique<FakeFingerprintEngineSide>();
+        mEngine = std::make_unique<FingerprintEngineUdfps>();
     } else {
         mSensorType = FingerprintSensorType::UNKNOWN;
-        mEngine = std::make_unique<FakeFingerprintEngineRear>();
+        mEngine = std::make_unique<FingerprintEngineRear>();
         UNIMPLEMENTED(FATAL) << "unrecognized or unimplemented fingerprint behavior: "
                              << sensorTypeProp;
     }
     LOG(INFO) << "sensorTypeProp:" << sensorTypeProp;
-    LOG(INFO) << "ro.product.name=" << ::android::base::GetProperty("ro.product.name", "UNKNOWN");
 }
 
 ndk::ScopedAStatus Fingerprint::getSensorProps(std::vector<SensorProps>* out) {
@@ -108,118 +98,10 @@ ndk::ScopedAStatus Fingerprint::createSession(int32_t sensorId, int32_t userId,
     return ndk::ScopedAStatus::ok();
 }
 
-binder_status_t Fingerprint::dump(int fd, const char** /*args*/, uint32_t numArgs) {
-    if (fd < 0) {
-        LOG(ERROR) << __func__ << "fd invalid: " << fd;
-        return STATUS_BAD_VALUE;
-    } else {
-        LOG(INFO) << __func__ << " fd:" << fd << "numArgs:" << numArgs;
-    }
-
-    dprintf(fd, "----- FingerprintVirtualHal::dump -----\n");
-    std::vector<SensorProps> sps(1);
-    getSensorProps(&sps);
-    for (auto& sp : sps) {
-        ::android::base::WriteStringToFd(sp.toString(), fd);
-    }
-    ::android::base::WriteStringToFd(mEngine->toString(), fd);
-
-    ::android::base::WriteStringToFd(Fingerprint::cfg().toString(), fd);
-
-    fsync(fd);
-    return STATUS_OK;
-}
-
-binder_status_t Fingerprint::handleShellCommand(int in, int out, int err, const char** args,
-                                                uint32_t numArgs) {
-    LOG(INFO) << __func__ << " in:" << in << " out:" << out << " err:" << err
-              << " numArgs:" << numArgs;
-
-    if (numArgs == 0) {
-        LOG(INFO) << __func__ << ": available commands";
-        onHelp(out);
-        return STATUS_OK;
-    }
-
-    for (auto&& str : std::vector<std::string_view>(args, args + numArgs)) {
-        std::string option = str.data();
-        if (option.find("clearconfig") != std::string::npos ||
-            option.find("resetconfig") != std::string::npos) {
-            resetConfigToDefault();
-        }
-        if (option.find("help") != std::string::npos) {
-            onHelp(out);
-        }
-    }
-
-    return STATUS_OK;
-}
-
-void Fingerprint::onHelp(int fd) {
-    dprintf(fd, "Virtual HAL commands:\n");
-    dprintf(fd, "         help: print this help\n");
-    dprintf(fd, "  resetconfig: reset all configuration to default\n");
-    dprintf(fd, "\n");
-    fsync(fd);
-}
-
-void Fingerprint::resetConfigToDefault() {
-    LOG(INFO) << __func__ << ": reset virtual HAL configuration to default";
-    Fingerprint::cfg().init();
-#ifdef FPS_DEBUGGABLE
-    clearConfigSysprop();
-#endif
-}
-
-void Fingerprint::clearConfigSysprop() {
-    LOG(INFO) << __func__ << ": clear all sysprop configuration";
-#define RESET_CONFIG_O(__NAME__) \
-    if (FingerprintHalProperties::__NAME__()) FingerprintHalProperties::__NAME__(std::nullopt)
-#define RESET_CONFIG_V(__NAME__)                       \
-    if (!FingerprintHalProperties::__NAME__().empty()) \
-    FingerprintHalProperties::__NAME__({std::nullopt})
-
-    RESET_CONFIG_O(type);
-    RESET_CONFIG_V(enrollments);
-    RESET_CONFIG_O(enrollment_hit);
-    RESET_CONFIG_O(authenticator_id);
-    RESET_CONFIG_O(challenge);
-    RESET_CONFIG_O(lockout);
-    RESET_CONFIG_O(operation_authenticate_fails);
-    RESET_CONFIG_O(operation_detect_interaction_error);
-    RESET_CONFIG_O(operation_enroll_error);
-    RESET_CONFIG_V(operation_authenticate_latency);
-    RESET_CONFIG_V(operation_detect_interaction_latency);
-    RESET_CONFIG_V(operation_enroll_latency);
-    RESET_CONFIG_O(operation_authenticate_duration);
-    RESET_CONFIG_O(operation_authenticate_error);
-    RESET_CONFIG_O(sensor_location);
-    RESET_CONFIG_O(operation_authenticate_acquired);
-    RESET_CONFIG_O(operation_detect_interaction_duration);
-    RESET_CONFIG_O(operation_detect_interaction_acquired);
-    RESET_CONFIG_O(sensor_id);
-    RESET_CONFIG_O(sensor_strength);
-    RESET_CONFIG_O(max_enrollments);
-    RESET_CONFIG_O(navigation_gesture);
-    RESET_CONFIG_O(detect_interaction);
-    RESET_CONFIG_O(display_touch);
-    RESET_CONFIG_O(control_illumination);
-    RESET_CONFIG_O(lockout_enable);
-    RESET_CONFIG_O(lockout_timed_threshold);
-    RESET_CONFIG_O(lockout_timed_duration);
-    RESET_CONFIG_O(lockout_permanent_threshold);
-}
-
 const char* Fingerprint::type2String(FingerprintSensorType type) {
     switch (type) {
-        case FingerprintSensorType::REAR:
-            return "rear";
-        case FingerprintSensorType::POWER_BUTTON:
-            return "side";
         case FingerprintSensorType::UNDER_DISPLAY_OPTICAL:
             return "udfps";
-        case FingerprintSensorType::UNDER_DISPLAY_ULTRASONIC:
-            return "udfps-us";
         default:
             return "unknown";
     }

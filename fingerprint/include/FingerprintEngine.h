@@ -16,7 +16,7 @@
 
 #pragma once
 
-#define LOG_TAG "FingerprintVirtualHal"
+#define LOG_TAG "FingerprintHal"
 
 #include <aidl/android/hardware/biometrics/common/SensorStrength.h>
 #include <aidl/android/hardware/biometrics/fingerprint/ISessionCallback.h>
@@ -29,17 +29,17 @@
 #include <future>
 #include <vector>
 
-#include "FakeLockoutTracker.h"
+#include "LockoutTracker.h"
 
 using namespace ::aidl::android::hardware::biometrics::common;
 
 namespace aidl::android::hardware::biometrics::fingerprint {
 
 // A fake engine that is backed by system properties instead of hardware.
-class FakeFingerprintEngine {
+class FingerprintEngine {
   public:
-    FakeFingerprintEngine();
-    virtual ~FakeFingerprintEngine() {}
+    FingerprintEngine();
+    virtual ~FingerprintEngine() {}
 
     void generateChallengeImpl(ISessionCallback* cb);
     void revokeChallengeImpl(ISessionCallback* cb, int64_t challenge);
@@ -79,7 +79,7 @@ class FakeFingerprintEngine {
 
     virtual std::string toString() const {
         std::ostringstream os;
-        os << "----- FakeFingerprintEngine:: -----" << std::endl;
+        os << "----- FingerprintEngine:: -----" << std::endl;
         os << "mWorkMode:" << (int)mWorkMode;
         os << "acquiredVendorInfoBase:" << FINGERPRINT_ACQUIRED_VENDOR_BASE;
         os << ", errorVendorBase:" << FINGERPRINT_ERROR_VENDOR_BASE << std::endl;
@@ -113,7 +113,7 @@ class FakeFingerprintEngine {
     void clearLockout(ISessionCallback* cb, bool dueToTimeout = false);
     void waitForFingerDown(ISessionCallback* cb, const std::future<void>& cancel);
 
-    FakeLockoutTracker mLockoutTracker;
+    LockoutTracker mLockoutTracker;
 
   protected:
     // lockout timer

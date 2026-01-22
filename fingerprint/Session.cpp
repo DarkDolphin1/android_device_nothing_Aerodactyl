@@ -21,7 +21,7 @@
 #include "util/CancellationSignal.h"
 
 #undef LOG_TAG
-#define LOG_TAG "FingerprintVirtualHalSession"
+#define LOG_TAG "FingerprintHalSession"
 
 namespace aidl::android::hardware::biometrics::fingerprint {
 
@@ -34,7 +34,7 @@ void onClientDeath(void* cookie) {
 }
 
 Session::Session(int sensorId, int userId, std::shared_ptr<ISessionCallback> cb,
-                 FakeFingerprintEngine* engine, WorkerThread* worker)
+                 FingerprintEngine* engine, WorkerThread* worker)
     : mSensorId(sensorId),
       mUserId(userId),
       mCb(std::move(cb)),

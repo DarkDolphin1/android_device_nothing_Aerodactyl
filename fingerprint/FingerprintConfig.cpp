@@ -22,7 +22,7 @@
 
 #include <fingerprint.sysprop.h>
 
-using namespace ::android::fingerprint::virt;
+using namespace ::android::fingerprint::nothing;
 
 namespace aidl::android::hardware::biometrics::fingerprint {
 

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-#include "FakeFingerprintEngineUdfps.h"
+#include "FingerprintEngineUdfps.h"
 
 #include <android-base/logging.h>
 
@@ -25,16 +25,16 @@
 #include "util/Util.h"
 
 #undef LOG_TAG
-#define LOG_TAG "FingerprintVirtualHalUdfps"
+#define LOG_TAG "FingerprintHalUdfps"
 
-using namespace ::android::fingerprint::virt;
+using namespace ::android::fingerprint::nothing;
 
 namespace aidl::android::hardware::biometrics::fingerprint {
 
-FakeFingerprintEngineUdfps::FakeFingerprintEngineUdfps()
-    : FakeFingerprintEngine(), mPointerDownTime(0), mUiReadyTime(0) {}
+FingerprintEngineUdfps::FingerprintEngineUdfps()
+    : FingerprintEngine(), mPointerDownTime(0), mUiReadyTime(0) {}
 
-void FakeFingerprintEngineUdfps::getDefaultSensorLocation(
+void FingerprintEngineUdfps::getDefaultSensorLocation(
         std::vector<SensorLocation>& sensorLocation) {
     sensorLocation.clear();
     sensorLocation.push_back(SensorLocation{
@@ -44,7 +44,7 @@ void FakeFingerprintEngineUdfps::getDefaultSensorLocation(
     });
 }
 
-ndk::ScopedAStatus FakeFingerprintEngineUdfps::onPointerDownImpl(int32_t /*pointerId*/,
+ndk::ScopedAStatus FingerprintEngineUdfps::onPointerDownImpl(int32_t /*pointerId*/,
                                                                  int32_t /*x*/, int32_t /*y*/,
                                                                  float /*minor*/, float /*major*/) {
     BEGIN_OP(0);
@@ -56,14 +56,14 @@ ndk::ScopedAStatus FakeFingerprintEngineUdfps::onPointerDownImpl(int32_t /*point
     return ndk::ScopedAStatus::ok();
 }
 
-ndk::ScopedAStatus FakeFingerprintEngineUdfps::onPointerUpImpl(int32_t /*pointerId*/) {
+ndk::ScopedAStatus FingerprintEngineUdfps::onPointerUpImpl(int32_t /*pointerId*/) {
     BEGIN_OP(0);
     mUiReadyTime = 0;
     mPointerDownTime = 0;
     return ndk::ScopedAStatus::ok();
 }
 
-ndk::ScopedAStatus FakeFingerprintEngineUdfps::onUiReadyImpl() {
+ndk::ScopedAStatus FingerprintEngineUdfps::onUiReadyImpl() {
     BEGIN_OP(0);
 
     if (Util::hasElapsed(mPointerDownTime, uiReadyTimeoutInMs * 100)) {
@@ -74,16 +74,16 @@ ndk::ScopedAStatus FakeFingerprintEngineUdfps::onUiReadyImpl() {
     return ndk::ScopedAStatus::ok();
 }
 
-void FakeFingerprintEngineUdfps::fingerDownAction() {
-    FakeFingerprintEngine::fingerDownAction();
+void FingerprintEngineUdfps::fingerDownAction() {
+    FingerprintEngine::fingerDownAction();
     mUiReadyTime = 0;
     mPointerDownTime = 0;
 }
 
-void FakeFingerprintEngineUdfps::updateContext(WorkMode mode, ISessionCallback* cb,
+void FingerprintEngineUdfps::updateContext(WorkMode mode, ISessionCallback* cb,
                                                std::future<void>& cancel, int64_t operationId,
                                                const keymaster::HardwareAuthToken& hat) {
-    FakeFingerprintEngine::updateContext(mode, cb, cancel, operationId, hat);
+    FingerprintEngine::updateContext(mode, cb, cancel, operationId, hat);
     mPointerDownTime = 0;
     mUiReadyTime = 0;
 }
