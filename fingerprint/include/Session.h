@@ -107,6 +107,8 @@ class Session : public BnSession {
 
     bool isClosed();
 
+    void notify(const fingerprint_msg_t* msg);
+
   private:
     // Crashes the HAL if it's not currently idling because that would be an invalid state machine
     // transition. Otherwise, sets the scheduled state to the given state.
@@ -146,6 +148,10 @@ class Session : public BnSession {
 
     // Binder death handler.
     AIBinder_DeathRecipient* mDeathRecipient;
+
+    // static ndk::ScopedAStatus ErrorFilter(int32_t error);
+    Error VendorErrorFilter(int32_t error, int32_t* vendorCode);
+    AcquiredInfo VendorAcquiredFilter(int32_t info, int32_t* vendorCode);
 };
 
 }  // namespace aidl::android::hardware::biometrics::fingerprint

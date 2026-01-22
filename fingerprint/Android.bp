@@ -20,6 +20,7 @@ cc_library_static {
     stl: "c++_static",
     shared_libs: [
         "libbinder_ndk",
+        "libhardware",
         "liblog",
     ],
     whole_static_libs: [

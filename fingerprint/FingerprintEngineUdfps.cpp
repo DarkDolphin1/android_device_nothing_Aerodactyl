@@ -16,6 +16,7 @@
 
 #include "FingerprintEngineUdfps.h"
 
+#include <android-base/file.h>
 #include <android-base/logging.h>
 
 #include <fingerprint.sysprop.h>
@@ -48,6 +49,9 @@ ndk::ScopedAStatus FingerprintEngineUdfps::onPointerDownImpl(int32_t /*pointerId
                                                                  int32_t /*x*/, int32_t /*y*/,
                                                                  float /*minor*/, float /*major*/) {
     BEGIN_OP(0);
+
+    ::android::base::WriteStringToFile("1", "/sys/panel_feature/ui_status");
+
     // verify whetehr touch coordinates/area matching sensor location ?
     mPointerDownTime = Util::getSystemNanoTime();
     if (Fingerprint::cfg().get<bool>("control_illumination")) {
@@ -60,11 +64,16 @@ ndk::ScopedAStatus FingerprintEngineUdfps::onPointerUpImpl(int32_t /*pointerId*/
     BEGIN_OP(0);
     mUiReadyTime = 0;
     mPointerDownTime = 0;
+
+    ::android::base::WriteStringToFile("0", "/sys/panel_feature/ui_status");
+
     return ndk::ScopedAStatus::ok();
 }
 
 ndk::ScopedAStatus FingerprintEngineUdfps::onUiReadyImpl() {
     BEGIN_OP(0);
+
+    ::android::base::WriteStringToFile("1", "/sys/panel_feature/ui_status");
 
     if (Util::hasElapsed(mPointerDownTime, uiReadyTimeoutInMs * 100)) {
         LOG(ERROR) << "onUiReady() arrives too late after onPointerDown()";

@@ -32,22 +32,65 @@ using ::android::base::ParseInt;
 namespace aidl::android::hardware::biometrics::fingerprint {
 
 FingerprintEngine::FingerprintEngine()
-    : mRandom(std::mt19937::default_seed),
-      mWorkMode(WorkMode::kIdle),
-      isLockoutTimerSupported(true) {}
-
-void FingerprintEngine::generateChallengeImpl(ISessionCallback* cb) {
-    BEGIN_OP(0);
-    std::uniform_int_distribution<int64_t> dist;
-    auto challenge = dist(mRandom);
-    Fingerprint::cfg().set<std::int64_t>("challenge", challenge);
-    cb->onChallengeGenerated(challenge);
+    : mWorkMode(WorkMode::kIdle),
+      isLockoutTimerSupported(true) {
+    if (mDevice) {
+        LOG(INFO) << "Fingerprint HAL already opened";
+    } else {
+        mDevice = openHal();
+        if (!mDevice) {
+            ALOGE("Can't open HAL module");
+        }
+    }
 }
 
-void FingerprintEngine::revokeChallengeImpl(ISessionCallback* cb, int64_t challenge) {
+fingerprint_device_t* FingerprintEngine::openHal() {
+    const hw_module_t* hw_mdl = nullptr;
+
+    LOG(INFO) << "Opening fingerprint hal library...";
+    if (hw_get_module_by_class(FINGERPRINT_HARDWARE_MODULE_ID, NULL, &hw_mdl) != 0) {
+        LOG(ERROR) << "Can't open fingerprint HW Module";
+        return nullptr;
+    }
+
+    if (!hw_mdl) {
+        LOG(ERROR) << "No valid fingerprint module";
+        return nullptr;
+    }
+
+    auto module = reinterpret_cast<const fingerprint_module_t*>(hw_mdl);
+    if (!module->common.methods->open) {
+        LOG(ERROR) << "No valid open method";
+        return nullptr;
+    }
+
+    hw_device_t* device = nullptr;
+    if (module->common.methods->open(hw_mdl, nullptr, &device) != 0) {
+        LOG(ERROR) << "Can't open fingerprint methods";
+        return nullptr;
+    }
+
+    auto fp_device = reinterpret_cast<fingerprint_device_t*>(device);
+    if (fp_device->set_notify(fp_device, Fingerprint::notify) != 0) {
+        LOG(ERROR) << "Can't register fingerprint module callback";
+        return nullptr;
+    }
+
+    return fp_device;
+}
+
+void FingerprintEngine::generateChallengeImpl(ISessionCallback* /*cb*/) {
     BEGIN_OP(0);
-    Fingerprint::cfg().setopt<OptInt64>("challenge", std::nullopt);
-    cb->onChallengeRevoked(challenge);
+    mDevice->generateChallenge(mDevice);
+}
+
+void FingerprintEngine::revokeChallengeImpl(ISessionCallback* /*cb*/, int64_t challenge) {
+    BEGIN_OP(0);
+    uint64_t error = mDevice->revokeChallenge(mDevice, challenge);
+    if (error) {
+        LOG(ERROR) << "Failed to revoke challenge=" << challenge
+                    << " error=" << error;
+    }
 }
 
 void FingerprintEngine::enrollImpl(ISessionCallback* cb,
@@ -128,68 +171,21 @@ void FingerprintEngine::fingerDownAction() {
 }
 
 bool FingerprintEngine::onEnrollFingerDown(ISessionCallback* cb,
-                                               const keymaster::HardwareAuthToken&,
+                                               const keymaster::HardwareAuthToken& hat,
                                                const std::future<void>& cancel) {
     BEGIN_OP(getLatency(Fingerprint::cfg().getopt<OptIntVec>("operation_enroll_latency")));
 
-    // Force error-out
-    auto err = Fingerprint::cfg().get<std::int32_t>("operation_enroll_error");
-    if (err != 0) {
-        LOG(ERROR) << "Fail: operation_enroll_error";
-        auto ec = convertError(err);
-        cb->onError(ec.first, ec.second);
-        return true;
+    hw_auth_token_t authToken;
+    //translate(hat, authToken);
+    int error = mDevice->enroll(mDevice, &authToken);
+    if (error){
+        LOG(ERROR) << "enroll failed: " << error;
+        cb->onError(Error::UNABLE_TO_PROCESS, error);
     }
 
-    // Format is "<id>:<progress_ms-[acquiredInfo..]>,...:<result>
-    auto nextEnroll = Fingerprint::cfg().get<std::string>("next_enrollment");
-    auto parts = Util::split(nextEnroll, ":");
-    if (parts.size() != 3) {
-        LOG(ERROR) << "Fail: invalid next_enrollment:" << nextEnroll;
-        cb->onError(Error::VENDOR, 0 /* vendorError */);
-        return true;
-    }
-    auto enrollmentId = std::stoi(parts[0]);
-    auto progress = Util::parseEnrollmentCapture(parts[1]);
-    for (size_t i = 0; i < progress.size(); i += 2) {
-        auto left = (progress.size() - i) / 2 - 1;
-        auto duration = progress[i][0];
-        auto acquired = progress[i + 1];
-        auto N = acquired.size();
-
-        for (int j = 0; j < N; j++) {
-            SLEEP_MS(duration / N);
-
-            if (shouldCancel(cancel)) {
-                LOG(ERROR) << "Fail: cancel";
-                cb->onError(Error::CANCELED, 0 /* vendorCode */);
-                return true;
-            }
-            auto ac = convertAcquiredInfo(acquired[j]);
-            if (ac.first != AcquiredInfo::UNKNOWN) {
-                cb->onAcquired(ac.first, ac.second);
-            }
-        }
-
-        if (left == 0 && !IS_TRUE(parts[2])) {  // end and failed
-            LOG(ERROR) << "Fail: requested by caller: " << nextEnroll;
-            Fingerprint::cfg().set<std::string>("next_enrollment", "");
-            cb->onError(Error::UNABLE_TO_PROCESS, 0 /* vendorCode */);
-        } else {  // progress and update props if last time
-            LOG(INFO) << "onEnroll: " << enrollmentId << " left: " << left;
-            if (left == 0) {
-                auto enrollments = Fingerprint::cfg().getopt<OptIntVec>("enrollments");
-                enrollments.emplace_back(enrollmentId);
-                Fingerprint::cfg().setopt<OptIntVec>("enrollments", enrollments);
-                Fingerprint::cfg().setopt<OptString>("next_enrollment", std::nullopt);
-                // change authenticatorId after new enrollment
-                auto id = Fingerprint::cfg().get<std::int64_t>("authenticator_id");
-                auto newId = id + 1;
-                Fingerprint::cfg().set<std::int64_t>("authenticator_id", newId);
-                LOG(INFO) << "Enrolled: " << enrollmentId;
-            }
-            cb->onEnrollmentProgress(enrollmentId, left);
-        }
+    if (shouldCancel(cancel)){
+        LOG(ERROR) << "Fail: cancel";
+        cb->onError(Error::CANCELED, 0 /* vendorCode */);
     }
 
     return true;
@@ -200,73 +196,23 @@ bool FingerprintEngine::onAuthenticateFingerDown(ISessionCallback* cb,
                                                      const std::future<void>& cancel) {
     BEGIN_OP(getLatency(Fingerprint::cfg().getopt<OptIntVec>("operation_authenticate_latency")));
 
-    int64_t now = Util::getSystemNanoTime();
-    int64_t duration = Fingerprint::cfg().get<std::int32_t>("operation_authenticate_duration");
-    auto acquired = Fingerprint::cfg().get<std::string>("operation_authenticate_acquired");
-    auto acquiredInfos = Util::parseIntSequence(acquired);
-    int N = acquiredInfos.size();
-
     // got lockout?
     if (checkSensorLockout(cb)) {
         return LockoutTracker::LockoutMode::kPermanent == mLockoutTracker.getMode();
     }
 
-    int i = 0;
-    do {
-        if (Fingerprint::cfg().get<bool>("operation_authenticate_fails")) {
-            LOG(ERROR) << "Fail: operation_authenticate_fails";
-            mLockoutTracker.addFailedAttempt();
-            cb->onAuthenticationFailed();
-            return false;
-        }
-
-        auto err = Fingerprint::cfg().get<std::int32_t>("operation_authenticate_error");
-        if (err != 0) {
-            LOG(ERROR) << "Fail: operation_authenticate_error";
-            auto ec = convertError(err);
-            cb->onError(ec.first, ec.second);
-            return true; /* simply terminating current operation for any user inserted error,
-                            revisit if tests need*/
-        }
-
-        if (Fingerprint::cfg().get<bool>("lockout")) {
-            LOG(ERROR) << "Fail: lockout";
-            cb->onLockoutPermanent();
-            cb->onError(Error::HW_UNAVAILABLE, 0 /* vendorError */);
-            return true;
-        }
-
-        if (shouldCancel(cancel)) {
-            LOG(ERROR) << "Fail: cancel";
-            cb->onError(Error::CANCELED, 0 /* vendorCode */);
-            return true;
-        }
-
-        if (i < N) {
-            auto ac = convertAcquiredInfo(acquiredInfos[i]);
-            if (ac.first != AcquiredInfo::UNKNOWN) {
-                cb->onAcquired(ac.first, ac.second);
-            }
-            i++;
-        }
-
-        SLEEP_MS(duration / (N + 1));
-    } while (!Util::hasElapsed(now, duration));
-
-    auto id = Fingerprint::cfg().get<std::int32_t>("enrollment_hit");
-    auto enrolls = Fingerprint::cfg().getopt<OptIntVec>("enrollments");
-    auto isEnrolled = std::find(enrolls.begin(), enrolls.end(), id) != enrolls.end();
-    if (id > 0 && isEnrolled) {
-        cb->onAuthenticationSucceeded(id, {} /* hat */);
-        mLockoutTracker.reset();
+    if (shouldCancel(cancel)) {
+        LOG(ERROR) << "Fail: cancel";
+        cb->onError(Error::CANCELED, 0 /* vendorCode */);
         return true;
-    } else {
-        LOG(ERROR) << "Fail: fingerprint not enrolled";
-        cb->onAuthenticationFailed();
-        mLockoutTracker.addFailedAttempt();
-        checkSensorLockout(cb);
-        return false;
     }
+
+    int error = mDevice->authenticate(mDevice, operationId);
+    if (error) {
+        LOG(ERROR) << "authenticate failed: " << error;
+    }
+
+    return true;
 }
 
 bool FingerprintEngine::onDetectInteractFingerDown(ISessionCallback* cb,
@@ -311,62 +257,29 @@ bool FingerprintEngine::onDetectInteractFingerDown(ISessionCallback* cb,
     return true;
 }
 
-void FingerprintEngine::enumerateEnrollmentsImpl(ISessionCallback* cb) {
+void FingerprintEngine::enumerateEnrollmentsImpl(ISessionCallback* /*cb*/) {
     BEGIN_OP(0);
 
-    std::vector<int32_t> ids;
-    for (auto& enrollment : Fingerprint::cfg().getopt<OptIntVec>("enrollments")) {
-        auto id = enrollment.value_or(0);
-        if (id > 0) {
-            ids.push_back(id);
-        }
+    int error = mDevice->enumerate(mDevice);
+    if (error) {
+        LOG(ERROR) << "enumarate failed: " << error;
     }
-
-    cb->onEnrollmentsEnumerated(ids);
 }
 
-void FingerprintEngine::removeEnrollmentsImpl(ISessionCallback* cb,
-                                                  const std::vector<int32_t>& enrollmentIds) {
+void FingerprintEngine::removeEnrollmentsImpl(ISessionCallback* /*cb*/,
+                                                  const std::vector<int32_t> &enrollmentIds) {
     BEGIN_OP(0);
-
-    std::vector<std::optional<int32_t>> newEnrollments;
-    std::vector<int32_t> removed;
-    for (auto& enrollment : Fingerprint::cfg().getopt<OptIntVec>("enrollments")) {
-        auto id = enrollment.value_or(0);
-        if (std::find(enrollmentIds.begin(), enrollmentIds.end(), id) != enrollmentIds.end()) {
-            removed.push_back(id);
-        } else if (id > 0) {
-            newEnrollments.emplace_back(id);
-        }
-    }
-    Fingerprint::cfg().setopt<OptIntVec>("enrollments", newEnrollments);
-
-    cb->onEnrollmentsRemoved(enrollmentIds);
+    mDevice->remove(mDevice, enrollmentIds.data(), enrollmentIds.size());
 }
 
-void FingerprintEngine::getAuthenticatorIdImpl(ISessionCallback* cb) {
+void FingerprintEngine::getAuthenticatorIdImpl(ISessionCallback* /*cb*/) {
     BEGIN_OP(0);
-    int64_t authenticatorId;
-    if (Fingerprint::cfg().getopt<OptIntVec>("enrollments").size() == 0) {
-        authenticatorId = 0;
-    } else {
-        authenticatorId = Fingerprint::cfg().get<std::int64_t>("authenticator_id");
-        if (authenticatorId == 0) authenticatorId = 1;
-    }
-    cb->onAuthenticatorIdRetrieved(authenticatorId);
+    mDevice->getAuthenticatorId(mDevice);
 }
 
-void FingerprintEngine::invalidateAuthenticatorIdImpl(ISessionCallback* cb) {
+void FingerprintEngine::invalidateAuthenticatorIdImpl(ISessionCallback* /*cb*/) {
     BEGIN_OP(0);
-    int64_t newId;
-    if (Fingerprint::cfg().getopt<OptIntVec>("enrollments").size() == 0) {
-        newId = 0;
-    } else {
-        auto id = Fingerprint::cfg().get<std::int64_t>("authenticator_id");
-        newId = id + 1;
-    }
-    Fingerprint::cfg().set<std::int64_t>("authenticator_id", newId);
-    cb->onAuthenticatorIdInvalidated(newId);
+    mDevice->invalidateAuthenticatorId(mDevice);
 }
 
 void FingerprintEngine::resetLockoutImpl(ISessionCallback* cb,

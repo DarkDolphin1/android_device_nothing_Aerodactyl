@@ -31,6 +31,8 @@
 
 #include "LockoutTracker.h"
 
+#include "fingerprint-nothing.h"
+
 using namespace ::aidl::android::hardware::biometrics::common;
 
 namespace aidl::android::hardware::biometrics::fingerprint {
@@ -87,6 +89,8 @@ class FingerprintEngine {
         return os.str();
     }
 
+    void setActiveGroup(int userId);
+
   protected:
     virtual void updateContext(WorkMode mode, ISessionCallback* cb, std::future<void>& cancel,
                                int64_t operationId, const keymaster::HardwareAuthToken& hat);
@@ -103,17 +107,22 @@ class FingerprintEngine {
     int64_t mOperationId;
     bool mFingerIsDown;
 
+    fingerprint_device_t* mDevice;
+
   private:
     static constexpr int32_t FINGERPRINT_ACQUIRED_VENDOR_BASE = 1000;
     static constexpr int32_t FINGERPRINT_ERROR_VENDOR_BASE = 1000;
     std::pair<AcquiredInfo, int32_t> convertAcquiredInfo(int32_t code);
     std::pair<Error, int32_t> convertError(int32_t code);
     int32_t getRandomInRange(int32_t bound1, int32_t bound2);
-    bool checkSensorLockout(ISessionCallback*);
     void clearLockout(ISessionCallback* cb, bool dueToTimeout = false);
     void waitForFingerDown(ISessionCallback* cb, const std::future<void>& cancel);
 
-    LockoutTracker mLockoutTracker;
+    // static ndk::ScopedAStatus ErrorFilter(int32_t error);
+    Error VendorErrorFilter(int32_t error, int32_t* vendorCode);
+    AcquiredInfo VendorAcquiredFilter(int32_t info, int32_t* vendorCode);
+
+    fingerprint_device_t* openHal();
 
   protected:
     // lockout timer
@@ -125,6 +134,8 @@ class FingerprintEngine {
   public:
     void startLockoutTimer(int64_t timeout, ISessionCallback* cb);
     bool getLockoutTimerStarted() { return isLockoutTimerStarted; }
+    bool checkSensorLockout(ISessionCallback*);
+    LockoutTracker mLockoutTracker;
 };
 
 }  // namespace aidl::android::hardware::biometrics::fingerprint
