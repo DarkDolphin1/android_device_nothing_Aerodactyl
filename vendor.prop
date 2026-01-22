@@ -105,8 +105,8 @@ ro.vendor.pref_scale_enable_cfg=1
 drm.service.enabled=true
 
 # Fingerprint
-ro.vendor.fingerprint.type=udfps_optical
-ro.vendor.fingerprint.sensor_location=542|2172|93
+persist.vendor.fingerprint.type=udfps
+persist.vendor.fingerprint.sensor_location=542:2172:93
 
 # FM
 persist.vendor.connsys.fm_chipid=mt6635
