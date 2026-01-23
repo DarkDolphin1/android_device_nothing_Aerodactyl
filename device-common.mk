@@ -373,8 +373,6 @@ PRODUCT_PACKAGES += \
     vndservicemanager
 
 # Wifi
-$(call soong_config_set,wpa_supplicant_8,board_wlan_mediatek_stability,true)
-
 PRODUCT_PACKAGES += \
     wpa_supplicant \
     hostapd \
