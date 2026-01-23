@@ -47,7 +47,7 @@ blob_fixups: blob_fixups_user_type = {
     ): blob_fixup()
         .regex_replace('start', 'enable'),
     'system_ext/framework/mediatek-telephony-common.jar': blob_fixup()
-        .apktool_patch('blob-patches/mediatek-telephony-common'),
+        .apktool_patch('blob-patches/mediatek-telephony-common/0001-mediatek-telephony-common-Remove-references-to-Telep.patch'),
     'system_ext/lib64/libimsma.so': blob_fixup()
         .replace_needed('libsink.so', 'libsink-mtk.so'),
     'system_ext/priv-app/ImsService/ImsService.apk': blob_fixup()
