@@ -9,6 +9,10 @@ $(call inherit-product, device/nothing/Aerodactyl/device-Pacman.mk)
 # Inherit from the euclid configuration.
 $(call inherit-product, vendor/euclid/config/common_full_phone.mk)
 
+# include Private keys
+-include vendor/lineage-priv/keys/keys.mk
+
+
 PRODUCT_BRAND := Nothing
 PRODUCT_DEVICE := Pacman
 PRODUCT_MANUFACTURER := Nothing
