@@ -330,20 +330,26 @@
     {
       "PowerHint": "INTERACTION",
       "Node": "CPUEfficiencyClusterMinFreq",
-      "Duration": 58,
+      "Duration": 1000,
       "Value": "1400000"
     },
     {
       "PowerHint": "INTERACTION",
       "Node": "CPUSuperClusterMinFreq",
-      "Duration": 58,
+      "Duration": 1000,
       "Value": "1400000"
     },
     {
       "PowerHint": "INTERACTION",
-      "Node": "UclampFGMin",
-      "Duration": 58,
+      "Node": "GpuPwrLevel",
+      "Duration": 1000,
       "Value": "10"
+    },
+    {
+      "PowerHint": "INTERACTION",
+      "Node": "UclampFGMin",
+      "Duration": 1000,
+      "Value": "30"
     },
     {
       "PowerHint": "LAUNCH",
