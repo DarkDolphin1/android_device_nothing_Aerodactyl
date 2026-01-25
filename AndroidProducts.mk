@@ -4,5 +4,5 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/lineage_Pacman.mk \
+    $(LOCAL_DIR)/euclid_Pacman.mk \
     $(LOCAL_DIR)/lineage_PacmanPro.mk
