@@ -58,7 +58,7 @@ HBM_SUPPORTED := false
 HBM_NODE := /sys/class/backlight/panel0-backlight/hbm_mode
 
 # Flashlight strength
-TORCH_STR_SUPPORTED := false
+TORCH_STR_SUPPORTED := true
 
 # doze fix
 # for devices with doze/sensor related issues 
