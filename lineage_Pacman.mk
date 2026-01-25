@@ -64,5 +64,13 @@ TORCH_STR_SUPPORTED := false
 # for devices with doze/sensor related issues 
 TARGET_NEEDS_DOZE_FIX := true
 
-
 TARGET_INCLUDES_LOS_PREBUILTS := false
+
+# Enable or disable ScrollOptimizer globally
+persist.sys.perf.scroll_opt = true
+
+# Heavy app handling mode
+# 0 - Disable heavy app classification
+# 1 - Enable dynamic detection (based on frame duration and buffer load)
+# 2 - Treat all apps as heavy for performance
+persist.sys.perf.scroll_opt.heavy_app = 2
