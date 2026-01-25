@@ -266,8 +266,8 @@
       "Name": "PMQoSCpuDmaLatency",
       "Path": "/dev/cpu_dma_latency",
       "Values": [
-        "51",
-        "0"
+        "44",
+        "1000"
       ],
       "HoldFd": true
     },
@@ -276,10 +276,18 @@
       "Path": "/dev/cpuctl/foreground/cpu.uclamp.min",
       "Values": [
         "0",
-        "10",
         "30"
       ],
       "DefaultIndex": 0,
+      "ResetOnInit": true
+    },
+    {
+      "Name": "UclampTALatency",
+      "Path": "/dev/cpuctl/top-app/cpu.uclamp.latency_sensitive",
+      "Values": [
+        "1",
+        "0"
+      ],
       "ResetOnInit": true
     },
     {
@@ -287,8 +295,7 @@
       "Path": "/dev/cpuctl/top-app/cpu.uclamp.min",
       "Values": [
         "0",
-        "30",
-        "100"
+        "60"
       ],
       "DefaultIndex": 0,
       "ResetOnInit": true
@@ -329,87 +336,69 @@
   "Actions": [
     {
       "PowerHint": "INTERACTION",
-      "Node": "CPUEfficiencyClusterMinFreq",
-      "Duration": 58,
-      "Value": "1400000"
-    },
-    {
-      "PowerHint": "INTERACTION",
-      "Node": "CPUSuperClusterMinFreq",
-      "Duration": 58,
-      "Value": "1400000"
-    },
-    {
-      "PowerHint": "INTERACTION",
       "Node": "UclampFGMin",
-      "Duration": 58,
-      "Value": "10"
+      "Duration": 3000,
+      "Value": "30"
+    },
+    {
+      "PowerHint": "INTERACTION",
+      "Node": "UclampTAMin",
+      "Duration": 5000,
+      "Value": "60"
+    },
+    {
+      "PowerHint": "INTERACTION",
+      "Node": "UclampTALatency",
+      "Duration": 5000,
+      "Value": "1"
+    },
+    {
+      "PowerHint": "LAUNCH",
+      "Node": "PMQoSCpuDmaLatency",
+      "Duration": 1000,
+      "Value": "44"
     },
     {
       "PowerHint": "LAUNCH",
       "Node": "CPUSuperClusterMinFreq",
-      "Duration": 1500,
+      "Duration": 1000,
       "Value": "9999999"
     },
     {
       "PowerHint": "LAUNCH",
       "Node": "CPUEfficiencyClusterMinFreq",
-      "Duration": 1500,
+      "Duration": 1000,
       "Value": "9999999"
     },
     {
       "PowerHint": "LAUNCH",
       "Node": "MemFreq",
-      "Duration": 1500,
+      "Duration": 100,
       "Value": "9999999999"
     },
     {
       "PowerHint": "LAUNCH",
-      "Node": "UclampTAMin",
-      "Duration": 1500,
-      "Value": "100"
-    },
-    {
-      "PowerHint": "FIXED_PERFORMANCE",
       "Node": "GpuPwrLevel",
-      "Duration": 0,
+      "Duration": 100,
       "Value": "0"
     },
     {
-      "PowerHint": "FIXED_PERFORMANCE",
-      "Node": "CPUSuperClusterMaxFreq",
-      "Duration": 0,
-      "Value": "9999999"
+      "PowerHint": "LAUNCH",
+      "Node": "UclampFGMin",
+      "Duration": 1500,
+      "Value": "30"
     },
     {
-      "PowerHint": "FIXED_PERFORMANCE",
-      "Node": "CPUSuperClusterMinFreq",
-      "Duration": 0,
-      "Value": "9999999"
+      "PowerHint": "LAUNCH",
+      "Node": "UclampTALatency",
+      "Duration": 3000,
+      "Value": "1"
     },
     {
-      "PowerHint": "FIXED_PERFORMANCE",
-      "Node": "CPUEfficiencyClusterMaxFreq",
-      "Duration": 0,
-      "Value": "9999999"
-    },
-    {
-      "PowerHint": "FIXED_PERFORMANCE",
-      "Node": "CPUEfficiencyClusterMinFreq",
-      "Duration": 0,
-      "Value": "9999999"
-    },
-    {
-      "PowerHint": "FIXED_PERFORMANCE",
+      "PowerHint": "LAUNCH",
       "Node": "UclampTAMin",
-      "Duration": 0,
-      "Value": "100"
-    },
-    {
-      "PowerHint": "FIXED_PERFORMANCE",
-      "Node": "MemFreq",
-      "Duration": 0,
-      "Value": "9999999999"
+      "Duration": 1500,
+      "Value": "60"
     },
     {
       "PowerHint": "EXPENSIVE_RENDERING",
@@ -422,29 +411,6 @@
       "Node": "GpuPwrLevel",
       "Duration": 0,
       "Value": "0"
-    },
-    {
-      "PowerHint": "EXPENSIVE_RENDERING",
-      "Node": "UclampFGMin",
-      "Duration": 0,
-      "Value": "30"
-    },
-    {
-      "PowerHint": "EXPENSIVE_RENDERING",
-      "Node": "UclampTAMin",
-      "Duration": 0,
-      "Value": "30"
-    },
-    {
-      "PowerHint": "EXPENSIVE_RENDERING",
-      "Type": "EndHint",
-      "Value": "INTERACTION"
-    },
-    {
-      "PowerHint": "ML_ACC",
-      "Node": "PMQoSCpuDmaLatency",
-      "Duration": 1500,
-      "Value": "51"
     },
     {
       "PowerHint": "DOUBLE_TAP_TO_WAKE",
