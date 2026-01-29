@@ -212,7 +212,7 @@ PRODUCT_COPY_FILES += \
 # NFC
 PRODUCT_PACKAGES += \
     android.hardware.nfc-service.st \
-    android.hardware.secure_element@1.2-service-gto
+    android.hardware.secure_element-service.thales
 
 PRODUCT_PACKAGES += \
     com.android.nfc_extras \

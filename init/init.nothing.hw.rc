@@ -14,9 +14,9 @@ on property:ro.boot.hardware.sku=JPN
     setprop persist.nfc_cfg.config_file_name libnfc-nci-felica.conf
     setprop persist.vendor.nfc.config_file_name libnfc-hal-st-st54j.conf
 
-    start gto_secure_element_hal_service_1_2
+    start gto_secure_element_aidl_service
 
-service gto_secure_element_hal_service_1_2 /vendor/bin/hw/android.hardware.secure_element@1.2-service-gto
+service gto_secure_element_aidl_service /vendor/bin/hw/android.hardware.secure_element-service.thales
     override
     class hal
     user secure_element
