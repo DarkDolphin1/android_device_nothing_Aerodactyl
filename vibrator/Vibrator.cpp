@@ -125,8 +125,6 @@ ndk::ScopedAStatus Vibrator::perform(Effect effect, EffectStrength es,
     if (sLastMode == MODE_STREAM)
         aac_vibra_setAmplitude(0xFF);
 
-    aac_vibra_looper_stopPerformHe();
-
     int32_t ret = aac_vibra_looper_prebaked_effect(effectId, strength);
     if (ret < 0) {
         ALOGE("AAC perform failed: %d\n", ret);
