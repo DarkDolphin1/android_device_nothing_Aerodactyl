@@ -8,7 +8,9 @@ $(call inherit-product, device/nothing/Aerodactyl/device-common.mk)
 
 # Overlays
 PRODUCT_PACKAGES += \
-    NothingWifiResPacman
+    NothingWifiResPacman \
+    GlyphAdapter \ 
+    ParanoidGlyph
 
 # Properties
 PRODUCT_COPY_FILES += \
