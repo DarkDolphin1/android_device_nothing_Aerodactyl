@@ -6,6 +6,9 @@
 # Inherit from the custom common configuration.
 $(call inherit-product, device/nothing/Aerodactyl/device-common.mk)
 
+
+# Dolby Atmos
+$(call inherit-product, hardware/dolby/dolby.mk)
 # Overlays
 PRODUCT_PACKAGES += \
     NothingWifiResPacman
