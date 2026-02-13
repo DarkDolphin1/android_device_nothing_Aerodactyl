@@ -837,8 +837,6 @@ vendor/lib64/vendor.mediatek.hardware.apmonitor@2.0.so
 vendor/lib64/vendor.mediatek.hardware.gnss.batching-V1-ndk.so
 
 # Graphics (ARM mali)
-vendor/etc/bh3.dla
-vendor/etc/genshin.dla
 vendor/etc/mali_platform.config
 vendor/lib64/egl/mt6886/libGLES_mali.so;SYMLINK=vendor/lib64/egl/libGLES_mali.so
 vendor/lib64/hw/mt6886/vulkan.mali.so;SYMLINK=vendor/lib64/hw/vulkan.mali.so
@@ -853,17 +851,6 @@ vendor/lib64/libgpud.so
 vendor/lib64/libgralloc_extra.so
 vendor/lib64/libgralloc_metadata.so
 vendor/lib64/libgralloctypes_mtk.so
-
-# Graphics (Mediatek MEOW)
-vendor/etc/meow.cfg
-vendor/lib64/egl/libGLES_meow.so
-vendor/lib64/egl/libMEOW_data.so
-vendor/lib64/egl/libMEOW_gift.so
-vendor/lib64/egl/libMEOW_qt.so
-vendor/lib64/egl/libMEOW_trace.so
-vendor/lib64/libDefaultFpsActor.so
-vendor/lib64/libFrameRecord.so
-vendor/lib64/libNoFpsActor.so
 
 # Graphics firmware (ARM mali)
 vendor/firmware/mali_csffw.bin
