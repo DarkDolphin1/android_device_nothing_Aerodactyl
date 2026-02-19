@@ -14,7 +14,7 @@
 #include "aac_vibra_function.h"
 
 #define RICHTAP_LIGHT_STRENGTH 77
-#define RICHTAP_MEDIUM_STRENGTH 97
+#define RICHTAP_MEDIUM_STRENGTH 88
 #define RICHTAP_STRONG_STRENGTH 100
 
 enum vibrationMode {
