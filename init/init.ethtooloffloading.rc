@@ -1,0 +1,4 @@
+service ethtooloffloading /system/bin/sh /system_ext/bin/init.ethtooloffloading.sh
+    class late_start
+    user root
+    group root net_admin

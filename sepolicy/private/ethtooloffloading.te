@@ -1,0 +1,9 @@
+type ethtooloffloading, domain, coredomain;
+type ethtooloffloading_exec, system_file_type, exec_type, file_type;
+
+init_daemon_domain(ethtooloffloading)
+
+allow ethtooloffloading shell_exec:file rx_file_perms;
+allow ethtooloffloading toolbox_exec:file rx_file_perms;
+
+allow ethtooloffloading sysfs_net:dir r_dir_perms;
