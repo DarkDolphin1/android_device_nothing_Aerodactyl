@@ -889,11 +889,9 @@ system_ext/priv-app/ImsService/ImsService.apk
 system_ext/priv-app/MtkGbaService/MtkGbaService.apk
 vendor/bin/hw/vendor.mediatek.hardware.mmagent@1.1-service
 vendor/bin/hw/vtservice_hidl
-vendor/bin/ipsec_mon
 vendor/bin/lbs_hidl_service
 vendor/bin/volte_clientapi_ua
 vendor/etc/init/init.vtservice_hidl.rc
-vendor/etc/init/ipsec_mon.rc
 vendor/etc/init/lbs_hidl_service.rc
 vendor/etc/init/vendor.mediatek.hardware.mmagent@1.1-service.rc
 vendor/etc/init/volte_clientapi_ua.rc
@@ -1163,8 +1161,10 @@ vendor/lib64/mt6886/libmnl.so;SYMLINK=vendor/lib64/libmnl.so
 vendor/lib64/libcares_naptr.so
 vendor/lib64/libcarrierconfig.so
 vendor/lib64/libccci_util.so
+vendor/lib64/libforkexecwrap.so
 vendor/lib64/libgwsdv2-ril.so
 vendor/lib64/libgwsdv3-ril.so
+vendor/lib64/libifcutils_mtk.so
 vendor/lib64/libipsec_ims_shr.so
 vendor/lib64/libmipc.so
 vendor/lib64/libmmprofile.so
@@ -1208,6 +1208,7 @@ vendor/lib64/vendor.mediatek.hardware.mtkradioex.se-V1-ndk.so
 vendor/lib64/vendor.mediatek.hardware.mtkradioex.sim-V1-ndk.so
 vendor/lib64/vendor.mediatek.hardware.mtkradioex.smartratswitch-V1-ndk.so
 vendor/lib64/vendor.mediatek.hardware.mtkradioex.voice-V1-ndk.so
+vendor/lib64/vendor.mediatek.hardware.netdagent@1.0.so
 
 # Sensors
 vendor/bin/hw/vendor.noth.hardware.sensor.sensor_extension-service
@@ -1233,12 +1234,7 @@ vendor/lib64/vendor.noth.hardware.sensor.sensor_extension-V1-ndk.so
 
 # Tether Offload
 vendor/bin/hw/tetheroffloadservice
-vendor/bin/netdagent
-vendor/etc/init/netdagent.rc
 vendor/etc/init/tetheroffloadservice.rc
-vendor/lib64/libforkexecwrap.so
-vendor/lib64/libifcutils_mtk.so
-vendor/lib64/vendor.mediatek.hardware.netdagent@1.0.so
 
 # Thermal
 vendor/bin/thermal_core
