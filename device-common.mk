@@ -170,6 +170,10 @@ PRODUCT_PACKAGES += \
 
 # Init
 PRODUCT_PACKAGES += \
+    init.ethtooloffloading.rc \
+    init.ethtooloffloading.sh
+
+PRODUCT_PACKAGES += \
     fstab.enableswap \
     fstab.mt6886 \
     fstab.mt6886.vendor_ramdisk \

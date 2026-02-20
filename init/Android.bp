@@ -31,6 +31,13 @@ prebuilt_etc {
 }
 
 prebuilt_etc {
+    name: "init.ethtooloffloading.rc",
+    src: "init.ethtooloffloading.rc",
+    relative_install_path: "init",
+    system_ext_specific: true,
+}
+
+prebuilt_etc {
     name: "init.mt6886.power.rc",
     src: "init.mt6886.power.rc",
     relative_install_path: "init/hw",
@@ -91,6 +98,12 @@ prebuilt_etc {
     filename: "ueventd.rc",
     src: "ueventd.mt6886.rc",
     vendor: true,
+}
+
+sh_binary {
+    name: "init.ethtooloffloading.sh",
+    src: "init.ethtooloffloading.sh",
+    system_ext_specific: true,
 }
 
 sh_binary {
