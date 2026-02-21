@@ -55,6 +55,8 @@ ro.vendor.camera3.zsl.default=260
 ro.vendor.mtk_cam_security_support=1
 vendor.camera.mdp.cz.enable=1
 vendor.camera.mdp.dre.enable=1
+vendor.debug.morpho.videoeis.enable=true
+vendor.debug.morpho.zoomeis.enable=true
 
 # Crypto
 ro.crypto.volume.options=aes-256-xts:aes-256-hctr2
