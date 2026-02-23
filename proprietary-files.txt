@@ -68,6 +68,12 @@ vendor/etc/dirac/interface.json
 vendor/lib64/soundfx/libdiraceffect_NT.so
 vendor/lib64/libdirac.so
 
+# Audio (Hotword enrollment)
+product/priv-app/HotwordEnrollmentOKGoogleHEXAGON/HotwordEnrollmentOKGoogleHEXAGON.apk
+product/priv-app/HotwordEnrollmentXGoogleHEXAGON/HotwordEnrollmentXGoogleHEXAGON.apk
+system_ext/etc/permissions/com.android.hotwordenrollment.common.util.xml
+system_ext/framework/com.android.hotwordenrollment.common.util.jar
+
 # Audio (LVACFS)
 vendor/etc/lvacfs_params/1mic/LVACFS_Calibration_1mic.dat
 vendor/etc/lvacfs_params/1mic/LVACFS_Configuration.txt
