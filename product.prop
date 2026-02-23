@@ -32,3 +32,6 @@ remote_provisioning.strongbox.rkp_only=1
 
 # Voice assitant
 ro.opa.eligible_device=true
+
+# zRAM
+ro.zram_backing_device_min_free_mb=1536
