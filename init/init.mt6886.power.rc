@@ -137,10 +137,13 @@ on property:sys.boot_completed=1
 
     # zram
     swapon_all /vendor/etc/fstab.enableswap
-    write /proc/sys/vm/swappiness 60
 
     # Adjust watermark level
     write /proc/sys/vm/watermark_scale_factor 200
+
+    # Back to default VM settings
+    write /proc/sys/vm/dirty_expire_centisecs 3000
+    write /proc/sys/vm/dirty_background_ratio 10
 
     # restore boot perf. tune
     write /sys/devices/system/cpu/cpufreq/policy0/scaling_governor "schedutil"
