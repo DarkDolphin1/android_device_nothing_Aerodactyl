@@ -21,6 +21,7 @@
       "Name": "GpuPwrLevel",
       "Path": "/proc/gpufreqv2/fix_target_opp_index",
       "Values": [
+        "-1",
         "0",
         "1",
         "2",
@@ -74,6 +75,7 @@
       "ResetOnInit": true,
       "DefaultIndex": 0,
       "Comments": [
+        "[-1*] normal",
         "[00*] freq: 1300000, volt: 81875, vsram: 81875, posdiv: 1, margin: 8125, power: 1093",
         "[01*] freq: 1250000, volt: 80000, vsram: 80000, posdiv: 1, margin: 8750, power: 1005",
         "[02*] freq: 1200000, volt: 77500, vsram: 77500, posdiv: 1, margin: 10000, power: 909",
@@ -268,6 +270,28 @@
       "ResetOnInit": true
     },
     {
+      "Name": "GpuBaseDvfsMargin",
+      "Path": "/sys/kernel/ged/hal/timer_base_dvfs_margin",
+      "Values": [
+        "30",
+        "50",
+        "18743356"
+      ],
+      "DefaultIndex": 0,
+      "ResetOnInit": true
+    },
+    {
+      "Name": "GpuBaseDvfsStep",
+      "Path": "/sys/kernel/ged/hal/loading_base_dvfs_step",
+      "Values": [
+        "103",
+        "16",
+        "771"
+      ],
+      "DefaultIndex": 0,
+      "ResetOnInit": true
+    },
+    {
       "Name": "PMQoSCpuDmaLatency",
       "Path": "/dev/cpu_dma_latency",
       "Values": [
@@ -290,9 +314,10 @@
       "Name": "UclampTALatency",
       "Path": "/dev/cpuctl/top-app/cpu.uclamp.latency_sensitive",
       "Values": [
-        "1",
-        "0"
+        "0",
+        "1"
       ],
+      "DefaultIndex": 0,
       "ResetOnInit": true
     },
     {
@@ -356,12 +381,6 @@
     },
     {
       "PowerHint": "INTERACTION",
-      "Node": "GpuPwrLevel",
-      "Duration": 1500,
-      "Value": "0"
-    },
-    {
-      "PowerHint": "INTERACTION",
       "Node": "CciFreq",
       "Duration": 1500,
       "Value": "1"
@@ -416,6 +435,18 @@
     },
     {
       "PowerHint": "LAUNCH",
+      "Node": "GpuBaseDvfsMargin",
+      "Duration": 1500,
+      "Value": "18743356"
+    },
+    {
+      "PowerHint": "LAUNCH",
+      "Node": "GpuBaseDvfsStep",
+      "Duration": 1500,
+      "Value": "771"
+    },
+    {
+      "PowerHint": "LAUNCH",
       "Node": "UclampFGMin",
       "Duration": 1500,
       "Value": "30"
@@ -440,9 +471,45 @@
     },
     {
       "PowerHint": "EXPENSIVE_RENDERING",
+      "Node": "MemFreq",
+      "Duration": 0,
+      "Value": "3200000000"
+    },
+    {
+      "PowerHint": "EXPENSIVE_RENDERING",
       "Node": "GpuPwrLevel",
       "Duration": 0,
-      "Value": "0"
+      "Value": "22"
+    },
+    {
+      "PowerHint": "EXPENSIVE_RENDERING",
+      "Node": "CPUSuperClusterMinFreq",
+      "Duration": 0,
+      "Value": "2200000"
+    },
+    {
+      "PowerHint": "EXPENSIVE_RENDERING",
+      "Node": "CPUEfficiencyClusterMinFreq",
+      "Duration": 0,
+      "Value": "1050000"
+    },
+    {
+      "PowerHint": "EXPENSIVE_RENDERING",
+      "Node": "GpuBaseDvfsMargin",
+      "Duration": 0,
+      "Value": "50"
+    },
+    {
+      "PowerHint": "EXPENSIVE_RENDERING",
+      "Node": "GpuBaseDvfsStep",
+      "Duration": 0,
+      "Value": "16"
+    },
+    {
+      "PowerHint": "EXPENSIVE_RENDERING",
+      "Node": "UclampTAMin",
+      "Duration": 0,
+      "Value": "100"
     },
     {
       "PowerHint": "DOUBLE_TAP_TO_WAKE",
