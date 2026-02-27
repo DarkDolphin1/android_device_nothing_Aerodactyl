@@ -7,5 +7,5 @@
           package="com.android.launcher3.overlay.nothing.target">
     <overlay android:targetPackage="com.android.launcher3"
              android:isStatic="true"
-             android:priority="350" />
+             android:priority="200" />
 </manifest>

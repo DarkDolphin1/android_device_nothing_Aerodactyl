@@ -254,16 +254,15 @@ PRODUCT_BOOT_JARS += \
     nt-fwk.Aerodactyl
 
 # Overlays
+$(call inherit-product, hardware/mediatek/overlay/mssi.mk)
+
 PRODUCT_PACKAGES += \
     NothingCarrierConfigResTarget \
     NothingFrameworksResTarget \
     NothingLauncher3ResTarget \
-    NothingNetworkStackResTarget \
     NothingNfcResTarget \
     NothingSettingsResTarget \
-    NothingSystemUIResTarget \
-    NothingTelephonyResTarget \
-    NothingWifiResTarget
+    NothingSystemUIResTarget
 
 PRODUCT_PACKAGES += \
     NcmTetheringOverlay
@@ -302,6 +301,8 @@ PRODUCT_COPY_FILES += \
 include $(LOCAL_PATH)/vendor_logtag.mk
 
 # Radio
+ENABLE_VENDOR_RIL_SERVICE := true
+
 $(call inherit-product, hardware/lineage/compat/frameworks/compat.mk)
 $(call inherit-product, hardware/mediatek/frameworks/mediatek-frameworks.mk)
 

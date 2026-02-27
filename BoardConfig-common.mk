@@ -169,9 +169,6 @@ TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/init/fstab.mt6886
 TARGET_RECOVERY_PIXEL_FORMAT := BGRA_8888
 TARGET_USERIMAGES_USE_F2FS := true
 
-# RIL
-ENABLE_VENDOR_RIL_SERVICE := true
-
 # SEPolicy
 include device/mediatek/sepolicy_vndr/SEPolicy.mk
 
