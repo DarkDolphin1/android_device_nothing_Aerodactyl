@@ -35,6 +35,9 @@ vendor/lib64/libcvsd_mtk.so
 vendor/lib64/libgoodixspeech.so
 vendor/lib64/liblvacfs_wrapper.so
 vendor/lib64/libmsbc_mtk.so
+vendor/lib64/libmtklimiter_vendor.so
+vendor/lib64/libmtkshifter_vendor.so
+vendor/lib64/libmtkspparser.so
 vendor/lib64/libnxp_extamp_intf.so
 vendor/lib64/libnxpsmartpaparser.so
 vendor/lib64/libspeech_enh_lib.so;FIX_SONAME
@@ -798,6 +801,7 @@ vendor/lib64/hw/libSoftGatekeeper.so;SYMLINK=vendor/lib64/hw/gatekeeper.default.
 # GNSS
 vendor/bin/hw/android.hardware.gnss-service.mediatek
 vendor/bin/hw/vendor.mediatek.hardware.gnss.batching-service
+vendor/bin/lbs_hidl_service
 vendor/bin/mnld
 vendor/bin/mtk_agpsd
 vendor/etc/gnss/carrier/agps_profiles_conf2_carrier_ATnT_Mexico.xml
@@ -820,10 +824,12 @@ vendor/etc/init/android.hardware.gnss-service.mediatek.rc
 vendor/etc/init/init.gps_drv.rc
 vendor/etc/init/init.gps_pwr.rc
 vendor/etc/init/init.gps_scp.rc
+vendor/etc/init/lbs_hidl_service.rc
 vendor/etc/init/mtk_agpsd_p.rc
 vendor/etc/init/mtkgnss-batching.rc
 vendor/etc/vintf/manifest/gnss-default.xml:vendor/etc/vintf/manifest/gnss-mtk.xml
 vendor/etc/vintf/manifest/gnss@2.1-service-mediatek.xml
+vendor/etc/vintf/manifest/lbs_hidl_service@1.0.xml
 vendor/etc/vintf/manifest/mtkgnss-batching.xml
 vendor/etc/slp_conf
 vendor/lib64/hw/android.hardware.gnss-impl-mediatek.so
@@ -832,10 +838,12 @@ vendor/lib64/hw/gps.default.so
 vendor/lib64/hw/mtkflp.default.so
 vendor/lib64/hw/mtkgeofence.default.so
 vendor/lib64/mt6886/libDR.so;SYMLINK=vendor/lib64/libDR.so
+vendor/lib64/lbs_hidl_service-impl.so
 vendor/lib64/libapmonitor_vendor.so
 vendor/lib64/librpc.so
 vendor/lib64/libviagpsrpc.so
 vendor/lib64/vendor.mediatek.hardware.apmonitor@2.0.so
+vendor/lib64/vendor.mediatek.hardware.lbs@1.0.so
 vendor/lib64/vendor.mediatek.hardware.gnss.batching-V1-ndk.so
 
 # Graphics (ARM mali)
@@ -893,28 +901,9 @@ system_ext/lib64/vendor.mediatek.hardware.videotelephony-V1-ndk.so
 system_ext/lib64/vendor.mediatek.hardware.videotelephony@1.0.so
 system_ext/priv-app/ImsService/ImsService.apk
 system_ext/priv-app/MtkGbaService/MtkGbaService.apk
-vendor/bin/hw/vendor.mediatek.hardware.mmagent@1.1-service
 vendor/bin/hw/vtservice_hidl
-vendor/bin/lbs_hidl_service
-vendor/bin/volte_clientapi_ua
 vendor/etc/init/init.vtservice_hidl.rc
-vendor/etc/init/lbs_hidl_service.rc
-vendor/etc/init/vendor.mediatek.hardware.mmagent@1.1-service.rc
-vendor/etc/init/volte_clientapi_ua.rc
-vendor/etc/vintf/manifest/lbs_hidl_service@1.0.xml
 vendor/lib64/hw/vendor.mediatek.hardware.videotelephony@1.0-impl.so
-vendor/lib64/mt6886/libmmagent.so;SYMLINK=vendor/lib64/libmmagent.so
-vendor/lib64/lbs_hidl_service-impl.so
-vendor/lib64/libmtklimiter_vendor.so
-vendor/lib64/libmtknetcap.so
-vendor/lib64/libmtknetutils.so
-vendor/lib64/libmtkshifter_vendor.so
-vendor/lib64/libmtkspparser.so
-vendor/lib64/libmtksysutils.so
-vendor/lib64/vendor.mediatek.hardware.clientapi@1.0.so
-vendor/lib64/vendor.mediatek.hardware.lbs@1.0.so
-vendor/lib64/vendor.mediatek.hardware.mmagent@1.0.so
-vendor/lib64/vendor.mediatek.hardware.mmagent@1.1.so
 vendor/lib64/vendor.mediatek.hardware.videotelephony@1.0.so;MODULE_SUFFIX=_vendor
 
 # Keymint
@@ -1037,13 +1026,16 @@ system_ext/lib64/vendor.mediatek.hardware.apuware.xrp-V1-ndk.so
 system_ext/lib64/vendor.mediatek.hardware.apuware.xrp@1.0.so
 system_ext/lib64/vendor.mediatek.hardware.apuware.xrp@2.0.so
 vendor/bin/hw/android.hardware.neuralnetworks-shim-service-mtk
+vendor/bin/hw/vendor.mediatek.hardware.mmagent@1.1-service
 vendor/etc/init/android.hardware.neuralnetworks-shim-service-mtk.rc
+vendor/etc/init/vendor.mediatek.hardware.mmagent@1.1-service.rc
 vendor/etc/vintf/manifest/android.hardware.neuralnetworks-shim-service-mtk.xml
 vendor/etc/vintf/manifest/manifest_apuware_apusys_aidl.xml
 vendor/etc/vintf/manifest/manifest_apuware_utils.xml
 vendor/etc/vintf/manifest/vendor.mediatek.hardware.neuropilot.agent@1.0-service.xml
 vendor/etc/nhw
 vendor/etc/nnapi_powerhal.json
+vendor/lib64/mt6886/libmmagent.so;SYMLINK=vendor/lib64/libmmagent.so
 vendor/lib64/mt6886/libneuralnetworks_sl_driver_mtk_prebuilt.so;SYMLINK=vendor/lib64/libneuralnetworks_sl_driver_mtk_prebuilt.so
 vendor/lib64/mt6886/libneuron_adapter_mgvi.so;SYMLINK=vendor/lib64/libneuron_adapter_mgvi.so
 vendor/lib64/mt6886/libneuron_runtime.6.so;SYMLINK=vendor/lib64/libneuron_runtime.6.so
@@ -1078,6 +1070,8 @@ vendor/lib64/libtranslator_utils.so
 vendor/lib64/libvpu.so
 vendor/lib64/vendor.mediatek.hardware.apuware.apusys-V1-ndk.so
 vendor/lib64/vendor.mediatek.hardware.apuware.utils@2.0.so;MODULE_SUFFIX=_vendor
+vendor/lib64/vendor.mediatek.hardware.mmagent@1.0.so
+vendor/lib64/vendor.mediatek.hardware.mmagent@1.1.so
 vendor/lib64/vendor.mediatek.hardware.neuropilot.agent@1.0.so
 vendor/lib64/vendor.mediatek.hardware.neuropilot.agent@1.1.so
 vendor/lib64/vendor.mediatek.hardware.neuropilot.agent@1.2.so
@@ -1182,9 +1176,12 @@ vendor/lib64/libmtkconfigutils.so
 vendor/lib64/libmtkcutils.so
 vendor/lib64/libmtkhardware_legacy.so
 vendor/lib64/libmtkmipc-ril.so
+vendor/lib64/libmtknetcap.so
+vendor/lib64/libmtknetutils.so
 vendor/lib64/libmtkproperty.so
 vendor/lib64/libmtkrillog.so
 vendor/lib64/libmtkrilutils.so
+vendor/lib64/libmtksysutils.so
 vendor/lib64/libmtktinyxml.so
 vendor/lib64/libmtkutils.so
 vendor/lib64/libratconfig.so
