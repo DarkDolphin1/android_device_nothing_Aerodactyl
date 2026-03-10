@@ -9,6 +9,9 @@ include device/nothing/Aerodactyl/BoardConfig-common.mk
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := PacmanPro
 
+# Kernel
+BOARD_PREBUILT_DTBOIMAGE := $(KERNEL_PATH)/dtbo-PacmanPro.img
+
 # Properties
 TARGET_ODM_PROP += $(DEVICE_PATH)/PacmanPro/odm.prop
 TARGET_SYSTEM_EXT_PROP += $(DEVICE_PATH)/PacmanPro/system_ext.prop
