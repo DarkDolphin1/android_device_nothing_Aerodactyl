@@ -831,6 +831,7 @@ vendor/etc/vintf/manifest/gnss-default.xml:vendor/etc/vintf/manifest/gnss-mtk.xm
 vendor/etc/vintf/manifest/gnss@2.1-service-mediatek.xml
 vendor/etc/vintf/manifest/lbs_hidl_service@1.0.xml
 vendor/etc/vintf/manifest/mtkgnss-batching.xml
+vendor/etc/MNL_Config.xml
 vendor/etc/slp_conf
 vendor/lib64/hw/android.hardware.gnss-impl-mediatek.so
 vendor/lib64/hw/android.hardware.gnss@2.1-impl-mediatek.so
@@ -838,6 +839,7 @@ vendor/lib64/hw/gps.default.so
 vendor/lib64/hw/mtkflp.default.so
 vendor/lib64/hw/mtkgeofence.default.so
 vendor/lib64/mt6886/libDR.so;SYMLINK=vendor/lib64/libDR.so
+vendor/lib64/mt6886/libmnl.so;SYMLINK=vendor/lib64/libmnl.so
 vendor/lib64/lbs_hidl_service-impl.so
 vendor/lib64/libapmonitor_vendor.so
 vendor/lib64/librpc.so
@@ -1140,7 +1142,6 @@ vendor/etc/init/init.cccimdinit.rc
 vendor/etc/init/init.cccirpcd.rc
 vendor/etc/init/mtkrild.rc
 vendor/etc/init/muxreport.rc
-vendor/etc/MNL_Config.xml
 vendor/etc/ecc_list.xml
 vendor/etc/ecc_list_preference.xml
 vendor/etc/smsdbvisitor.xml
@@ -1150,7 +1151,6 @@ vendor/etc/virtual-spn-conf-by-efgid1.xml
 vendor/etc/virtual-spn-conf-by-efpnn.xml
 vendor/etc/virtual-spn-conf-by-efspn.xml
 vendor/etc/virtual-spn-conf-by-imsi.xml
-vendor/lib64/mt6886/libmnl.so;SYMLINK=vendor/lib64/libmnl.so
 vendor/lib64/libcares_naptr.so
 vendor/lib64/libcarrierconfig.so
 vendor/lib64/libccci_util.so
