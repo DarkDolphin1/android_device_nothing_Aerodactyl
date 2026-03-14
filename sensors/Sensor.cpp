@@ -92,7 +92,12 @@ Sensor::Sensor(int32_t sensorHandle, ISensorsEventCallback* callback)
       mSamplingPeriodNs(0),
       mLastSampleTimeNs(0),
       mCallback(callback),
-      mMode(OperationMode::NORMAL) {
+      mMode(OperationMode::NORMAL),
+      mStopThread(false),
+      mEventBatch(1) {
+
+    mEventBatch[0].sensorHandle = sensorHandle;
+
     mSensorInfo.sensorHandle = sensorHandle;
     mSensorInfo.vendor = "The LineageOS Project";
     mSensorInfo.version = 1;
@@ -194,17 +199,12 @@ bool Sensor::isWakeUpSensor() {
 }
 
 std::vector<Event> Sensor::readEvents() {
-    std::vector<Event> events;
-    Event event;
-    event.sensorHandle = mSensorInfo.sensorHandle;
-    event.sensorType = mSensorInfo.type;
-    event.timestamp = ::android::elapsedRealtimeNano();
-    event.u.vec3.x = 0;
-    event.u.vec3.y = 0;
-    event.u.vec3.z = 0;
-    event.u.vec3.status = SensorStatus::ACCURACY_HIGH;
-    events.push_back(event);
-    return events;
+    mEventBatch[0].timestamp = ::android::elapsedRealtimeNano();
+    mEventBatch[0].u.vec3.x = 0;
+    mEventBatch[0].u.vec3.y = 0;
+    mEventBatch[0].u.vec3.z = 0;
+    mEventBatch[0].u.vec3.status = SensorStatus::ACCURACY_HIGH;
+    return mEventBatch;
 }
 
 void Sensor::setOperationMode(OperationMode mode) {
@@ -251,6 +251,8 @@ UdfpsSensor::UdfpsSensor(int32_t sensorHandle, ISensorsEventCallback* callback)
     mSensorInfo.resolution = 1.0f;
     mSensorInfo.power = 0;
     mSensorInfo.flags |= SensorFlagBits::WAKE_UP;
+
+    mEventBatch[0].sensorType = mSensorInfo.type;
 
     int rc;
 
@@ -334,15 +336,11 @@ void UdfpsSensor::run() {
 }
 
 std::vector<Event> UdfpsSensor::readEvents() {
-    std::vector<Event> events;
-    Event event;
-    event.sensorHandle = mSensorInfo.sensorHandle;
-    event.sensorType = mSensorInfo.type;
-    event.timestamp = ::android::elapsedRealtimeNano();
-    event.u.data[0] = mScreenX;
-    event.u.data[1] = mScreenY;
-    events.push_back(event);
-    return events;
+    mEventBatch[0].timestamp = ::android::elapsedRealtimeNano();
+    mEventBatch[0].u.data[0] = mScreenX;
+    mEventBatch[0].u.data[1] = mScreenY;
+
+    return mEventBatch; 
 }
 
 void UdfpsSensor::interruptPoll() {
@@ -362,6 +360,8 @@ SingleTapSensor::SingleTapSensor(int32_t sensorHandle, ISensorsEventCallback* ca
     mSensorInfo.resolution = 1.0f;
     mSensorInfo.power = 0;
     mSensorInfo.flags |= SensorFlagBits::WAKE_UP;
+
+    mEventBatch[0].sensorType = mSensorInfo.type;
 
     int rc;
 
@@ -445,13 +445,8 @@ void SingleTapSensor::run() {
 }
 
 std::vector<Event> SingleTapSensor::readEvents() {
-    std::vector<Event> events;
-    Event event;
-    event.sensorHandle = mSensorInfo.sensorHandle;
-    event.sensorType = mSensorInfo.type;
-    event.timestamp = ::android::elapsedRealtimeNano();
-    events.push_back(event);
-    return events;
+    mEventBatch[0].timestamp = ::android::elapsedRealtimeNano();    
+    return mEventBatch;
 }
 
 void SingleTapSensor::interruptPoll() {

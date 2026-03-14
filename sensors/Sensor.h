@@ -71,6 +71,7 @@ class Sensor {
     int64_t mSamplingPeriodNs;
     int64_t mLastSampleTimeNs;
     SensorInfo mSensorInfo;
+    std::vector<Event> mEventBatch;
 
     std::atomic_bool mStopThread;
     std::condition_variable mWaitCV;
