@@ -52,6 +52,7 @@ BOARD_KERNEL_CMDLINE += initcall_debug=0 loglevel=0 log_buf_len=1024K
 BOARD_KERNEL_CMDLINE += kasan=off
 BOARD_KERNEL_CMDLINE += rcu_nocbs=all rcutree.enable_rcu_lazy
 BOARD_KERNEL_CMDLINE += sysctl.kernel.sched_pelt_multiplier=4
+BOARD_KERNEL_CMDLINE += kasan=off
 
 BOARD_INIT_BOOT_HEADER_VERSION := 4
 
