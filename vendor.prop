@@ -152,6 +152,15 @@ ro.vendor.arm.egl.configs.r16_g16_b16_a16_64bit_float.recordable=false
 
 # dex2oat64
 dalvik.vm.dex2oat64.enabled=true
+dalvik.vm.dex2oat-cpu-set=0,1,2,3
+dalvik.vm.dex2oat-threads=4
+
+dalvik.vm.image-dex2oat-cpu-set=4,5,6,7
+dalvik.vm.image-dex2oat-threads=4
+
+# dex2oat64 in backgroud 
+dalvik.vm.bg-dex2oat-cpu-set=0,1,2,3
+dalvik.vm.bg-dex2oat-threads=4
 
 # Incremental FS
 ro.incremental.enable=yes
