@@ -91,10 +91,11 @@ Sensor::Sensor(int32_t sensorHandle, ISensorsEventCallback* callback)
     : mIsEnabled(false),
       mSamplingPeriodNs(0),
       mLastSampleTimeNs(0),
-      mCallback(callback),
-      mMode(OperationMode::NORMAL),
+      mSensorInfo(),       
+      mEventBatch(1),
       mStopThread(false),
-      mEventBatch(1) {
+      mCallback(callback),
+      mMode(OperationMode::NORMAL) {
 
     mEventBatch[0].sensorHandle = sensorHandle;
 
