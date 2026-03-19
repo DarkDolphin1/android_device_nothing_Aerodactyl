@@ -151,6 +151,9 @@ ro.vendor.arm.egl.configs.r16_g16_b16_a16_64bit_float.framebuffer_target=false
 ro.vendor.arm.egl.configs.r16_g16_b16_a16_64bit_float.hal_format=0x16
 ro.vendor.arm.egl.configs.r16_g16_b16_a16_64bit_float.recordable=false
 
+# dex2oat64
+dalvik.vm.dex2oat64.enabled=true
+
 # Incremental FS
 ro.incremental.enable=yes
 
