@@ -16,7 +16,7 @@ mcupm.img;AB
 md1img.img;AB
 mvpu_algo.img;AB
 pi_img.img;AB
-preloader_raw.img;AB
+preloader_raw.img;AB|06bc5208b087c85e68b328e3485149af53ccf1c3
 scp.img;AB
 spmfw.img;AB
 sspm.img;AB
