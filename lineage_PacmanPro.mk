@@ -18,8 +18,8 @@ PRODUCT_NAME := lineage_PacmanPro
 PRODUCT_GMS_CLIENTID_BASE := android-nothing
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
-    BuildDesc="sys_mssi_64_ww_armv82-user 16 BP2A.250605.031.A3 2511282246 release-keys" \
-    BuildFingerprint=Nothing/PacmanPro/PacmanPro:16/BP2A.250605.031.A3/2511282246:user/release-keys \
+    BuildDesc="sys_mssi_64_ww_armv82-user 16 BP2A.250605.031.A3 2602252039 release-keys" \
+    BuildFingerprint=Nothing/PacmanPro/PacmanPro:16/BP2A.250605.031.A3/2602252039:user/release-keys \
     DeviceName=PacmanPro \
     DeviceProduct=PacmanPro \
     SystemDevice=PacmanPro \
