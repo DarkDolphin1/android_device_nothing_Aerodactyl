@@ -65,11 +65,6 @@ on charger
     write /dev/sys/block/by-name/rootdisk/queue/nr_requests 128
     write /dev/sys/block/by-name/rootdisk/queue/rq_affinity 2
 
-on post-fs
-    # dex2oat settings
-    setprop dalvik.vm.dex2oat-cpu-set 2,3,4,5
-    setprop dalvik.vm.dex2oat-threads 4
-
 on post-fs-data
     # multi-gen LRU
     write /sys/kernel/mm/lru_gen/enabled y
