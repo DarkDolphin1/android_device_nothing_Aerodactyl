@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    SPDX-FileCopyrightText: 2026 The LineageOS Project
+    SPDX-License-Identifier: Apache-2.0
+-->
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:title="@string/dirac_title">
+
+    <com.android.settingslib.widget.MainSwitchPreference
+        android:defaultValue="false"
+        android:key="dirac_enable"
+        android:title="@string/dirac_enable" />
+
+    <ListPreference
+        android:dependency="dirac_enable"
+        android:key="dirac_scenario_pref"
+        android:entries="@array/dirac_scenario_pref_entries"
+        android:entryValues="@array/dirac_scenario_pref_values"
+        android:defaultValue="MUSIC"
+        android:title="@string/dirac_audio_title"
+        app:useSimpleSummaryProvider="true" />
+
+    <ListPreference
+        android:dependency="dirac_enable"
+        android:key="dirac_preset_pref"
+        android:entries="@array/dirac_preset_pref_entries"
+        android:entryValues="@array/dirac_preset_pref_values"
+        android:defaultValue="0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0"
+        android:title="@string/dirac_preset_title"
+        app:useSimpleSummaryProvider="true" />
+
+    <com.android.settingslib.widget.SliderPreference
+        android:dependency="dirac_enable"
+        android:key="dirac_volume_pref"
+        android:title="@string/dirac_preamp_volume_title"
+        android:defaultValue="10"
+        app:min="0"
+        android:max="16"
+        app:showSeekBarValue="true" />
+
+</PreferenceScreen>

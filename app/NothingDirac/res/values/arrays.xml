@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    SPDX-FileCopyrightText: 2026 The LineageOS Project
+    SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- Values for Dirac scenario pref -->
+    <string-array name="dirac_scenario_pref_entries" translatable="false">
+        <item>@string/dirac_scenario_music</item>
+        <item>@string/dirac_scenario_movie</item>
+        <item>@string/dirac_scenario_game</item>
+        <item>@string/dirac_scenario_speech</item>
+    </string-array>
+
+    <string-array name="dirac_scenario_pref_values" translatable="false">
+        <item>MUSIC</item>
+        <item>MOVIE</item>
+        <item>GAME</item>
+        <item>SPEECH</item>
+    </string-array>
+
+    <!-- Values for Dirac preset pref -->
+    <string-array name="dirac_preset_pref_entries" translatable="false">
+        <item>@string/dirac_preset_default</item>
+        <item>@string/dirac_preset_rock</item>
+        <item>@string/dirac_preset_jazz</item>
+        <item>@string/dirac_preset_pop</item>
+        <item>@string/dirac_preset_classical</item>
+        <item>@string/dirac_preset_hiphop</item>
+        <item>@string/dirac_preset_blues</item>
+        <item>@string/dirac_preset_electronic</item>
+        <item>@string/dirac_preset_country</item>
+        <item>@string/dirac_preset_dance</item>
+        <item>@string/dirac_preset_metal</item>
+    </string-array>
+
+    <string-array name="dirac_preset_pref_values" translatable="false">
+        <item>"0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0"</item>
+        <item>"2.0,4.0,-6.0,4.0,0.0,1.0,2.0,0.0,0.0,0.0"</item>
+        <item>"0.0,0.0,0.0,0.0,2.0,4.5,4.5,0.0,0.0,0.0"</item>
+        <item>"0.0,0.0,-2.0,-2.0,2.0,2.0,0.0,0.0,0.0,0.0"</item>
+        <item>"0.0,4.0,2.0,0.0,-2.0,-2.0,4.0,0.0,0.0,0.0"</item>
+        <item>"3.0,3.0,-1.0,0.0,-3.0,0.0,0.0,0.0,0.0,0.0"</item>
+        <item>"3.0,3.0,-3.0,0.0,-3.0,0.0,2.0,0.0,0.0,0.0"</item>
+        <item>"0.0,0.0,0.0,-2.0,-3.0,0.0,0.0,0.0,0.0,0.0"</item>
+        <item>"2.0,0.0,0.0,-2.0,-4.0,0.0,0.0,0.0,0.0,0.0"</item>
+        <item>"0.0,-3.0,-5.0,0.0,0.0,-3.0,0.0,0.0,0.0,0.0"</item>
+        <item>"-4.0,2.0,-2.0,0.0,-2.0,-2.0,-4.0,0.0,0.0,0.0"</item>
+    </string-array>
+</resources>
