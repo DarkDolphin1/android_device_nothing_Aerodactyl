@@ -9,6 +9,12 @@ on init
 
     chown root system /sys/devices/platform/display_id/brightnessid
 
+on post-fs
+    # Audio
+    exec - root -- /system/bin/sleep 1
+    exec - system audio -- /system/bin/tinymix "TFA Calibration" 6209 6448
+    exec - system audio -- /system/bin/tinymix "Ext_Speaker_Amp Switch" 1
+
 on post-fs-data
     # Audio
     mkdir /data/vendor/audio 0777 audioserver audio
