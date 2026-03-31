@@ -178,9 +178,9 @@ BOARD_VENDOR_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/vendor
 
 # Verified Boot
 BOARD_AVB_ENABLE := true
-ifneq ($(filter PacmanPro, $(PRODUCT_DEVICE)),)
-BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --flags 3
-endif
+# ifneq ($(filter PacmanPro, $(PRODUCT_DEVICE)),)
+# BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --flags 3
+# endif
 BOARD_MOVE_GSI_AVB_KEYS_TO_VENDOR_BOOT := true
 
 BOARD_AVB_ALGORITHM := SHA256_RSA2048
