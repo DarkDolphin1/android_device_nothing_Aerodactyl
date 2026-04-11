@@ -24,3 +24,42 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     DeviceProduct=PacmanPro \
     SystemDevice=PacmanPro \
     SystemName=PacmanPro
+
+# Use blur 
+TARGET_ENABLE_BLUR := true 
+
+# AX-FX instead of dolby or viper 
+TARGET_INCLUDE_AXFX := true
+
+# Camera information 
+AXION_CAMERA_REAR_INFO := 50,50
+AXION_CAMERA_FRONT_INFO := 50
+
+# Maintainer name (underscores become spaces in the UI)
+AXION_MAINTAINER := Shravan 
+
+# Processor name (underscores become spaces)
+AXION_PROCESSOR := Mediatek_Dimensity_7350_Pro 
+
+BYPASS_CHARGE_SUPPORTED ?= false
+
+# CPU governor support
+PERF_GOV_SUPPORTED := true 
+PERF_DEFAULT_GOV := schedutil
+PERF_ANIM_OVERRIDE := true 
+
+# GPU
+GPU_FREQS_PATH := /sys/devices/platform/28000000.mali/available_frequencies
+GPU_MIN_FREQ_PATH := /sys/devices/platform/28000000.mali/hint_min_freq
+
+# High Brightness Mode (HBM)
+HBM_SUPPORTED := true 
+
+# Flashlight strength
+TORCH_STR_SUPPORTED := true 
+
+# doze fix
+# for devices with doze/sensor related issues 
+TARGET_NEEDS_DOZE_FIX := true
+
+TARGET_INCLUDES_LOS_PREBUILTS := false
