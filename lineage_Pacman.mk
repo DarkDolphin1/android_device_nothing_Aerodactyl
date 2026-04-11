@@ -49,8 +49,8 @@ PERF_DEFAULT_GOV := schedutil
 PERF_ANIM_OVERRIDE := true 
 
 # GPU
-GPU_FREQS_PATH := /sys/devices/platform/28000000.mali/available_frequencies
-GPU_MIN_FREQ_PATH := /sys/devices/platform/28000000.mali/hint_min_freq
+GPU_FREQS_PATH := /sys/devices/platform/soc/13000000.mali/devfreq/13000000.mali/available_frequencies
+GPU_MIN_FREQ_PATH := /sys/devices/platform/soc/13000000.mali/devfreq/13000000.mali/min_freq
 
 # High Brightness Mode (HBM)
 HBM_SUPPORTED := true 
