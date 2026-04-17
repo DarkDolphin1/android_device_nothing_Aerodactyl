@@ -329,6 +329,12 @@ PRODUCT_COPY_FILES += \
 PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 
+# GPU
+GPU_OPP_INDEX_PATH := /proc/gpufreqv2/fix_target_opp_index
+GPU_OPP_TABLE_PATH := /proc/gpufreqv2/gpu_working_opp_table
+
+TARGET_DISABLES_LIBPERF := true
+
 # Security
 BOOT_SECURITY_PATCH := 2025-10-05
 INIT_BOOT_SECURITY_PATCH := $(BOOT_SECURITY_PATCH)
