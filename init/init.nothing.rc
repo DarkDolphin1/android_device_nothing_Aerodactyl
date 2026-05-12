@@ -240,16 +240,6 @@ on property:sys.boot_completed=1 && property:ro.boot.atm=enable && property:vend
     chown system system /mnt/vendor/persist/attestation_ids.so
     setprop vendor.attest.ids.chown done
 
-# Audio
-on property:persist.sys.dirac.enable=*
-    setprop persist.vendor.newdirac.enable.value ${persist.sys.dirac.enable}
-
-on property:persist.sys.dirac.scenario=*
-    setprop persist.vendor.newdirac.cur.config ${persist.sys.dirac.scenario}
-
-on property:persist.sys.dirac.volume=*
-    setprop persist.vendor.newdirac.volume.value ${persist.sys.dirac.volume}
-
 # Display
 on property:sys.touch.pocket_mode=*
     write /sys/devices/platform/soc/11013000.spi3/spi_master/spi3/spi3.0/fts_pocket_mode ${sys.touch.pocket_mode}
