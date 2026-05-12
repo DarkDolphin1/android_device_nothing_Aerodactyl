@@ -44,19 +44,19 @@ AXION_PROCESSOR := Mediatek_Dimensity_7200_Pro
 BYPASS_CHARGE_SUPPORTED ?= false
 
 # CPU governor support
-PERF_GOV_SUPPORTED := true 
+PERF_GOV_SUPPORTED := true
 PERF_DEFAULT_GOV := schedutil
-PERF_ANIM_OVERRIDE := true 
+PERF_ANIM_OVERRIDE := false
 
 # GPU
 GPU_FREQS_PATH := /sys/devices/platform/soc/13000000.mali/devfreq/13000000.mali/available_frequencies
 GPU_MIN_FREQ_PATH := /sys/devices/platform/soc/13000000.mali/devfreq/13000000.mali/min_freq
 
 # High Brightness Mode (HBM)
-HBM_SUPPORTED := true 
+HBM_SUPPORTED := true
 
 # Flashlight strength
-TORCH_STR_SUPPORTED := true 
+TORCH_STR_SUPPORTED := true
 
 # doze fix
 # for devices with doze/sensor related issues 
