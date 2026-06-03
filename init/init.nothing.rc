@@ -266,6 +266,17 @@ on boot
     chown system system /dev/cpu_dma_latency
     chmod 0664 /dev/cpu_dma_latency
 
+    chown system system /sys/devices/system/cpu/cpufreq/policy0/scaling_min_freq
+    chmod 0664 /sys/devices/system/cpu/cpufreq/policy0/scaling_min_freq
+    chown system system /sys/devices/system/cpu/cpufreq/policy0/scaling_max_freq
+    chmod 0664 /sys/devices/system/cpu/cpufreq/policy0/scaling_max_freq
+    chown system system /sys/devices/system/cpu/cpufreq/policy6/scaling_min_freq
+    chmod 0664 /sys/devices/system/cpu/cpufreq/policy6/scaling_min_freq
+    chown system system /sys/devices/system/cpu/cpufreq/policy6/scaling_max_freq
+    chmod 0664 /sys/devices/system/cpu/cpufreq/policy6/scaling_max_freq
+    chown system system /sys/module/task_turbo/parameters/feats
+    chmod 0664 /sys/module/task_turbo/parameters/feats
+
     # WiFi
     setprop ro.boot.wificountrycode 00
 
