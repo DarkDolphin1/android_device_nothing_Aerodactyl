@@ -59,8 +59,7 @@ PRODUCT_PACKAGES += \
     audio.primary.default \
     audio.bluetooth.default \
     audio.r_submix.default \
-    audio.usb.default \
-    tinymix
+    audio.usb.default
 
 PRODUCT_PACKAGES += \
     MtkInCallService
