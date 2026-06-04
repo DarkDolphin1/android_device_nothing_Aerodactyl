@@ -300,7 +300,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/power/powerhint.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.json
 
 # Properties
-include $(LOCAL_PATH)/vendor_logtag.mk
+include hardware/mediatek/configs/properties/vendor_logtag.mk
 
 # Radio
 ENABLE_VENDOR_RIL_SERVICE := true
