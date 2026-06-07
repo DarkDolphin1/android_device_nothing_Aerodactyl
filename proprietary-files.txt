@@ -64,6 +64,8 @@ vendor/etc/aurisys_config_rv.xml
 vendor/etc/audio_device.xml
 
 # Audio (Dirac)
+system/etc/sysconfig/preinstalled-packages-audioeffect.xml
+system/priv-app/NothingAudioEffectService/NothingAudioEffectService.apk
 vendor/etc/dirac/dirac_resource.dar
 vendor/etc/dirac/interface.json
 vendor/lib64/soundfx/libdiraceffect_NT.so
