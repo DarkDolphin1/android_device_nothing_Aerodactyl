@@ -39,6 +39,7 @@ SensorsSubHal::SensorsSubHal() : mCallback(nullptr), mNextHandle(1) {
 
 Return<void> SensorsSubHal::getSensorsList_2_1(ISensors::getSensorsList_2_1_cb _hidl_cb) {
     std::vector<SensorInfo> sensors;
+    sensors.reserve(mSensors.size()); 
     for (const auto& sensor : mSensors) {
         sensors.push_back(sensor.second->getSensorInfo());
     }
