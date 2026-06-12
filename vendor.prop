@@ -300,6 +300,10 @@ ro.vendor.sim_me_lock_mode=3
 telephony.active_modems.max_count=2
 vendor.connsys.driver.ready=no
 
+
+# Silence WindowRootViewBinder
+log.tag.WindowRootViewBinder=ERROR
+
 # Sensors
 ro.vendor.mtk.sensor.support=yes
 persist.vendor.sensors.debug.hal=0
