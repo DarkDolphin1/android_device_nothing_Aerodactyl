@@ -2,3 +2,6 @@ allow system_server sysfs_devices_system_cpu:dir search;
 allow system_server sysfs_devices_system_cpu:file rw_file_perms;
 allow system_server sysfs_task_turbo:dir search;
 allow system_server sysfs_task_turbo:file rw_file_perms;
+allow system_server sysfs_dvfsrc_devfreq:file rw_file_perms;
+allow system_server sysfs_ged:file rw_file_perms;
+allow system_server cpu_dma_latency_device:chr_file { open read };
