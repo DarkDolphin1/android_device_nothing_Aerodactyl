@@ -85,6 +85,7 @@ debug.sf.region_sampling_timer_timeout_ns=99999984
 debug.sf.treat_170m_as_sRGB=1
 persist.sys.sf.native_mode=260
 persist.sys.sf.dynamic_duration.switch=1
+persist.sys.sf.dynamic_duration.extra_buffers=3
 persist.sys.sf.dynamic_duration.sf.late=14600000
 persist.sys.sf.dynamic_duration.app.late=18000000
 persist.sys.sf.dynamic_duration.sf.early=14600000
