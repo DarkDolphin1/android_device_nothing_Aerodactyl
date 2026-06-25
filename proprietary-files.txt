@@ -707,6 +707,7 @@ vendor/etc/init/init.conninfra.rc
 vendor/firmware/conninfra.cfg
 
 # Display
+vendor/lib64/android.frameworks.displayservice@1.0.so
 vendor/bin/hw/android.hardware.graphics.composer@3.1-service
 vendor/etc/displayconfig/display_id_4627039422300187648.xml
 vendor/etc/init/android.hardware.graphics.composer@3.1-service.rc
