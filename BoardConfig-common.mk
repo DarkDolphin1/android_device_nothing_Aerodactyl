@@ -240,3 +240,7 @@ WIFI_FEATURE_SUPPLICANT_11AX := true
 
 # Inherit the proprietary files
 include vendor/nothing/Aerodactyl/BoardConfigVendor.mk
+
+
+# Ignore overriding commands errors
+BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
