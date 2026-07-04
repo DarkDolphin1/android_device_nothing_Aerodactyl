@@ -25,6 +25,8 @@ ro.bluetooth.a2dp_offload.supported=true
 ro.vendor.bt.connac3=no
 ro.vendor.bt.platform=6886
 persist.bluetooth.a2dp_offload.disabled=false
+persist.vendor.audio.leaudio_sw_offload=true
+persist.vendor.bluetooth.leaudio_mode=ums-cg
 
 # Bootloader
 ro.oem_unlock_supported=1
