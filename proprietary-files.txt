@@ -696,10 +696,6 @@ vendor/bin/crossbuild/DataSet/SQLiteModule/db/tuning_DB_aov/default_sensor/mt688
 vendor/bin/crossbuild/DataSet/SQLiteModule/db/tuning_DB_aov/mt6886/ISP_info.db;SYMLINK=vendor/bin/crossbuild/DataSet/SQLiteModule/db/tuning_DB_aov/ISP_info.db;MAKE_COPY_RULE_ONLY
 vendor/bin/crossbuild/DataSet/SQLiteModule/db/port_select.db;MAKE_COPY_RULE_ONLY
 
-# Chipset info
-vendor/bin/chipinfo
-vendor/etc/init/chipinfo_init.rc
-
 # Connectivity
 vendor/bin/conninfra_loader
 vendor/etc/init/init.connfem.rc
