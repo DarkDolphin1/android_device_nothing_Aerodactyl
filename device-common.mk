@@ -365,7 +365,6 @@ PRODUCT_SOONG_NAMESPACES += \
     hardware/mediatek \
     hardware/mediatek/libion_mtk \
     hardware/mediatek/libmtkperf_client \
-    hardware/mediatek/wlan/wifi_hal
 
 # Task Profiles
 PRODUCT_COPY_FILES += \
@@ -403,10 +402,15 @@ PRODUCT_PACKAGES += \
     vndservicemanager
 
 # Wifi
+$(call soong_config_set_bool,mediatek_wifi_hal,use_pre_u_qpr2_struct,true)
+
 PRODUCT_PACKAGES += \
     wpa_supplicant \
     hostapd \
     android.hardware.wifi-service
+
+PRODUCT_PACKAGES += \
+    libwifi-hal-wrapper
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.wifi.aware.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.wifi.aware.xml \
