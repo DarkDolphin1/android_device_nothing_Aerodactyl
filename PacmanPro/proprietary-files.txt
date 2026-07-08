@@ -1,5 +1,5 @@
 # All proprietary files from this list, unless pinned and noted otherwise,
-# are from Nothing Phone (2a) Plus (PacmanPro-B4.0-260225-2039).
+# are from Nothing Phone (2a) Plus (PacmanPro-B4.0-260609-1926).
 
 # Trusted Execution Environment (TEE)
 vendor/app/mcRegistry/020f0000000000000000000000000000.drbin

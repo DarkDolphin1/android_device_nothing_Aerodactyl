@@ -204,9 +204,9 @@ ro.vendor.mtk_nn_quant_preferred=1
 ro.vendor.mtk_nn.option=A,B,C,D,E,F,G,Z
 
 # NTF
-ro.vendor.nothing.feature.base=0x1004458438124a040126b4247b97ffL
-ro.vendor.nothing.feature.diff.device.Pacman=0x10000002891493f4d00258c42080L
-ro.vendor.nothing.feature.diff.device.PacmanPro=0x289b493f4d00258c42080L
+ro.vendor.nothing.feature.base=0xe24800001004458438124a040106b4247b97ffL
+ro.vendor.nothing.feature.diff.device.Pacman=0x20000000002891493f4f00258c42080L
+ro.vendor.nothing.feature.diff.device.PacmanPro=0x2000000000289b493f4f00258c42080L
 
 # Picture Quality
 persist.vendor.sys.pq.disp.ccorr.silky.brightness=0
