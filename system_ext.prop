@@ -27,9 +27,9 @@ media.stagefright.thumbnail.prefer_hw_codecs=true
 persist.nfc_vendor_extn.lib_file_name=libnfc_vendor_extn_st.so
 
 # NTF
-ro.build.nothing.feature.base=0x800001004458438124a040106b4247b97ffL
-ro.build.nothing.feature.diff.device.Pacman=0x240304400040128d3493f4d00250c42080L
-ro.build.nothing.feature.diff.device.PacmanPro=0x40304400040128db493f4d00250c42080L
+ro.build.nothing.feature.base=0xe24800001004458438124a040106b4247b97ffL
+ro.build.nothing.feature.diff.device.Pacman=0x2400200304400040128d3493f4d00250c42080L
+ro.build.nothing.feature.diff.device.PacmanPro=0x2400000304400040128db493f4d00250c42080L
 ro.build.nothing.feature.diff.product.PacmanEEA=0x8000000000000000000000L
 ro.build.nothing.feature.diff.product.PacmanIND=0x10000000000000000000000L
 ro.build.nothing.feature.diff.product.PacmanJPN=0x20000000000000000000000L
