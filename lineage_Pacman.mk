@@ -7,13 +7,13 @@
 $(call inherit-product, device/nothing/Aerodactyl/device-Pacman.mk)
 
 # Inherit from the LineageOS configuration.
-$(call inherit-product, vendor/voltage/config/common_full_phone.mk)
+$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
 PRODUCT_BRAND := Nothing
 PRODUCT_DEVICE := Pacman
 PRODUCT_MANUFACTURER := Nothing
 PRODUCT_MODEL := A142
-PRODUCT_NAME := voltage_Pacman
+PRODUCT_NAME := lineage_Pacman
 
 PRODUCT_GMS_CLIENTID_BASE := android-nothing
 
