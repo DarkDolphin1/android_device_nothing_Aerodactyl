@@ -287,7 +287,6 @@ PRODUCT_PACKAGES += \
 
 # Power
 PRODUCT_PACKAGES += \
-    android.hardware.power-service.pixel-libperfmgr \
     vendor.mediatek.hardware.mtkpower@1.2-service.stub
 
 PRODUCT_PACKAGES += \
