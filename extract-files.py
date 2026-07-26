@@ -118,8 +118,6 @@ blob_fixups: blob_fixups_user_type = {
         .replace_needed('libcodec2_vndk.so', 'libcodec2_vndk-v33.so')
         .replace_needed('libui.so', 'libui-v34.so')
         .add_needed('libbase_shim.so'),
-    ('vendor/lib64/libcodec2_mtk_vdec.so', 'vendor/lib64/libcodec2_mtk_venc.so'): blob_fixup()
-        .replace_needed('libformatter.so', 'libformatter-v33.so'),
     'vendor/lib64/libcodec2_hidl@1.2-v33.so': blob_fixup()
         .replace_needed('libstagefright_bufferqueue_helper.so', 'libstagefright_bufferqueue_helper-bp2a.so')
         .replace_needed('libcodec2_hidl@1.0.so', 'libcodec2_hidl@1.0-v33.so')
@@ -138,6 +136,7 @@ blob_fixups: blob_fixups_user_type = {
     ): blob_fixup()
         .replace_needed('libcodec2_soft_common.so', 'libcodec2_soft_common-v33.so')
         .replace_needed('libcodec2_vndk.so', 'libcodec2_vndk-v33.so')
+        .replace_needed('libformatter.so', 'libformatter-v33.so')
         .replace_needed('libstagefright_foundation.so', 'libstagefright_foundation-v33.so')
         .replace_needed('libsfplugin_ccodec_utils.so', 'libsfplugin_ccodec_utils-v33.so'),
     (
@@ -146,6 +145,7 @@ blob_fixups: blob_fixups_user_type = {
     ): blob_fixup()
         .replace_needed('libcodec2_soft_common.so', 'libcodec2_soft_common-v33.so')
         .replace_needed('libcodec2_vndk.so', 'libcodec2_vndk-v33.so')
+        .replace_needed('libformatter.so', 'libformatter-v33.so')
         .replace_needed('libstagefright_foundation.so', 'libstagefright_foundation-v33.so')
         .replace_needed('libsfplugin_ccodec_utils.so', 'libsfplugin_ccodec_utils-v33.so')
         .replace_needed('libui.so', 'libui-v34.so'),
