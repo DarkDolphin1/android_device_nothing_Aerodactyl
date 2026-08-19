@@ -109,6 +109,8 @@ PRODUCT_COPY_FILES += \
 PRODUCT_CHARACTERISTICS := nosdcard
 
 # Display
+$(call soong_config_set_bool,surfaceflinger,register_displayservice,true)
+
 PRODUCT_PACKAGES += \
     android.hardware.memtrack-service.mediatek
 
