@@ -417,7 +417,8 @@ $(call soong_config_set_bool,mediatek_wifi_hal,use_pre_u_qpr2_struct,true)
 PRODUCT_PACKAGES += \
     wpa_supplicant \
     hostapd \
-    android.hardware.wifi-service
+    android.hardware.wifi-service \
+    wlan_assistant
 
 PRODUCT_PACKAGES += \
     libwifi-hal-wrapper
