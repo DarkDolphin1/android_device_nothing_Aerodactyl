@@ -1,10 +1,6 @@
 # All proprietary files from this list, unless pinned and noted otherwise,
 # are from Nothing Phone (2a) (Pacman-B4.1-260813-0941).
 
-# AEE
-vendor/lib64/libaedv.so
-vendor/lib64/libladder.so
-
 # Audio
 vendor/etc/AudioLog_dynamic.xml
 vendor/lib64/hw/android.hardware.audio@7.1-impl-mediatek.so
@@ -756,7 +752,6 @@ vendor/lib64/libpqtuning.so
 vendor/lib64/libpqxmlparser.so
 vendor/lib64/librgbwlightsensor.so
 vendor/lib64/libscltm.so
-vendor/lib64/libudf.so
 vendor/lib64/vendor.mediatek.hardware.mmlpq-V2-ndk.so
 vendor/lib64/vendor.mediatek.hardware.pq@2.0.so
 vendor/lib64/vendor.mediatek.hardware.pq@2.1.so
