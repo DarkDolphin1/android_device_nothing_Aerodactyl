@@ -65,6 +65,10 @@ blob_fixups: blob_fixups_user_type = {
         .regex_replace('<transitionPoint>0.6</transitionPoint>', '<transitionPoint>0.9221</transitionPoint>'),
     'vendor/etc/vintf/manifest/manifest_media_c2_V1_2_default.xml': blob_fixup()
         .regex_replace('1.1', '1.2'),
+    'vendor/etc/wifi/p2p_supplicant_overlay.conf': blob_fixup()
+        .add_line_if_missing('p2p_go_vht=1'),
+    'vendor/etc/wifi/wpa_supplicant.conf': blob_fixup()
+        .add_line_if_missing('rsn_overriding=1'),
     (
         'vendor/etc/libnfc-hal-st.conf',
         'vendor/etc/libnfc-hal-st-st54j.conf'
