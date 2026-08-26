@@ -67,6 +67,7 @@ ro.crypto.volume.options=aes-256-xts:aes-256-hctr2
 debug.graphics.game_default_frame_rate.disabled=true
 debug.mediatek.disp_decompress=1
 debug.renderengine.backend=skiavk
+debug.renderengine.blur_algorithm=kawase2
 debug.hwui.renderer=skiavk
 debug.sf.auto_latch_unsignaled=1
 debug.sf.enable_gl_backpressure=1
