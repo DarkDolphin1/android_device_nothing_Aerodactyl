@@ -285,8 +285,7 @@ PRODUCT_NO_BIONIC_PAGE_SIZE_MACRO := true
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
 PRODUCT_PACKAGES += \
-    android.hardware.fastboot-service.example_recovery \
-    fastbootd
+    android.hardware.fastboot-service.example_recovery
 
 # Power
 PRODUCT_PACKAGES += \
