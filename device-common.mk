@@ -128,6 +128,9 @@ PRODUCT_COPY_FILES += \
 # Dolby Atmos
 $(call inherit-product, hardware/dolby/dolby.mk)
 
+PRODUCT_PACKAGES += \
+    DolbyAtmos
+
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/audio/dax-default.xml:$(TARGET_COPY_OUT_VENDOR)/etc/dolby/dax-default.xml
 
