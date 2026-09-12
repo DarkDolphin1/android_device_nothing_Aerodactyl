@@ -96,6 +96,12 @@
         <!--DOLBY VQE-->
         <effect name="vqe" library="vqe" uuid="64a0f614-7fa4-48b8-b081-d59dc954616f"/>
         <!--DOLBY END-->
+        <!--Spatial Audio-->
+        <effect name="dolby_spatial_audio" library="dolby_spatial_audio" uuid="cc4677de-ff72-11eb-9a03-0242ac130003"/>
+        <!--Spatial Audio-->
+        <!--DOLBY SPATIALIZER-->
+        <effect name="dolby_spatializer" library="dolby_spatializer" uuid="cc4677de-ff72-11eb-9a03-0242ac130003"/>
+        <!--DOLBY END-->
         
         <!-- add for dirac support -->
         <effect name="dirac" library="dirac" uuid="ae737c63-f2c0-5457-909e-1e940c91b67b"/>
@@ -140,5 +146,26 @@
             </stream>
         </postprocess>
     -->
+        <postprocess>
+                <stream type="music">
+                    <apply effect="dlb_music_listener"/>
+                </stream>
+
+                <stream type="ring">
+                    <apply effect="dlb_ring_listener"/>
+                </stream>
+
+                <stream type="alarm">
+                    <apply effect="dlb_alarm_listener"/>
+                </stream>
+
+                <stream type="voice_call">
+                    <apply effect="dlb_voice_call_listener"/>
+                </stream>
+
+                <stream type="notification">
+                    <apply effect="dlb_notification_listener"/>
+                </stream>
+        </postprocess>
 
 </audio_effects_conf>

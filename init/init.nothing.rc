@@ -53,6 +53,10 @@ on post-fs-data
     chown system system /sys/devices/platform/soc/11013000.spi3/spi_master/spi3/spi3.0/fts_gesture_point
     chown system system /sys/devices/platform/soc/11013000.spi3/spi_master/spi3/spi3.0/fts_pocket_mode
 
+    # Dolby
+    mkdir /data/vendor/dolby 0770 media media
+    mkdir /data/vendor/multimedia 0775 system system
+
     # Fingerprint
     mkdir /data/vendor/goodix/
 
