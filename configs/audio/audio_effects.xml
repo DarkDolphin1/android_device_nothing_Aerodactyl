@@ -24,9 +24,6 @@
         <library name="haptic_generator" path="libhapticgenerator.so"/>
         <library name="pre_processing" path="libaudiopreprocessing.so"/>
         <library name="spatializer" path="libspatializer.so"/>
-        <!-- add for dirac support -->
-        <library name="dirac" path="libdiraceffect_NT.so"/>
-        <!-- add for dirac support -->
         
         <!--DOLBY DAP-->
         <library name="dap" path="libswdap.so"/>
@@ -103,9 +100,6 @@
         <effect name="dolby_spatializer" library="dolby_spatializer" uuid="cc4677de-ff72-11eb-9a03-0242ac130003"/>
         <!--DOLBY END-->
         
-        <!-- add for dirac support -->
-        <effect name="dirac" library="dirac" uuid="ae737c63-f2c0-5457-909e-1e940c91b67b"/>
-        <!-- add for dirac support -->
     </effects>
 
     <!-- Audio pre processor configurations.

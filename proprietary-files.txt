@@ -59,12 +59,6 @@ vendor/etc/aurisys_config_rv.xml
 # Audio (Device)
 vendor/etc/audio_device.xml
 
-# Audio (Dirac)
-vendor/etc/dirac/dirac_resource.dar
-vendor/etc/dirac/interface.json
-vendor/lib64/soundfx/libdiraceffect_NT.so
-vendor/lib64/libdirac.so
-
 # Audio (Hotword enrollment)
 product/priv-app/HotwordEnrollmentOKGoogleHEXAGON/HotwordEnrollmentOKGoogleHEXAGON.apk
 product/priv-app/HotwordEnrollmentXGoogleHEXAGON/HotwordEnrollmentXGoogleHEXAGON.apk
