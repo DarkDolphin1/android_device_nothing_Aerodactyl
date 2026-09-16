@@ -18,3 +18,5 @@ PRODUCT_COPY_FILES += \
 $(call inherit-product, vendor/nothing/PacmanPro/PacmanPro-vendor.mk)
 
 PERF_ANIM_OVERRIDE := true
+
+TARGET_HAS_UDFPS := true
