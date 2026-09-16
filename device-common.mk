@@ -169,7 +169,7 @@ PRODUCT_PACKAGES += \
     android.hardware.health-service.mediatek \
     android.hardware.health-service.mediatek-recovery
 
-$(call soong_config_set,lineage_health,charging_control_charging_path,/proc/charger/usb_charger_en)
+$(call soong_config_set,lineage_health,charging_control_charging_path,/proc/charger/charging_enabled)
 
 PRODUCT_PACKAGES += \
     vendor.lineage.health-service.default
