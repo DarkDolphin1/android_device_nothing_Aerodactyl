@@ -20,3 +20,6 @@ $(call inherit-product, vendor/nothing/Pacman/Pacman-vendor.mk)
 PERF_ANIM_OVERRIDE := true
 
 TARGET_HAS_UDFPS := true
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/Pacman/powerhint.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.json
