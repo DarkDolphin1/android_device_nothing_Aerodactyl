@@ -812,7 +812,7 @@ vendor/etc/slp_conf
 # GNSS - from ansuz 91-volla-16.0
 vendor/bin/hw/android.hardware.gnss-service.mediatek|725a565ca52962286712ffc872665a6160faa734
 vendor/bin/hw/vendor.mediatek.hardware.gnss-service|4f2f4af2f68b648f14c998555cf3a008628dc1c4
-vendor/bin/mnld|030161df02f7ef39139cb9b2be1d2b4b2b531f37
+vendor/bin/mnld|030161df02f7ef39139cb9b2be1d2b4b2b531f37|0e863cf42e909c4b5b52d23c036c03b1c5c9b6ab
 vendor/bin/mtk_agpsd|23d84d41730ca2c995d608a39d21ed2a40a3f30a
 vendor/bin/mtk_lbs_service|f8f0aee839fd51fc5005f9679d4a9469b7e4a689
 vendor/etc/init/android.hardware.gnss-service.mediatek.rc|d9d7daeb61307a24adf968e9af98dc3bbdfe7ce9
@@ -830,7 +830,7 @@ vendor/lib64/hw/mtkgeofence.default.so|fcd9e51b260c6e0b30190e5239ece6e45cc4f850
 vendor/lib64/hw/vendor.mediatek.hardware.gnss-impl.so|b1843c501a07f1bf3b3faaffe5ffdd7026afb975
 vendor/lib64/hw/vendor.mediatek.hardware.gnss.batching-impl.so|6d152920e0f1d38b7989629a6595c6f9b9854416
 vendor/lib64/mt6878/libDR.so:vendor/lib64/mt6886/libDR.so;SYMLINK=vendor/lib64/libDR.so|ecc04cd0a704938b6b31b12bb50d9452e24ab493
-vendor/lib64/mt6878/libmnl.so:vendor/lib64/mt6886/libmnl.so;SYMLINK=vendor/lib64/libmnl.so|b326b6bf99d812090d047b24cb078bb7d8ca44e4
+vendor/lib64/mt6878/libmnl.so:vendor/lib64/mt6886/libmnl_mtk.so;FIX_SONAME;SYMLINK=vendor/lib64/libmnl_mtk.so|b326b6bf99d812090d047b24cb078bb7d8ca44e4|325e53172bc6dd376363d2671e818a90b9f449a0
 vendor/lib64/libapmonitor_vendor.so|1a5ff2416bde9abd845dabc9c7b2e944cb9b0a8b
 vendor/lib64/mtk_lbs_service-impl.so|4a6a1a7dc2ec7799d20ce03e680f4df245d8cf34
 vendor/lib64/vendor.mediatek.hardware.apmonitor-V1-ndk.so|4dd3de14a68cdc7115cc0a7f99fd9892927c76bb
