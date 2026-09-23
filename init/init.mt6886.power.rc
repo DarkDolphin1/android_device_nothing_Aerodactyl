@@ -73,6 +73,8 @@ on post-fs
 on post-fs-data
     # multi-gen LRU
     write /sys/kernel/mm/lru_gen/enabled y
+    # Disable f2fs iostats
+    write /dev/sys/fs/by-name/userdata/iostat_enable 0
 
     # zram
     write /sys/block/zram0/comp_algorithm lz4
