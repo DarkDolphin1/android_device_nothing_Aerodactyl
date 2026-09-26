@@ -79,6 +79,8 @@ blob_fixups: blob_fixups_user_type = {
         .replace_needed('libtinyxml2.so', 'libtinyxml2-v34.so')
         .binary_regex_replace(b'A2dpsuspendonly', b'A2dpSuspended\x00\x00')
         .binary_regex_replace(b'BTAudiosuspend', b'A2dpSuspended\x00'),
+    'vendor/lib64/hw/android.hardware.audio@7.1-impl-mediatek.so': blob_fixup()
+        .replace_needed('android.hardware.audio@7.1-util.so', 'android.hardware.audio@7.1-util-v33.so'),
     'vendor/lib64/hw/hwcomposer.mtk_common.so': blob_fixup()
         .add_needed('libprocessgroup_shim.so'),
     'vendor/lib64/hw/sensors.mediatek.V2.0.so': blob_fixup()
