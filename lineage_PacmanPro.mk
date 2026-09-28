@@ -24,3 +24,6 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     DeviceProduct=PacmanPro \
     SystemDevice=PacmanPro \
     SystemName=PacmanPro
+
+# AxionFx
+$(call inherit-product, packages/apps/AxionFx/config.mk)

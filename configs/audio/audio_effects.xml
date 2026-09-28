@@ -27,6 +27,9 @@
         <!-- add for dirac support -->
         <library name="dirac" path="libdiraceffect_NT.so"/>
         <!-- add for dirac support -->
+        <!-- add for AxionFx support -->
+        <library name="axfx" path="libaxionfx_legacy.so"/>
+        <!-- add for AxionFx support -->
     </libraries>
 
     <!-- list of effects to load.
@@ -72,6 +75,9 @@
         <!-- add for dirac support -->
         <effect name="dirac" library="dirac" uuid="ae737c63-f2c0-5457-909e-1e940c91b67b"/>
         <!-- add for dirac support -->
+        <!-- add for AxionFx support -->
+        <effect name="axionfx" library="axfx" uuid="f35cb927-a887-4f3d-847f-770634486d53" />
+        <!-- add for AxionFx support -->
     </effects>
 
     <!-- Audio pre processor configurations.
