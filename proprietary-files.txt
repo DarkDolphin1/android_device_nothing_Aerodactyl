@@ -774,7 +774,6 @@ vendor/lib64/vendor.mediatek.hardware.pq_aidl-V1-ndk.so
 vendor/bin/hw/android.hardware.biometrics.face-service.noth
 vendor/etc/init/android.hardware.biometrics.face-service.noth.rc
 vendor/etc/vintf/manifest/android.hardware.biometrics.face-service.noth.xml
-vendor/etc/license.lic
 vendor/lib64/libcamera2ndk_vendor.so:vendor/lib64/libcamera2ndk_vendor-v33.so;FIX_SONAME
 vendor/lib64/libstfaceunlockppl.so
 
