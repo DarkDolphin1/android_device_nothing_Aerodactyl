@@ -75,6 +75,8 @@ blob_fixups: blob_fixups_user_type = {
         .replace_needed('libcodec2_hidl@1.1.so', 'libcodec2_hidl@1.1-v33.so')
         .replace_needed('libcodec2_hidl@1.2.so', 'libcodec2_hidl@1.2-v33.so')
         .replace_needed('libcodec2_vndk.so', 'libcodec2_vndk-v33.so'),
+    'vendor/bin/hw/android.hardware.biometrics.face-service.noth': blob_fixup()
+        .replace_needed('libcamera2ndk_vendor.so', 'libcamera2ndk_vendor-v33.so'),
     'vendor/bin/hw/android.hardware.security.keymint@2.0-service.trustonic': blob_fixup()
         .add_needed('android.hardware.security.rkp-V2-ndk.so'),
     'vendor/bin/hw/mt6886/camerahalserver': blob_fixup()
@@ -141,6 +143,8 @@ blob_fixups: blob_fixups_user_type = {
         .clear_symbol_version('AHardwareBuffer_release')
         .clear_symbol_version('AHardwareBuffer_unlock')
         .add_needed('libbase_shim.so'),
+    'vendor/lib64/libcamera2ndk_vendor-v33.so': blob_fixup()
+        .replace_needed('libstagefright_foundation.so', 'libstagefright_foundation-v33.so'),
     'vendor/lib64/libcodec2_hidl@1.0-v33.so': blob_fixup()
         .replace_needed('libstagefright_bufferqueue_helper.so', 'libstagefright_bufferqueue_helper-bp2a.so')
         .replace_needed('libcodec2_hidl_plugin.so', 'libcodec2_hidl_plugin-v33.so')
