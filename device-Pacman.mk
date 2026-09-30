@@ -18,3 +18,5 @@ PRODUCT_COPY_FILES += \
 $(call inherit-product, vendor/nothing/Pacman/Pacman-vendor.mk)
 
 PERF_ANIM_OVERRIDE := true
+
+TARGET_ENABLE_BLUR := true
