@@ -306,8 +306,6 @@ PRODUCT_PACKAGES += \
     libmtkperf_client \
     libpowerhalwrap_vendor
 
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/power/powerhint.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.json
 
 # Properties
 include hardware/mediatek/configs/properties/vendor_logtag.mk
