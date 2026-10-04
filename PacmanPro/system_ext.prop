@@ -1,2 +1,5 @@
 # Radio
 persist.radio.nt.modem.svn=18
+
+# Product
+ro.product.brand_device_name=A142P
