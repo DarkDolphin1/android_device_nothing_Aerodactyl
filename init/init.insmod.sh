@@ -32,15 +32,35 @@ if [ -f $cfg_file ]; then
       "enable") echo 1 > $arg ;;
       "modprobe")
         insmod_arg=${arg}
+        PAGE_SIZE=$(getconf PAGE_SIZE)
         for partition in system_dlkm vendor_dlkm
         do
-          case ${insmod_arg} in
-            "-b *" | "-b")
-              arg="-b $(cat /${partition}/lib/modules/modules.load)" ;;
-            "*" | "")
-              arg="$(cat /${partition}/lib/modules/modules.load)" ;;
-          esac
-          modprobe -a -d /${partition}/lib/modules $arg
+          modules_dir_base="/${partition}/lib/modules"
+
+          if [ $PAGE_SIZE -eq 16384 ]; then
+            if [ -d "${modules_dir_base}/16k" ]; then
+              modules_dir_base="${modules_dir_base}/16k"
+            fi
+          fi
+          for modules_dir in ${modules_dir_base}/*/ ${modules_dir_base}
+          do
+            last_part=$(basename ${modules_dir})
+            if [ "$last_part" == "16k" ]; then
+              if [ $PAGE_SIZE -ne 16384 ]; then
+                continue
+              fi
+            fi
+            if [ ! -f "${modules_dir}/modules.load" ]; then
+              continue
+            fi
+            case ${insmod_arg} in
+              "-b *" | "-b")
+                arg="-b $(cat ${modules_dir}/modules.load)" ;;
+              "*" | "")
+                arg="$(cat ${modules_dir}/modules.load)" ;;
+            esac
+            modprobe -a -d ${modules_dir} $arg
+          done
         done
     esac
   done < $cfg_file

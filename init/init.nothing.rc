@@ -130,6 +130,7 @@ on boot
     chown system system	/proc/charger/scenario_fcc
     chown system system	/proc/charger/ship_mode
     chown system system	/proc/charger/typec_cc_orientation
+    chown system system /proc/charger/ui_soc
     chown system system /proc/charger/usb/temp
     chown system system /proc/charger/usb_charger_en
     chown system system /proc/charger/usb_real_type
@@ -222,17 +223,6 @@ on boot
     # WiFi
     setprop ro.boot.wificountrycode 00
 
-# ATM
-on property:sys.boot_completed=1 && property:ro.boot.atm=enable
-    chmod 0775 /mnt/vendor/persist
-
-on property:sys.boot_completed=1 && property:ro.boot.atm=enable && property:vendor.attest.keybox.chown=ready
-    chown system system /mnt/vendor/persist/attest_keybox.so
-    setprop vendor.attest.keybox.chown done
-
-on property:sys.boot_completed=1 && property:ro.boot.atm=enable && property:vendor.attest.ids.chown=ready
-    chown system system /mnt/vendor/persist/attestation_ids.so
-    setprop vendor.attest.ids.chown done
 
 # Audio
 on property:persist.sys.dirac.enable=*
