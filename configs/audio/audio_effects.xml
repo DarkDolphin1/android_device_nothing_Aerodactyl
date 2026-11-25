@@ -96,9 +96,6 @@
         <!--Spatial Audio-->
         <effect name="dolby_spatial_audio" library="dolby_spatial_audio" uuid="cc4677de-ff72-11eb-9a03-0242ac130003"/>
         <!--Spatial Audio-->
-        <!--DOLBY SPATIALIZER-->
-        <effect name="dolby_spatializer" library="dolby_spatializer" uuid="cc4677de-ff72-11eb-9a03-0242ac130003"/>
-        <!--DOLBY END-->
         
     </effects>
 
